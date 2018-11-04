@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+    <link rel="dns-prefetch" href="https://cdn1.lncld.net">
+
+
+
+
+    <link rel="dns-prefetch" href="https://changyan.sohu.com">
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Android绘图之Paint和Canvas的使用方法 | 
+        
+        dengw‘s blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/dw.jpg">
+    <link rel="icon" href="/img/dw.jpg">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",View布局,Canvas">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?NKhlKQkXw/c66TR5p4wO+w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.jpg);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="dengw‘s blog">
+    <meta name="msapplication-starturl" content="http://dengw.xyz/2018/08/22/Android绘图之Paint和Canvas的使用方法/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="dengw‘s blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/dw.jpg">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://dengw.xyz/2018/08/22/Android绘图之Paint和Canvas的使用方法/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Android绘图之Paint和Canvas的使用方法 | dengw‘s blog">
+    <meta property="og:image" content="/img/dw.jpg">
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="View布局"> <meta property="og:article:tag" content="Canvas"> 
+
+    
+        <meta property="article:published_time" content="Wed Aug 22 2018 18:17:05 GMT+0800">
+        <meta property="article:modified_time" content="Wed Oct 03 2018 18:32:06 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://dengw.xyz/2018/08/22/Android绘图之Paint和Canvas的使用方法/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://dengw.xyz/2018/08/22/Android绘图之Paint和Canvas的使用方法/index.html",
+    "headline": "Android绘图之Paint和Canvas的使用方法",
+    "datePublished": "Wed Aug 22 2018 18:17:05 GMT+0800",
+    "dateModified": "Wed Oct 03 2018 18:32:06 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "dengw",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avator.jpg"
+        },
+        "description": "Just tango on"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "dengw‘s blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/dw.jpg"
+        }
+    },
+    "keywords": ",View布局,Canvas",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Paint类"><span class="post-toc-number">1.</span> <span class="post-toc-text">Paint类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setStyle"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">setStyle</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setStrokeCap"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">setStrokeCap</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setStrokeJoin"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">setStrokeJoin</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setTypeface"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">setTypeface</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setColor"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">setColor</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setAlpha"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">setAlpha</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setPathEffect"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">setPathEffect</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setStrokeWidth"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">setStrokeWidth</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setARGB"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">setARGB</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setTextSize"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">setTextSize</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setShadowLayer"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">setShadowLayer</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setTextScaleX"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">setTextScaleX</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setFakeBoldText"><span class="post-toc-number">1.13.</span> <span class="post-toc-text">setFakeBoldText</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setStrikeThruText"><span class="post-toc-number">1.14.</span> <span class="post-toc-text">setStrikeThruText</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setUnderlineText"><span class="post-toc-number">1.15.</span> <span class="post-toc-text">setUnderlineText</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setTextAlign"><span class="post-toc-number">1.16.</span> <span class="post-toc-text">setTextAlign</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setTextSkewX"><span class="post-toc-number">1.17.</span> <span class="post-toc-text">setTextSkewX</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Canvas类"><span class="post-toc-number">2.</span> <span class="post-toc-text">Canvas类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#绘制背景"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">绘制背景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#drawColor"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">drawColor</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#drawRGB"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">drawRGB</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#绘制弧形"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">绘制弧形</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#drawArc"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">drawArc</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#绘制圆"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">绘制圆</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#drawCircle"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">drawCircle</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#绘制点"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">绘制点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#drawPoint"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">drawPoint</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#绘制线段"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">绘制线段</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#drawLine"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">drawLine</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#绘制矩形"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">绘制矩形</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#drawRect"><span class="post-toc-number">2.6.1.</span> <span class="post-toc-text">drawRect</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#绘制圆角矩形"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">绘制圆角矩形</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#drawRoundRect"><span class="post-toc-number">2.7.1.</span> <span class="post-toc-text">drawRoundRect</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#绘制椭圆"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">绘制椭圆</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#drawOval"><span class="post-toc-number">2.8.1.</span> <span class="post-toc-text">drawOval</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#根据定义的路径画出图"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">根据定义的路径画出图</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#drawPath"><span class="post-toc-number">2.9.1.</span> <span class="post-toc-text">drawPath</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#绘制字体"><span class="post-toc-number">2.10.</span> <span class="post-toc-text">绘制字体</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#drawText"><span class="post-toc-number">2.10.1.</span> <span class="post-toc-text">drawText</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#绘制Bitmap"><span class="post-toc-number">2.11.</span> <span class="post-toc-text">绘制Bitmap</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#drawBitmap"><span class="post-toc-number">2.11.1.</span> <span class="post-toc-text">drawBitmap</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Canvas平移"><span class="post-toc-number">2.12.</span> <span class="post-toc-text">Canvas平移</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Canvas缩放"><span class="post-toc-number">2.13.</span> <span class="post-toc-text">Canvas缩放</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Canvas旋转"><span class="post-toc-number">2.14.</span> <span class="post-toc-text">Canvas旋转</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Canvas保存和还原"><span class="post-toc-number">2.15.</span> <span class="post-toc-text">Canvas保存和还原</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考："><span class="post-toc-number">3.</span> <span class="post-toc-text">参考：</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Android绘图之Paint和Canvas的使用方法
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avator.jpg" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>dengw</strong>
+        <span>8月 22, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Canvas/">Canvas</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/View布局/">View布局</a>
+    </li></ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2018/08/22/Android绘图之Paint和Canvas的使用方法/" class="leancloud-views_num" data-flag-title="Android绘图之Paint和Canvas的使用方法">
+     &nbsp;浏览量
+</span>
+
+            </li>
+        </a>
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Android绘图之Paint和Canvas的使用方法&url=http://dengw.xyz/2018/08/22/Android绘图之Paint和Canvas的使用方法/index.html&pic=http://dengw.xyz/img/dw.jpg&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Android绘图之Paint和Canvas的使用方法&url=http://dengw.xyz/2018/08/22/Android绘图之Paint和Canvas的使用方法/index.html&via=dengw" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=dengw‘s blog&title=Android绘图之Paint和Canvas的使用方法&summary=&pics=http://dengw.xyz/img/dw.jpg&url=http://dengw.xyz/2018/08/22/Android绘图之Paint和Canvas的使用方法/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>在自定义 View 的时候经常会使用到 Paint 和 Canvas 进行绘图，这些类比较像一些工具类，主要集中在方法的理解与使用。下面是给出的一些常用方法，当然还有很多还有方法没有列出来，使用的时候可以直接查看源码查找相应的方法。</p>
+<h3 id="Paint类"><a href="#Paint类" class="headerlink" title="Paint类"></a>Paint类</h3><h4 id="setStyle"><a href="#setStyle" class="headerlink" title="setStyle"></a>setStyle</h4><p>用于设置画笔的风格，可以指定是圆心还是实心，该方法在矩形，圆形有明显的效果</p>
+<pre><code class="java">//参数style为画笔的风格
+public void setStyle(Paint.Style style)
+</code></pre>
+<p>可选参数包括：</p>
+<ul>
+<li>Style.FILL: 实心</li>
+<li>Style.FILL_AND_STROKE: 同时显示实心和空心</li>
+<li>Style.STROKE: 空心</li>
+</ul>
+<h4 id="setStrokeCap"><a href="#setStrokeCap" class="headerlink" title="setStrokeCap"></a>setStrokeCap</h4><p> 用来控制我们的画笔在离开画板时候留下的最后一点图形，或者说叫做笔触风格 ，笔触就像我们现实世界中的笔，如果你用圆珠笔在纸上戳一点，那么这个点是个圆，它代表了笔的笔触形状，如果我们把一支铅笔笔尖削成方形的，那么画出来的线条会是一条弯曲的“矩形”，这就是笔触的意思。</p>
+<pre><code class="java">public void setStrokeCap(Cap cap)
+</code></pre>
+<p>参数可选列表：</p>
+<ul>
+<li>Cap.BUTT : 无笔触风格</li>
+<li>Cap.ROUND ：圆形</li>
+<li>Cap.SQUARE ： 方形</li>
+</ul>
+<h4 id="setStrokeJoin"><a href="#setStrokeJoin" class="headerlink" title="setStrokeJoin"></a>setStrokeJoin</h4><p>设置线段连接处样式</p>
+<pre><code class="java">public void setStrokeJoin(Join join)
+</code></pre>
+<p>可选值包括：</p>
+<ul>
+<li>Join.MITER（结合处为锐角）</li>
+<li>Join.Round(结合处为圆弧)</li>
+<li>Join.BEVEL(结合处为直线) </li>
+</ul>
+<h4 id="setTypeface"><a href="#setTypeface" class="headerlink" title="setTypeface"></a>setTypeface</h4><p>用于设置画笔的字体样式，可以使用系统自带的字段，也可以使用自定义的字体</p>
+<pre><code class="java">//typeface为字体样式
+public void Typeface(Typeface typeface)
+</code></pre>
+<p>一些可选值包括：</p>
+<ul>
+<li>Typeface.DEFAULT: 默认字体</li>
+<li>Typeface.DEFAULT_BOLD: 加粗字体</li>
+<li>Typeface.MONOSPACE: monospace字体</li>
+<li>Typeface.SANS_SERIF: sans字体</li>
+<li>Typeface.SERIF: serif字体</li>
+</ul>
+<h4 id="setColor"><a href="#setColor" class="headerlink" title="setColor"></a>setColor</h4><p>用于设置画笔的颜色</p>
+<pre><code class="java">//参数color为颜色值，也可以使用Color类定义的颜色
+public void setColor(int color)
+</code></pre>
+<p>下面是一些Color类定义的颜色：</p>
+<ul>
+<li>Color.BLACK:黑色</li>
+<li>Color.BLUE:蓝色</li>
+<li>Color.CYAN:青绿色</li>
+<li>Color.DKGRAY:灰黑色</li>
+<li>Color.YELLOW:黄色</li>
+<li>Color.GRAY:灰色</li>
+<li>Color.GREEN:绿色</li>
+<li>Color.LTGRAY:浅绿色</li>
+<li>Color.MAGENTA:红紫色</li>
+<li>Color.TRANSPARENT:透明色</li>
+</ul>
+<h4 id="setAlpha"><a href="#setAlpha" class="headerlink" title="setAlpha"></a>setAlpha</h4><p>用于设置画笔的透明度，为透明度，其取值范围为0~255，数值越小越透明</p>
+<pre><code class="java">public void setAlpha(int a)
+</code></pre>
+<h4 id="setPathEffect"><a href="#setPathEffect" class="headerlink" title="setPathEffect"></a>setPathEffect</h4><p><a href="http://www.cnblogs.com/tianzhijiexian/p/4297783.html" target="_blank" rel="noopener">详解Paint的setPathEffect(PathEffect effect)</a></p>
+<h4 id="setStrokeWidth"><a href="#setStrokeWidth" class="headerlink" title="setStrokeWidth"></a>setStrokeWidth</h4><p>用于设置画笔的空心线宽，该方法在矩形，圆形，等图形上有明显的效果；</p>
+<pre><code class="java">//参数width为线宽，浮点型数据
+public void setStrokeWidth(float width)
+</code></pre>
+<h4 id="setARGB"><a href="#setARGB" class="headerlink" title="setARGB"></a>setARGB</h4><p>用于设置画笔的颜色和透明度</p>
+<pre><code class="java">public void setARGB(int a,int r,int g,int b);
+</code></pre>
+<ul>
+<li>参数a为透明度，范围0~255</li>
+<li>参数r为红色的颜色值，范围0~255</li>
+<li>参数g为绿色的颜色值，范围0~255</li>
+<li>参数b为蓝色的颜色值，范围0~255</li>
+</ul>
+<h4 id="setTextSize"><a href="#setTextSize" class="headerlink" title="setTextSize"></a>setTextSize</h4><p> 用于设置画笔的字体大小，主要用于绘制字符串</p>
+<pre><code class="java">// 参数为字体大小
+ public void setTextSize(float textSize)
+</code></pre>
+<h4 id="setShadowLayer"><a href="#setShadowLayer" class="headerlink" title="setShadowLayer"></a>setShadowLayer</h4><p>用于设置添加阴影</p>
+<pre><code class="java">public void setShadowLayer(float radius, float dx, float dy, int shadowColor) 
+</code></pre>
+<ul>
+<li>adius 表示阴影的倾斜度</li>
+<li>dx:水平方向位移的像素</li>
+<li>dy:垂直方向位移的像素</li>
+<li>shadowColor:设置阴影的颜色</li>
+</ul>
+<h4 id="setTextScaleX"><a href="#setTextScaleX" class="headerlink" title="setTextScaleX"></a>setTextScaleX</h4><p>设置字体水平方向的拉伸，默认为1，当大于1时表示向两边拉伸，小于1时表示向中间压缩</p>
+<pre><code class="java">public void setTextScaleX(float scaleX)
+</code></pre>
+<h4 id="setFakeBoldText"><a href="#setFakeBoldText" class="headerlink" title="setFakeBoldText"></a>setFakeBoldText</h4><p>用于设置文字是否为粗体</p>
+<pre><code class="java">public void setFakeBoldText(boolean fakeBoldText)
+</code></pre>
+<h4 id="setStrikeThruText"><a href="#setStrikeThruText" class="headerlink" title="setStrikeThruText"></a>setStrikeThruText</h4><p>设置是否带有删除线效果</p>
+<pre><code class="java">public void setStrikeThruText(boolean strikeThruText)
+</code></pre>
+<h4 id="setUnderlineText"><a href="#setUnderlineText" class="headerlink" title="setUnderlineText"></a>setUnderlineText</h4><p>用于设置画笔的下划线，当取值为true时，表示显示下划线</p>
+<pre><code class="java">public void setUnderlineText(Boolean underlintext)
+</code></pre>
+<h4 id="setTextAlign"><a href="#setTextAlign" class="headerlink" title="setTextAlign"></a>setTextAlign</h4><p>设置文字对齐方式</p>
+<pre><code class="java">// 参数为文字对齐方式
+public void setTextAlign(Align align)
+</code></pre>
+<p>可选参数包括：</p>
+<ul>
+<li>Align.LEFT</li>
+<li>Align.RIGHT</li>
+<li>Align.CENTER</li>
+</ul>
+<h4 id="setTextSkewX"><a href="#setTextSkewX" class="headerlink" title="setTextSkewX"></a>setTextSkewX</h4><p>用于设置画笔的倾斜因子</p>
+<pre><code class="java">// 参数 skewX 为倾斜因子，正数表示向左倾斜，负数表示向右倾斜
+public void setTextSkewX(float skewX)
+</code></pre>
+<h3 id="Canvas类"><a href="#Canvas类" class="headerlink" title="Canvas类"></a>Canvas类</h3><h4 id="绘制背景"><a href="#绘制背景" class="headerlink" title="绘制背景"></a>绘制背景</h4><h5 id="drawColor"><a href="#drawColor" class="headerlink" title="drawColor"></a>drawColor</h5><pre><code class="java">public void drawColor(int color) 
+</code></pre>
+<h5 id="drawRGB"><a href="#drawRGB" class="headerlink" title="drawRGB"></a>drawRGB</h5><pre><code class="java">public void drawRGB(int r, int g, int b) 
+</code></pre>
+<h4 id="绘制弧形"><a href="#绘制弧形" class="headerlink" title="绘制弧形"></a>绘制弧形</h4><h5 id="drawArc"><a href="#drawArc" class="headerlink" title="drawArc"></a>drawArc</h5><pre><code class="java">public void drawArc(float left, float top, float right, float bottom, float startAngle, float sweepAngle, boolean useCenter, @NonNull Paint paint)
+</code></pre>
+<p>参数信息：</p>
+<ul>
+<li>前面四个参数围成的矩形，在矩形内绘制内切弧形；</li>
+<li>startAngle ： 起始角度</li>
+<li>sweepAngle ： 结束角度（按顺时针）</li>
+<li>useCenter ：若为true表示此弧会和 RectF 中心相连形成扇形，否则，弧的两头直接相连形成图形</li>
+<li>paint</li>
+</ul>
+<pre><code class="java">public void drawArc(@NonNull RectF oval, float startAngle, float sweepAngle, boolean useCenter, @NonNull Paint paint)
+</code></pre>
+<p>直接用 RectF 来表示矩形区域</p>
+<h4 id="绘制圆"><a href="#绘制圆" class="headerlink" title="绘制圆"></a>绘制圆</h4><h5 id="drawCircle"><a href="#drawCircle" class="headerlink" title="drawCircle"></a>drawCircle</h5><pre><code class="java">public void drawCircle(float cx, float cy, float radius, @NonNull Paint paint)
+</code></pre>
+<p>参数信息：</p>
+<ul>
+<li>cx: 圆心横坐标</li>
+<li>cy: 圆心纵坐标</li>
+<li>radius: 半径</li>
+<li>paint</li>
+</ul>
+<h4 id="绘制点"><a href="#绘制点" class="headerlink" title="绘制点"></a>绘制点</h4><h5 id="drawPoint"><a href="#drawPoint" class="headerlink" title="drawPoint"></a>drawPoint</h5><p>绘制一个点</p>
+<pre><code class="java">public void drawPoint(float x, float y, @NonNull Paint paint)
+</code></pre>
+<p>参数信息：</p>
+<ul>
+<li>x: 横坐标</li>
+<li>y: 纵坐标</li>
+<li>paint</li>
+</ul>
+<h4 id="绘制线段"><a href="#绘制线段" class="headerlink" title="绘制线段"></a>绘制线段</h4><h5 id="drawLine"><a href="#drawLine" class="headerlink" title="drawLine"></a>drawLine</h5><pre><code class="java">public void drawLine(float startX, float startY, float stopX, float stopY, @NonNull Paint paint)
+</code></pre>
+<p>参数信息：</p>
+<ul>
+<li>startX: 第一个点的横坐标</li>
+<li>startY: 第一个点的纵坐标</li>
+<li>stopX: 第二个点的横坐标</li>
+<li>stopY: 第一个点的纵坐标</li>
+<li>paint</li>
+</ul>
+<h4 id="绘制矩形"><a href="#绘制矩形" class="headerlink" title="绘制矩形"></a>绘制矩形</h4><h5 id="drawRect"><a href="#drawRect" class="headerlink" title="drawRect"></a>drawRect</h5><pre><code class="java">public void drawRect(float left, float top, float right, float bottom, Paint paint)  
+</code></pre>
+<p>因为默认矩形是水平的，所以只需要给出四条边的左边</p>
+<pre><code class="java">public void drawRect(Rect r, Paint paint) 
+</code></pre>
+<h4 id="绘制圆角矩形"><a href="#绘制圆角矩形" class="headerlink" title="绘制圆角矩形"></a>绘制圆角矩形</h4><h5 id="drawRoundRect"><a href="#drawRoundRect" class="headerlink" title="drawRoundRect"></a>drawRoundRect</h5><pre><code class="java">public void drawRoundRect (RectF rect,float rx,float ry,Paint paint)
+</code></pre>
+<p>参数信息：</p>
+<ul>
+<li>rx为X方向上的圆角半径</li>
+<li>ry为Y方向上的圆角半径</li>
+</ul>
+<h4 id="绘制椭圆"><a href="#绘制椭圆" class="headerlink" title="绘制椭圆"></a>绘制椭圆</h4><h5 id="drawOval"><a href="#drawOval" class="headerlink" title="drawOval"></a>drawOval</h5><p>通过指定椭圆的外切矩形实现</p>
+<pre><code class="java">public void drawOval(RectF rect.Paint paint)
+</code></pre>
+<h4 id="根据定义的路径画出图"><a href="#根据定义的路径画出图" class="headerlink" title="根据定义的路径画出图"></a>根据定义的路径画出图</h4><p>主要用于绘制复杂的图形轮廓</p>
+<h5 id="drawPath"><a href="#drawPath" class="headerlink" title="drawPath"></a>drawPath</h5><pre><code class="java">public void drawPath(Path path, Paint paint)
+</code></pre>
+<p>比如我想要绘制一个三角形，可以定义一个path对象</p>
+<pre><code class="java">Path path = new Path(); //定义一条路径
+path.moveTo(60, 60); //起始点 坐标60,60
+path.lineTo(100, 100);//连接直线
+path.lineTo(200,80);
+path.lineTo(60, 60);
+
+// 绘制定义的 path
+canvas.drawPath(path,paint);
+</code></pre>
+<h4 id="绘制字体"><a href="#绘制字体" class="headerlink" title="绘制字体"></a>绘制字体</h4><h5 id="drawText"><a href="#drawText" class="headerlink" title="drawText"></a>drawText</h5><pre><code class="java">public void drawText(String text, float x, float y, Paint paint)
+
+public void drawText(char[] text,int index,int count,float x,float y,Paint paint)
+
+public void drawText(CharSequence text,int start,int end,float x,float y,Paint paint)
+
+public void drawText(String text,int start,int end,float x,float y,Paint paint)
+</code></pre>
+<p>参数信息：</p>
+<ul>
+<li>text为字符串的内容</li>
+<li>x为X坐标</li>
+<li>y为Y坐标</li>
+<li>index为显示的起始字符位置</li>
+<li>count为显示的字符个数</li>
+<li>start为显示的起始字符的位置</li>
+<li>end为显示的终止的字符的位置</li>
+</ul>
+<h4 id="绘制Bitmap"><a href="#绘制Bitmap" class="headerlink" title="绘制Bitmap"></a>绘制Bitmap</h4><h5 id="drawBitmap"><a href="#drawBitmap" class="headerlink" title="drawBitmap"></a>drawBitmap</h5><pre><code class="java">public void drawBitmap(Bitmap bitmap, float left, float top, Paint paint)
+</code></pre>
+<ul>
+<li>参数bitmap为Bitmap对象，代表图像资源，</li>
+<li>left为图像显示的左边的位置</li>
+<li>right为图像的显示的右边的位置</li>
+</ul>
+<h4 id="Canvas平移"><a href="#Canvas平移" class="headerlink" title="Canvas平移"></a>Canvas平移</h4><pre><code class="java">/** 
+ * 画布向（100，50）方向平移 
+ *  
+ * 参数1: 向X轴方向移动100距离
+ * 参数2: 向Y轴方向移动50距离
+ */
+ canvas.translate(100, 50);
+</code></pre>
+<h4 id="Canvas缩放"><a href="#Canvas缩放" class="headerlink" title="Canvas缩放"></a>Canvas缩放</h4><pre><code class="java">/** 
+ * 在X轴方向放大为原来2倍，Y轴方向方大为原来的4倍 
+ * 参数1: X轴的放大倍数 
+ * 参数2: Y轴的放大倍数 
+ * 默认原点为左上角
+ */
+canvas.scale(2, 4);
+
+/** 
+ * 在X轴方向放大为原来2倍，Y轴方向方大为原来的4倍 
+ * 参数1: X轴的放大倍数 
+ * 参数2: Y轴的放大倍数 
+ * 参数3: 原点X坐标
+ * 参数4: 原点Y坐标
+ */
+canvas.scale(2, 4，100,100);
+</code></pre>
+<p>作用效果：<br><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180822/B1dge7fakI.png" alt="enter image description here"></p>
+<h4 id="Canvas旋转"><a href="#Canvas旋转" class="headerlink" title="Canvas旋转"></a>Canvas旋转</h4><pre><code class="java">/** 
+ * 原点为中心，旋转30度（顺时针方向为正方向 ）
+ * 参数: 旋转角度 
+ */
+canvas.rotate(30);
+
+/** 
+ * 以（100,100）为中心，旋转30度，顺时针方向为正方向 
+ * 参数: 旋转角度 
+ */
+canvas.rotate(30,100,100);
+</code></pre>
+<p>作用效果：<br><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180822/Jb3DiKd5jm.png" alt="enter image description here"></p>
+<h4 id="Canvas保存和还原"><a href="#Canvas保存和还原" class="headerlink" title="Canvas保存和还原"></a>Canvas保存和还原</h4><p>Canvas提供了几个方法，让我们可以方便的对Canvas的状态进行更改和还原。这些方法是：</p>
+<ul>
+<li>save()</li>
+<li>restore()</li>
+<li>restoreToCount(int saveCount)。</li>
+</ul>
+<p>我们在对 Canvas 进行平移、旋转、放大等操作时候，可以调用save()方法，将当前修改过的Canvas状态进行保存，调用restore() 方法后，会将 Canvas 还原成最近的一个save() 的状态。</p>
+<p>save()方法还会有一个返回值，我们也可以调用 restoreToCount(int saveCount) 方法，将这个返回值作为参数传递进去，就可以将Canvas还原成某一个特定的save()状态。</p>
+<p>一个可参考操作：</p>
+<pre><code class="java"> canvas.translate(100,100); // 平移（100,100）
+ int save1 = canvas.save(); // 保存Canvas状态（状态1）
+ canvas.scale(2, 2); // 放大2倍
+ int save2 = canvas.save(); // 保存Canvas状态（状态2）
+ canvas.restore(); // 返回最新的save状态，即状态2
+ canvas.restoreToCount(save1);// 手动指定的返回到 状态1
+</code></pre>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><p><a href="https://www.jianshu.com/p/f69873371763" target="_blank" rel="noopener">Android Canvas 方法总结</a></p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 changyan -->
+<div id="changyan-comment">
+    <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2018/08/22/Android绘图之Paint和Canvas的使用方法/"></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cytFgASPt';
+var conf = '21a481f8e281cdb130c8816a0a1b4b5c';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+</div>
+<style>
+    #changyan-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/09/24/常用的git命令清单/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/08/21/IdCardCamera—从一个Demo学习Android平台Camera开发/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avator.jpg" alt="dengw's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        duang0626@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:duang06262qq.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">23</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
+            </li></ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">label</i>
+                
+                标签云
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/resource" title="资源">
+                
+                    <i class="material-icons sidebar-material-icons">cloud_download</i>
+                
+                资源
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="图库">
+                
+                    <i class="material-icons sidebar-material-icons">image</i>
+                
+                图库
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="友情链接">
+                
+                    <i class="material-icons sidebar-material-icons">link</i>
+                
+                友情链接
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/duang0626" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/duang666/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year=""></span>&nbsp;dengw‘s blog
+            
+                <br>
+                
+                    hello world
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?Bn9UzEm8RrBSxqyZB0zPjA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+    <!-- Leancloud -->
+    <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+    <script>
+        AV.initialize('4RXXI7JGllT8IVC7vhgameTz-gzGzoHsz', '12p4GWu6SEO4Qpa1WboTz1P3');
+    </script>
+    <script type="text/ls-javascript" id="leancloud-views-script">
+    function showTime(Counter) {
+        var query = new AV.Query(Counter);
+        $('.leancloud-views_num').each(function() {
+            var url = $(this).attr('id').trim();
+            query.equalTo('url', url);
+            query.find({
+                success: function(results) {
+                    if (results.length === 0) {
+                        var content = '0 ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                        return;
+                    }
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+                        var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    }
+                },
+                error: function(object, error) {
+                    console.log('Error: ' + error.code + ' ' + error.message);
+                }
+            });
+        });
+    }
+
+    function addCount(Counter) {
+      var Counter = AV.Object.extend('Counter');
+      url = $('.leancloud-views_num').attr('id').trim();
+      title = $('.leancloud-views_num').attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo('url', url);
+      query.find({
+          success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment('time');
+                counter.save(null, {
+                    success: function(counter) {
+                        var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+              var newcounter = new Counter();
+              newcounter.set('title', title);
+              newcounter.set('url', url);
+              newcounter.set('time', 1);
+              newcounter.save(null, {
+                  success: function(newcounter) {
+                      console.log('newcounter.get(\'time\')='+newcounter.get('time'));
+                      var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+                      $(document.getElementById(url)).text(content);
+                  },
+                  error: function(newcounter, error) {
+                      console.log('Failed to create');
+                  }
+              });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + ' ' + error.message);
+        }
+      });
+    }
+    $(function() {
+        var Counter = AV.Object.extend('Counter');
+        if ($('.leancloud-views_num').length === 1) {
+            addCount(Counter);
+        } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+        }
+    });
+</script>
+
+
+
+
+
+
+   <!-- 畅言公共 js 代码 start -->
+<script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytFgASPt">
+</script>
+<!-- 畅言公共 js 代码 end -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 2018;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

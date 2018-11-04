@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+    <link rel="dns-prefetch" href="https://cdn1.lncld.net">
+
+
+
+
+    <link rel="dns-prefetch" href="https://changyan.sohu.com">
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Java类加载之类加载器 | 
+        
+        dengw‘s blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/dw.jpg">
+    <link rel="icon" href="/img/dw.jpg">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",Java虚拟机,类加载">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?NKhlKQkXw/c66TR5p4wO+w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.jpg);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="dengw‘s blog">
+    <meta name="msapplication-starturl" content="http://dengw.xyz/2018/07/30/Java类加载之类加载器/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="dengw‘s blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/dw.jpg">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://dengw.xyz/2018/07/30/Java类加载之类加载器/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Java类加载之类加载器 | dengw‘s blog">
+    <meta property="og:image" content="/img/dw.jpg">
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="Java虚拟机"> <meta property="og:article:tag" content="类加载"> 
+
+    
+        <meta property="article:published_time" content="Mon Jul 30 2018 14:51:57 GMT+0800">
+        <meta property="article:modified_time" content="Wed Oct 03 2018 18:40:30 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://dengw.xyz/2018/07/30/Java类加载之类加载器/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://dengw.xyz/2018/07/30/Java类加载之类加载器/index.html",
+    "headline": "Java类加载之类加载器",
+    "datePublished": "Mon Jul 30 2018 14:51:57 GMT+0800",
+    "dateModified": "Wed Oct 03 2018 18:40:30 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "dengw",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avator.jpg"
+        },
+        "description": "Just tango on"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "dengw‘s blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/dw.jpg"
+        }
+    },
+    "keywords": ",Java虚拟机,类加载",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#类与类加载器"><span class="post-toc-number">1.</span> <span class="post-toc-text">类与类加载器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#类加载器的层次结构—双亲委派模型"><span class="post-toc-number">2.</span> <span class="post-toc-text">类加载器的层次结构—双亲委派模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#启动（Bootstrap）类加载器"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">启动（Bootstrap）类加载器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#扩展（Extension）类加载器"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">扩展（Extension）类加载器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#系统（System）类加载器"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">系统（System）类加载器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#双亲委派模型"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">双亲委派模型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#双亲委派模型的优点"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">双亲委派模型的优点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#双亲委派模型的代码实现"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">双亲委派模型的代码实现</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义类加载器"><span class="post-toc-number">3.</span> <span class="post-toc-text">自定义类加载器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#URLClassLoader"><span class="post-toc-number">4.</span> <span class="post-toc-text">URLClassLoader</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考"><span class="post-toc-number">5.</span> <span class="post-toc-text">参考</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Java类加载之类加载器
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avator.jpg" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>dengw</strong>
+        <span>7月 30, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Java虚拟机/">Java虚拟机</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/类加载/">类加载</a>
+    </li></ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2018/07/30/Java类加载之类加载器/" class="leancloud-views_num" data-flag-title="Java类加载之类加载器">
+     &nbsp;浏览量
+</span>
+
+            </li>
+        </a>
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java类加载之类加载器&url=http://dengw.xyz/2018/07/30/Java类加载之类加载器/index.html&pic=http://dengw.xyz/img/dw.jpg&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Java类加载之类加载器&url=http://dengw.xyz/2018/07/30/Java类加载之类加载器/index.html&via=dengw" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=dengw‘s blog&title=Java类加载之类加载器&summary=&pics=http://dengw.xyz/img/dw.jpg&url=http://dengw.xyz/2018/07/30/Java类加载之类加载器/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>在前面介绍类加载过程中的加载步骤时提到“通过一个类的全限定名来获取描述此类的二进制字节流‘，这个操作就是类加载器完成的。</p>
+<h3 id="类与类加载器"><a href="#类与类加载器" class="headerlink" title="类与类加载器"></a>类与类加载器</h3><p>对于任意一个类，都需要由加载它的类加载器和这个类本身一同确定其在 Java 虚拟机中的唯一性，每一个类加载器都有唯一的标识，拥有一个独立的类名称空间。要比较两个类是否”相等“，只有在这两个类是由同一个类加载器加载的前提下才有意义。不然，即使两个类源于同一个Class文件，这两个类也不相等。</p>
+<p>注：这里说的相等包括类的 Class 对象的 equals() 方法、isAssignableFrom()方法、isInstance() 方法返回的结果。</p>
+<h3 id="类加载器的层次结构—双亲委派模型"><a href="#类加载器的层次结构—双亲委派模型" class="headerlink" title="类加载器的层次结构—双亲委派模型"></a>类加载器的层次结构—双亲委派模型</h3><h4 id="启动（Bootstrap）类加载器"><a href="#启动（Bootstrap）类加载器" class="headerlink" title="启动（Bootstrap）类加载器"></a>启动（Bootstrap）类加载器</h4><p>启动类加载器主要加载的是 JVM 自身需要的类，它负责将 <code>&lt;JAVA_HOME&gt;/lib</code>路径下的核心类库或 -Xbootclasspath 参数指定的路径下的 jar 包加载到内存中，注意必须是由虚拟机按照文件名识别加载 jar 包的，如rt.jar，我们非常熟悉的 Object 类就位于 rt.jar 包中。如果文件名不被虚拟机识别，名字不符合的即使把 jar 包丢到 lib 目录下也不会被加载(出于安全考虑，Bootstrap启动类加载器只加载包名为java、javax、sun等开头的类)。启动类加载器无法被 java 程序直接打开。</p>
+<h4 id="扩展（Extension）类加载器"><a href="#扩展（Extension）类加载器" class="headerlink" title="扩展（Extension）类加载器"></a>扩展（Extension）类加载器</h4><p>扩展类加载器是指 Sun 公司实现的 sun.misc.Launcher$ExtClassLoader 类，由 Java 语言实现的，是 Launcher 的静态内部类，它负责加载<code>&lt;JAVA_HOME&gt;/lib/ext</code>目录下或者由系统变量 -Djava.ext.dir 指定位路径中的类库。开发者可以直接使用扩展类加载器。</p>
+<h4 id="系统（System）类加载器"><a href="#系统（System）类加载器" class="headerlink" title="系统（System）类加载器"></a>系统（System）类加载器</h4><p>也称应用程序加载器，是由 Sun 公司实现的 sun.misc.Launcher$AppClassLoader 。它负责加载系统类路径 java -classpath 或 -D java.class.path 指定路径下的类库，也就是我们经常用到的classpath路径，开发者可以直接使用系统类加载器，一般情况下该类加载是程序中默认的类加载器，通过 ClassLoader#getSystemClassLoader() 方法可以获取到该类加载器。 </p>
+<h4 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h4><p>Java 应用程序的加载几乎是由上述 3 种类加载器相互配合执行的，如果有必要，我们还可以自定义类加载器，需要注意的是，Java 虚拟机对 class 文件采用的是按需加载的方式，也就是说当需要使用该类时才会将它的class文件加载到内存生成 class 对象。加载某个具体类的 class 文件时，Java 虚拟机采用的是双亲委派模型，下面我们进一步了解它。</p>
+<p><img src="http://p61038gmb.bkt.clouddn.com/blog/180731/5gE6ld6BCe.png?imageslim" alt="enter image description here"></p>
+<p>这种层次关系称为类加载器的双亲委派模型。我们把每一层上面的类加载器叫做当前层类加载器的父加载器，当然，它们之间的父子关系并不是通过继承关系来实现的，而是使用组合关系来复用父加载器中的代码。除了顶层的类加载器之外，其余的类加载器都有自己的父类加载器。</p>
+<p>双亲委派模型的工作流程是：如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把请求委托给父加载器去完成，依次向上，因此，所有的类加载请求最终都应该被传递到顶层的启动类加载器中，只有当父加载器在它的搜索范围中没有找到所需的类时，即无法完成该加载，子加载器才会尝试自己去加载该类。</p>
+<p>使用双亲委派模型来组织类加载器之间的关系，有一个很明显的好处，就是 Java 类随着它的类加载器（说白了，就是它所在的目录）一起具备了一种带有优先级的层次关系，这对于保证 Java 程序的稳定运作很重要。例如，类java.lang.Object 类存放在 JDK\jre\lib 下的 rt.jar 之中，因此无论是哪个类加载器要加载此类，最终都会委派给启动类加载器进行加载，这边保证了 Object 类在程序中的各种类加载器中都是同一个类。</p>
+<h4 id="双亲委派模型的优点"><a href="#双亲委派模型的优点" class="headerlink" title="双亲委派模型的优点"></a>双亲委派模型的优点</h4><p>双亲委派模型使 Java 类随着它的类加载器一起具备了一种带有优先级的层次关系，通过这种层级关可以避免类的重复加载，当父类加载器已经加载了该类时，就没有必要让子类加载器再加载一次。其次是考虑到安全因素，java核心 api 中定义类型不会被随意替换，假设通过网络传递一个名为 java.lang.Integer 的类，通过双亲委托模式传递到启动类加载器，而启动类加载器在核心Java API发现这个名字的类，发现该类已被加载，并不会重新加载网络传递的过来的 java.lang.Integer，而直接返回已加载过的 Integer.class，这样便可以防止核心API库被随意篡改。</p>
+<h4 id="双亲委派模型的代码实现"><a href="#双亲委派模型的代码实现" class="headerlink" title="双亲委派模型的代码实现"></a>双亲委派模型的代码实现</h4><p><img src="http://p61038gmb.bkt.clouddn.com/blog/180731/LLj42C2HIi.png?imageslim" alt="enter image description here"></p>
+<p>从图可以看出顶层的类加载器是一个抽象类，其后所有的类加载器都继承自该类加载器（不包括启动类加载器），我们介绍一下几个比较重要的方法。</p>
+<ul>
+<li>loadClass(String)<br>该方法加载指定名称（包括包名）的二进制类型，该方法在JDK1.2之后不再建议用户重写但用户可以直接调用该方法，loadClass()方法是ClassLoader类自己实现的，该方法中的逻辑就是双亲委派模式的实现，其源码如下，loadClass(String name, boolean resolve)是一个重载方法，resolve参数代表是否生成class对象的同时进行解析相关操作。</li>
+</ul>
+<pre><code class="java">protected Class&lt;?&gt; loadClass(String name, boolean resolve)
+      throws ClassNotFoundException
+  {
+    synchronized (getClassLoadingLock(name)) {
+        // 先从缓存查找该class对象，找到就不用重新加载
+        Class&lt;?&gt; c = findLoadedClass(name);
+        if (c == null) {
+            long t0 = System.nanoTime();
+            try {
+                if (parent != null) {
+                    //如果找不到，则委托给父类加载器去加载
+                    c = parent.loadClass(name, false);
+                } else {
+                    //如果没有父类，则委托给启动加载器去加载
+                    c = findBootstrapClassOrNull(name);
+                }
+            } catch (ClassNotFoundException e) {
+                // ClassNotFoundException thrown if class not found
+                // from the non-null parent class loader
+            }
+
+            if (c == null) {
+                // If still not found, then invoke findClass in order
+                // 如果都没有找到，则通过自定义实现的findClass去查找并加载
+                c = findClass(name);
+
+                // this is the defining class loader; record the stats
+                sun.misc.PerfCounter.getParentDelegationTime().addTime(t1 - t0);
+                sun.misc.PerfCounter.getFindClassTime().addElapsedTimeFrom(t1);
+                sun.misc.PerfCounter.getFindClasses().increment();
+            }
+        }
+        if (resolve) {//是否需要在加载时进行解析
+            resolveClass(c);
+        }
+        return c;
+    }
+}
+</code></pre>
+<ul>
+<li>findClass(String)<br>在JDK1.2之前，在自定义类加载时，总会去继承 ClassLoader 类并重写 loadClass 方法，从而实现自定义的类加载类，但是在JDK1.2之后已不再建议用户去覆盖 loadClass() 方法，而是建议<strong>把自定义的类加载逻辑写在 findClass() 方法中</strong>，从前面的分析可知，findClass() 方法是在 loadClass() 方法中被调用的，当 loadClass() 方法中父加载器加载失败后，则会调用自己的 findClass() 方法来完成类加载，这样就可以保证自定义的类加载器也符合双亲委托模式。需要注意的是 ClassLoader 类中并没有实现 findClass() 方法的具体代码逻辑，取而代之的是抛出 ClassNotFoundException 异常，同时应该知道的是 findClass 方法通常是和 defineClass 方法一起使用的，ClassLoader类中findClass()方法源码如下：</li>
+</ul>
+<pre><code class="java">//直接抛出异常
+protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException {
+        throw new ClassNotFoundException(name);
+}
+</code></pre>
+<ul>
+<li><p>defineClass(byte[] b, int off, int len)<br>defineClass() 方法是用来将 byte 字节流解析成 JVM 能够识别的 Class 对象<strong>(ClassLoader中已实现该方法逻辑)</strong>，通过这个方法不仅能够通过 class 文件实例化 class 对象，也可以通过其他方式实例化 class 对象，如通过网络接收一个类的字节码，然后转换为 byte 字节流创建对应的 Class 对象，defineClass() 方法通常与 findClass() 方法一起使用，一般情况下，在自定义类加载器时，会直接覆盖 ClassLoader 的 findClass() 方法并编写加载规则，取得要加载类的字节码后转换成流，然后调用 defineClass()方法生成类的Class对象，简单例子如下：</p>
+<pre><code class="java">protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException {
+    // 获取类的字节数组
+    byte[] classData = getClassData(name);  
+    if (classData == null) {
+        throw new ClassNotFoundException();
+    } else {
+        //使用defineClass生成class对象
+        return defineClass(name, classData, 0, classData.length);
+    }
+}
+</code></pre>
+<p>需要注意的是，如果直接调用defineClass()方法生成类的Class对象，这个类的Class对象并没有解析(也可以理解为链接阶段，毕竟解析是链接的最后一步)，其解析操作需要等待初始化阶段进行。</p>
+</li>
+<li><p>resolveClass(Class≺?≻ c)<br>使用该方法可以使用类的Class对象创建完成也同时被解析。前面我们说链接阶段主要是对字节码进行验证，为类变量分配内存并设置初始值同时将字节码文件中的符号引用转换为直接引用。</p>
+</li>
+</ul>
+<h3 id="自定义类加载器"><a href="#自定义类加载器" class="headerlink" title="自定义类加载器"></a>自定义类加载器</h3><p>一个比较好的自定义类加载器的实践就是直接继承 URLClassLoader 类，URLClassLoader 这个实现类为这些方法提供了具体的实现，并新增了 URLClassPath 类协助取得 Class 字节码流等功能，在编写自定义类加载器时，如果没有太过于复杂的需求，可以直接继承URLClassLoader类，这样就可以避免自己去编写 findClass() 方法及其获取字节码流的方式，使自定义类加载器编写更加简洁。</p>
+<p>需要注意的是如果我们在定义类加载器时选择继承 ClassLoader 类而非 URLClassLoader，必须手动编写 findclass() 方法的加载逻辑以及获取字节码流的逻辑。</p>
+<h3 id="URLClassLoader"><a href="#URLClassLoader" class="headerlink" title="URLClassLoader"></a>URLClassLoader</h3><p><img src="http://p61038gmb.bkt.clouddn.com/blog/180731/54f3593fm9.png?imageslim" alt="enter image description here"></p>
+<p>从类图结构看出 URLClassLoader 内部存在一个 URLClassPath 类，通过这个类就可以找到要加载的字节码流，也就是说 URLClassPath 类负责找到要加载的字节码，再读取成字节流，最后通过 defineClass() 方法创建类的Class对象。从 URLClassLoader 类的结构图可以看出其构造方法都有一个必须传递的参数 URL[]，该参数的元素是代表字节码文件的路径，换句话说在创建 URLClassLoader 对象时必须要指定这个类加载器到哪个目录下找 class 文件。同时也应该注意 URL[] 也是 URLClassPath 类的必传参数，在创建 URLClassPath 对象时，会根据传递过来的 URL 数组中的路径判断是文件还是 jar 包，然后根据不同的路径创建 FileLoader 或者 JarLoader 或默认 Loader 类去加载相应路径下的 class 文件，而当 JVM 调用 findClass() 方法时，就由这3个加载器中的一个将 class 文件的字节码流加载到内存中，最后利用字节码流创建类的 class 对象。</p>
+<p>下面是一些需要自定义类加载器场景：</p>
+<ul>
+<li><p>当class文件不在ClassPath路径下，默认系统类加载器无法找到该class文件，在这种情况下我们需要实现一个自定义的ClassLoader来加载特定路径下的class文件生成class对象。</p>
+</li>
+<li><p>当一个class文件是通过网络传输并且可能会进行相应的加密操作时，需要先对class文件进行相应的解密后再加载到JVM内存中，这种情况下也需要编写自定义的ClassLoader并实现相应的逻辑。</p>
+</li>
+<li><p>当需要实现热部署功能时(一个class文件通过不同的类加载器产生不同class对象从而实现热部署功能)，需要实现自定义ClassLoader的逻辑。</p>
+</li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://blog.csdn.net/javazejian/article/details/73413292" target="_blank" rel="noopener">大部分内容从这儿搬的： 深入理解Java类加载器(ClassLoader)</a></p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 changyan -->
+<div id="changyan-comment">
+    <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2018/07/30/Java类加载之类加载器/"></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cytFgASPt';
+var conf = '21a481f8e281cdb130c8816a0a1b4b5c';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+</div>
+<style>
+    #changyan-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/07/31/结合反射机制理解动态代理/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/07/28/Java类加载之类加载过程/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avator.jpg" alt="dengw's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        duang0626@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:duang06262qq.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">23</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
+            </li></ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">label</i>
+                
+                标签云
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/resource" title="资源">
+                
+                    <i class="material-icons sidebar-material-icons">cloud_download</i>
+                
+                资源
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="图库">
+                
+                    <i class="material-icons sidebar-material-icons">image</i>
+                
+                图库
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="友情链接">
+                
+                    <i class="material-icons sidebar-material-icons">link</i>
+                
+                友情链接
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/duang0626" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/duang666/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year=""></span>&nbsp;dengw‘s blog
+            
+                <br>
+                
+                    hello world
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?Bn9UzEm8RrBSxqyZB0zPjA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+    <!-- Leancloud -->
+    <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+    <script>
+        AV.initialize('4RXXI7JGllT8IVC7vhgameTz-gzGzoHsz', '12p4GWu6SEO4Qpa1WboTz1P3');
+    </script>
+    <script type="text/ls-javascript" id="leancloud-views-script">
+    function showTime(Counter) {
+        var query = new AV.Query(Counter);
+        $('.leancloud-views_num').each(function() {
+            var url = $(this).attr('id').trim();
+            query.equalTo('url', url);
+            query.find({
+                success: function(results) {
+                    if (results.length === 0) {
+                        var content = '0 ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                        return;
+                    }
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+                        var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    }
+                },
+                error: function(object, error) {
+                    console.log('Error: ' + error.code + ' ' + error.message);
+                }
+            });
+        });
+    }
+
+    function addCount(Counter) {
+      var Counter = AV.Object.extend('Counter');
+      url = $('.leancloud-views_num').attr('id').trim();
+      title = $('.leancloud-views_num').attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo('url', url);
+      query.find({
+          success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment('time');
+                counter.save(null, {
+                    success: function(counter) {
+                        var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+              var newcounter = new Counter();
+              newcounter.set('title', title);
+              newcounter.set('url', url);
+              newcounter.set('time', 1);
+              newcounter.save(null, {
+                  success: function(newcounter) {
+                      console.log('newcounter.get(\'time\')='+newcounter.get('time'));
+                      var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+                      $(document.getElementById(url)).text(content);
+                  },
+                  error: function(newcounter, error) {
+                      console.log('Failed to create');
+                  }
+              });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + ' ' + error.message);
+        }
+      });
+    }
+    $(function() {
+        var Counter = AV.Object.extend('Counter');
+        if ($('.leancloud-views_num').length === 1) {
+            addCount(Counter);
+        } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+        }
+    });
+</script>
+
+
+
+
+
+
+   <!-- 畅言公共 js 代码 start -->
+<script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytFgASPt">
+</script>
+<!-- 畅言公共 js 代码 end -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 2018;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

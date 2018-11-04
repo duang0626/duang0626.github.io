@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+    <link rel="dns-prefetch" href="https://cdn1.lncld.net">
+
+
+
+
+    <link rel="dns-prefetch" href="https://changyan.sohu.com">
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Activity生命周期详解 | 
+        
+        dengw‘s blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/dw.jpg">
+    <link rel="icon" href="/img/dw.jpg">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",Activity">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?NKhlKQkXw/c66TR5p4wO+w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.jpg);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="dengw‘s blog">
+    <meta name="msapplication-starturl" content="http://dengw.xyz/2018/03/07/Activity生命周期详解/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="dengw‘s blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/dw.jpg">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://dengw.xyz/2018/03/07/Activity生命周期详解/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Activity生命周期详解 | dengw‘s blog">
+    <meta property="og:image" content="/img/dw.jpg">
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="Activity"> 
+
+    
+        <meta property="article:published_time" content="Wed Mar 07 2018 11:12:16 GMT+0800">
+        <meta property="article:modified_time" content="Wed Oct 03 2018 18:17:52 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://dengw.xyz/2018/03/07/Activity生命周期详解/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://dengw.xyz/2018/03/07/Activity生命周期详解/index.html",
+    "headline": "Activity生命周期详解",
+    "datePublished": "Wed Mar 07 2018 11:12:16 GMT+0800",
+    "dateModified": "Wed Oct 03 2018 18:17:52 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "dengw",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avator.jpg"
+        },
+        "description": "Just tango on"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "dengw‘s blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/dw.jpg"
+        }
+    },
+    "keywords": ",Activity",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于Activity"><span class="post-toc-number">1.</span> <span class="post-toc-text">关于Activity</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于任务栈"><span class="post-toc-number">2.</span> <span class="post-toc-text">关于任务栈</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Activity的四种状态"><span class="post-toc-number">3.</span> <span class="post-toc-text">Activity的四种状态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Activity的生命周期"><span class="post-toc-number">4.</span> <span class="post-toc-text">Activity的生命周期</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一些特殊情况下-Activity-的生命周期变化"><span class="post-toc-number">5.</span> <span class="post-toc-text">一些特殊情况下 Activity 的生命周期变化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#按下-Home-键当前-Activity-的生命周期变化"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">按下 Home 键当前 Activity 的生命周期变化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#按下-back-键当前-Activity-的生命周期变化"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">按下 back 键当前 Activity 的生命周期变化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#息屏时当前-Activity-的生命周期变化"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">息屏时当前 Activity 的生命周期变化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#启动一个新的透明-Activity-时当前-Activity-的生命周期变化"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">启动一个新的透明 Activity 时当前 Activity 的生命周期变化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#旋转屏幕未设置-configureChanges-参数时当前-Activity-的生命周期变化"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">旋转屏幕未设置 configureChanges 参数时当前 Activity 的生命周期变化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#旋转屏幕设置了-configureChanges-参数时当前-Activity-的生命周期变化"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">旋转屏幕设置了 configureChanges 参数时当前 Activity 的生命周期变化</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#onSaveInstanceState-和onRestoreInstanceState-调用时机"><span class="post-toc-number">6.</span> <span class="post-toc-text">onSaveInstanceState()和onRestoreInstanceState()调用时机</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#onSaveInstanceState-的调用时机"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">onSaveInstanceState() 的调用时机</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#onRestoreInstanceState-的调用时机"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">onRestoreInstanceState() 的调用时机</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#链接"><span class="post-toc-number">7.</span> <span class="post-toc-text">链接</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Activity生命周期详解
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avator.jpg" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>dengw</strong>
+        <span>3月 07, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Activity/">Activity</a>
+    </li></ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2018/03/07/Activity生命周期详解/" class="leancloud-views_num" data-flag-title="Activity生命周期详解">
+     &nbsp;浏览量
+</span>
+
+            </li>
+        </a>
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Activity生命周期详解&url=http://dengw.xyz/2018/03/07/Activity生命周期详解/index.html&pic=http://dengw.xyz/img/dw.jpg&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Activity生命周期详解&url=http://dengw.xyz/2018/03/07/Activity生命周期详解/index.html&via=dengw" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=dengw‘s blog&title=Activity生命周期详解&summary=&pics=http://dengw.xyz/img/dw.jpg&url=http://dengw.xyz/2018/03/07/Activity生命周期详解/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h3 id="关于Activity"><a href="#关于Activity" class="headerlink" title="关于Activity"></a>关于Activity</h3><p>在Android应用程序里，一个Activity就是一个用户界面。用户与程序的交互就是通过Activity来实现的，可以看成网站的页面。主Activity是程序启动的入口。应用程序成功启动之后，呈献给用户的第一个界面，即为该程序的主Activity。</p>
+<h3 id="关于任务栈"><a href="#关于任务栈" class="headerlink" title="关于任务栈"></a>关于任务栈</h3><p>Android中是使用任务（task）来管理活动的，一个任务就是一组存放在栈里的活动的集合，这个任务栈也叫做返回栈。在默认情况下，当我们启动了一个新的活动，它会在返回栈中入栈，并处于栈顶的位置。而当我们按下 back 键或调用 finish() 方法去销毁一个活动时，处于栈顶的任务就会出栈，这时前一个入栈的活动就会重新处于栈顶的位置。系统总是会显示处于栈顶的活动给用户。</p>
+<h3 id="Activity的四种状态"><a href="#Activity的四种状态" class="headerlink" title="Activity的四种状态"></a>Activity的四种状态</h3><p>Android 的虚拟机(VM)是使用基于栈(Stack based) 管理，主要有四种状态：</p>
+<p><strong>Active (运行状态)：</strong><br>使用者启动应用程序或Activity 后，Activity 运行中的状态，可与用户之间进行交互，此时当前Activity位于栈顶。<br>需要注意的是，在Android 平台上，同一个时刻只会有一个Activity 处于活动(Active)或运行(Running)状态。其他的Activity 都处于未启动(Dead)、停止(Stopped)、或是暂停(Pause)的状态。</p>
+<p><strong>Paused (暂停状态)</strong><br>当Activity 暂时暗下来，退到背景画面的状态。<br>当使用Toast、AlertDialog或电话呼入时，都会让原本运行的Activity 退到背景画面。新出现的Toast、AlertDialog 等界面元件盖住了原来的Activity 画面。Activity 处在”Paused”状态时，使用者无法与原Activity 互动。</p>
+<p><strong>Stopped (停止状态)</strong><br>Activity完全被另一个Activity所覆盖，则其状态为Stopped。<br>有其他Activity 正在执行，而当前Activity 已经离开屏幕，不再动作的状态。通过长按”Home”钮，可以叫出所有处于”Stopped”状态的应用程序列表。在“Stopped”状态的Activity，还可以通过“Notification”来唤醒。</p>
+<p><strong>Dead (销毁状态)</strong><br>Activity 尚未被启动、已经被手动终止，或已经被系统回收的状态。<br>要手动终止Activity，可以在程序中调用“finish”函数，若是被系统回收，可能是因为内存不足，因此系统根据内存不足时的回收规则，将处于“Stopped”状态的Activity 所占用的内存回收。</p>
+<h3 id="Activity的生命周期"><a href="#Activity的生命周期" class="headerlink" title="Activity的生命周期"></a>Activity的生命周期</h3><p>每个活动（Activity）都处于某个状态。对于开发者来说，是无法控制其应用程序处于某个状态的，这些均由系统来完成。但当一个活动状态发生改变的时，开发者可以通过调用onXXX()方法，获取相关的通知信息。</p>
+<p>完整的Activity 生命周期由”Create”状态开始，由”Destroy”状态结束。建立<br>(Create)时分配资源，销毁(Destroy)时释放资源。</p>
+<p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180330/d3jBcAHbj2.png" alt="Activity生命周期流程图"></p>
+<ul>
+<li><strong>onCreate :</strong> 当活动第一次启动时触发该方法。该方法是在Activity被创建时回调，它是生命周期第一个调用的方法，我们在创建Activity时一般都需要重写该方法，然后在该方法中做一些初始化的操作，如通过setContentView设置界面布局的资源，初始化所需要的组件信息等。 </li>
+<li><strong>onStart :</strong> 此方法被回调时表示Activity正在启动，所属活动将被展现给用户，此时Activity已处于可见状态，只是还没有在前台显示，因此无法与用户进行交互。可以简单理解为Activity已显示而我们无法看见摆了。 </li>
+<li><strong>onResume :</strong> 当一个活动和用户发生交互的时候，触发该方法。当此方法回调时，则说明Activity已在前台可见，可与用户交互了（处于前面所说的Active/Running形态），onResume方法与onStart的相同点是两者都表示Activity可见，只不过onStart回调时Activity还是后台无法与用户交互，而onResume则已显示在前台，可与用户交互。当然从流程图，我们也可以看出当Activity停止后（onPause方法和onStop方法被调用），重新回到前台时也会调用onResume方法，因此我们也可以在onResume方法中初始化一些资源，比如重新初始化在onPause或者onStop方法中释放的资源。 </li>
+<li><strong>onPause :</strong> 当一个正在前台运行的活动因为其他的活动需要前台运行而转入后台运行的时候，触发该方法。此方法被回调时则表示Activity正在停止（Paused形态），一般情况下onStop方法会紧接着被回调。但通过流程图我们还可以看到一种情况是onPause方法执行后直接执行了onResume方法，这属于比较极端的现象了，这可能是用户操作使当前Activity退居后台后又迅速地再回到到当前的Activity，此时onResume方法就会被回调。当然，在onPause方法中我们可以做一些数据存储或者动画停止或者资源回收的操作，但是不能太耗时，因为这可能会影响到新的Activity的显示——onPause方法执行完成后，新Activity的onResume方法才会被执行。 </li>
+<li><strong>onStop :</strong> 当一个活动不再需要展示给用户的时候，触发该方法。一般在onPause方法执行完成直接执行，表示Activity即将停止或者完全被覆盖（Stopped形态），此时Activity不可见，仅在后台运行。同样地，在onStop方法可以做一些资源释放的操作（不能太耗时）。如果内存紧张，系统会直接结束这个活动，而不会触发onStop 方法，所以保存状态信息是应该在onPause时做，而不是onStop时做。</li>
+<li><strong>onRestart</strong> : 当处于停止状态的活动需要再次展现给用户的时候，触发该方法，表示Activity正在重新启动，当Activity由不可见变为可见状态时，该方法被回调。这种情况一般是用户打开了一个新的Activity时，当前的Activity就会被暂停（onPause和onStop被执行了），接着又回到当前Activity页面时，onRestart方法就会被回调。 </li>
+<li><strong>onDestroy</strong> :当一个活动不再需要展示给用户的时候，触发该方法。此时Activity正在被销毁，也是生命周期最后一个执行的方法，一般我们可以在此方法中做一些回收工作和最终的资源释放。 </li>
+</ul>
+<p>以上关于各个阶段的状态详细说明大部分来自于<a href="http://blog.csdn.net/javazejian/article/details/51932554" target="_blank" rel="noopener">Android之Activity生命周期浅析(一)</a>，并在其基础上做了一些小小的补充。</p>
+<p>以上7个方法中除了onRestart()方法，其他的都是两两相对的，从而又可以将活动分为3个生存期。</p>
+<p><strong>完整生命期</strong>：活动在onCreate()方法到onDestory()方法之间经历的时期。</p>
+<p>第一次启动Activity：依次执行以下方法：onCreate() -&gt; MainActivity created  -&gt; onStart() -&gt; MainActivity started -&gt; onResume() -&gt; MainActivity actived，进入活动状态。</p>
+<p>结束Activity：依次执行以下方法：onPause () -&gt; MainActivity paused -&gt;  onStop () -&gt; MainActivity stoped -&gt;  onDestory()  -&gt;  MainActivity killed。</p>
+<ul>
+<li>Activity由活动状态转为暂停状态。此时它依然与窗口管理器保持连接，系统继续维护其内部状态，所以它仍然可见。但已失去了焦点，故不可与用户交互。在极特殊的情况下，Android将会杀死一个暂停的Activity，来为活动的Activity提供充足的资源；</li>
+<li>Activity被停止，变为完全隐藏，失去焦点，并且不可见。但是系统将仍在内存中保存它所有的状态和信息；</li>
+<li>Activity被杀死，转为销毁状态。Activity结束，退出当前应用程序。</li>
+</ul>
+<p><strong>可见生存期</strong>：活动在onStart()方法到onStop()方法之间经历的时期。<br>当Activity 运行到“Start”状态时，就可以在屏幕上看到该Activity。相反当Activity 运行到“Stop”状态时，此Activity 就会从屏幕上消失。当使用者按下Back 按钮回到上一个Activity 时，会先到Restart 状态，再到一般的Start 状态。</p>
+<p><strong>前台生存期</strong>：活动在onResume()方法到onPause()方法之间经历的时期。<br>使用者能否直接存取屏幕（Resume/Pause），当有个Toast、AlertDialog、短信、电话等信息发生时，原来的Activity 会处于“Pause”状态，暂时放弃直接存取屏幕的能力，被中断到背景去，将前景交给优先级高的事件。当这些优先级高的事件处理完后，Activity 就改进入”Resume”状态，此时又直接存取屏幕。</p>
+<h3 id="一些特殊情况下-Activity-的生命周期变化"><a href="#一些特殊情况下-Activity-的生命周期变化" class="headerlink" title="一些特殊情况下 Activity 的生命周期变化"></a>一些特殊情况下 Activity 的生命周期变化</h3><p>这些情况在开发的时候也会遇得到，但是更多的可能是面试中会问到，很考验开发者对Activity生命周期的掌握情况，具体的包括：</p>
+<ul>
+<li>按下 Home 键当前 Activity 的生命周期变化；</li>
+<li>按下 back 键当前 Activity 的生命周期变化；</li>
+<li>息屏时当前 Activity 的生命周期变化；</li>
+<li>启动一个新的透明 Activity 时当前 Activity 的生命周期变化；</li>
+<li>旋转屏幕未设置 configureChanges 参数时当前 Activity 的生命周期变化；</li>
+<li>旋转屏幕设置了 configureChanges 参数时当前 Activity 的生命周期变化；</li>
+</ul>
+<p>上面这些问题我们通过一个实际的demo，通过生命周期函数打印日志来进行逐一验证；</p>
+<h4 id="按下-Home-键当前-Activity-的生命周期变化"><a href="#按下-Home-键当前-Activity-的生命周期变化" class="headerlink" title="按下 Home 键当前 Activity 的生命周期变化"></a>按下 Home 键当前 Activity 的生命周期变化</h4><p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/181002/a3L03Ad13G.png" alt="enter image description here"></p>
+<p>可以看到点击 Home 键当前 Activity 会调用 <strong>onPause &gt; onSaveInstanceState &gt; onStop</strong> 函数，并没有调用 onDestroy 方法，说明当前活动没有被销毁，只是不再处于栈顶了。这个时候继续看一下再进入该 Activity 时该  Activity 的生命周期变化：<br><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/181002/EJ85jIL8fc.png" alt="enter image description here"></p>
+<p>可以看到再进入该 Activity 依次调用 <strong>onRestart &gt; onStart &gt; onResume</strong> 方法，结合上面说的，我们总结按下 Home 键时当前 Activity 依然位于任务栈中，只是不在位于任务栈的栈顶。</p>
+<h4 id="按下-back-键当前-Activity-的生命周期变化"><a href="#按下-back-键当前-Activity-的生命周期变化" class="headerlink" title="按下 back 键当前 Activity 的生命周期变化"></a>按下 back 键当前 Activity 的生命周期变化</h4><p>同样的，先使用 demo 试一下，然后根据结果解释；<br><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/181002/3lEmJ4LbcJ.png" alt="enter image description here"><br><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/181002/le7k0Bb5kA.png" alt="enter image description here"></p>
+<p>可以看到当我们在 Activity2 中按下 Back 键返回 Activity1 的时候，Activity2 会调用 <strong>onPause &gt; onStop &gt; onDestroy</strong> 方法，也就是说 Activity2 会被销毁，直接从任务栈中移除掉。正常情况下一个活动直接被销毁除了上面这种情况，另外一种就是直接在一个活动中调用 <strong>finish()</strong> 方法。</p>
+<h4 id="息屏时当前-Activity-的生命周期变化"><a href="#息屏时当前-Activity-的生命周期变化" class="headerlink" title="息屏时当前 Activity 的生命周期变化"></a>息屏时当前 Activity 的生命周期变化</h4><p>先贴一下运行结果：<br><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/181002/iGkdehdmgj.png" alt="enter image description here"></p>
+<p>方法调用过程为：<strong>onPause &gt; onSaveInstanceState &gt; onStop</strong></p>
+<p>然后再进入当前Activity，方法调用过程为：<strong>onRestart &gt; onStart &gt; onResume</strong><br><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/181002/9EHch5Aima.png" alt="enter image description here"></p>
+<h4 id="启动一个新的透明-Activity-时当前-Activity-的生命周期变化"><a href="#启动一个新的透明-Activity-时当前-Activity-的生命周期变化" class="headerlink" title="启动一个新的透明 Activity 时当前 Activity 的生命周期变化"></a>启动一个新的透明 Activity 时当前 Activity 的生命周期变化</h4><p>当我们给 Acticity2 的属性设置如下的时候，可以让 Acticity2 完全透明：</p>
+<pre><code>&lt;activity
+    android:name=&quot;.Main2Activity&quot;
+    android:theme=&quot;@android:style/Theme.Translucent&quot;&gt;
+&lt;/activity&gt;
+</code></pre><p>这样当我们从 Activity1 启动 Activity2，然后观察 Activity1 的生命周期变化，先看一下结果；<br><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/181002/A4E8KG2kK5.png" alt="enter image description here"><br><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/181002/bIfHL70hAE.png" alt="enter image description here"></p>
+<p>可以看到调用过程为 <strong>onPause &gt; onSaveInsanceState</strong>，没有调用 onStop 方法，这里我们可以这样理解，因为  Activity2 被设置为透明的，这样跳转到  Activity2 时 Activity1 依然可见，所以不会调用 Activity1 的 onStop 方法，因为一个活动调用 onStop 方法后就不再可见。</p>
+<h4 id="旋转屏幕未设置-configureChanges-参数时当前-Activity-的生命周期变化"><a href="#旋转屏幕未设置-configureChanges-参数时当前-Activity-的生命周期变化" class="headerlink" title="旋转屏幕未设置 configureChanges 参数时当前 Activity 的生命周期变化"></a>旋转屏幕未设置 configureChanges 参数时当前 Activity 的生命周期变化</h4><p>默认是设置 configureChanges 参数的，我们先看一下默认情况下的生命周期：<br><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/181002/aFFe2B0GE9.png" alt="enter image description here"><br><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/181002/ACfm7f9mK9.png" alt="enter image description here"></p>
+<p>从结果中我们可以看到，当旋转屏幕并且 configureChanges 为默认值的时候，当前活动的生命周期变化为：<br><strong>onPause &gt; onSaveInstanceState &gt; onStop &gt; onDestroy &gt; onCreate &gt; onStart &gt; onRestoreInstanceState &gt; onResume</strong></p>
+<p>从这些方法中不想归纳出当前活动是被销毁后再重新创建了一个新的活动，即旋转前和旋转后看到的其实不是同一个活动，之前的活动已经从任务栈中出栈然后新建了一个新的活动加入到任务栈中。这个很好理解嘛，旋转前和旋转后活动的宽和高发生了变化，相当于系统配置已经发生了变化，这样活动当然会被重建。</p>
+<h4 id="旋转屏幕设置了-configureChanges-参数时当前-Activity-的生命周期变化"><a href="#旋转屏幕设置了-configureChanges-参数时当前-Activity-的生命周期变化" class="headerlink" title="旋转屏幕设置了 configureChanges 参数时当前 Activity 的生命周期变化"></a>旋转屏幕设置了 configureChanges 参数时当前 Activity 的生命周期变化</h4><p>通过 configureChanges 参数可以让活动在改变系统配置的时候不被重建，比如我们想让 Activity2 在改变系统配置的时候不被重建，可以进行如下配置：</p>
+<pre><code>&lt;activity
+    android:name=&quot;.Main2Activity&quot;
+    android:configChanges=&quot;orientation|screenSize&quot;&gt;
+&lt;/activity&gt;
+</code></pre><p>调用情况：<br><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/181002/HkeG14aefd.png" alt="enter image description here"></p>
+<p>可以看到只调用了 onConfigurationChanged 方法，说明没有重建过程了，onConfigurationChanged 方法需要我们重写。</p>
+<pre><code class="java">@Override
+public void onConfigurationChanged(Configuration newConfig){
+    super.onConfigurationChanged(newConfig);
+}
+</code></pre>
+<h3 id="onSaveInstanceState-和onRestoreInstanceState-调用时机"><a href="#onSaveInstanceState-和onRestoreInstanceState-调用时机" class="headerlink" title="onSaveInstanceState()和onRestoreInstanceState()调用时机"></a>onSaveInstanceState()和onRestoreInstanceState()调用时机</h3><p>在上面的讨论中我们可以看到，有的时候会调用单独调用 onSaveInstanceState() 方法，有的时候onSaveInstanceState()和onRestoreInstanceState() 会成对使用，那么我们再总结一下这两个方法的调用时机。</p>
+<h4 id="onSaveInstanceState-的调用时机"><a href="#onSaveInstanceState-的调用时机" class="headerlink" title="onSaveInstanceState() 的调用时机"></a>onSaveInstanceState() 的调用时机</h4><p>当 activity 有可能被系统回收的情况下会调用 onSaveInstanceState() 方法。需要注意的是有可能，如果是已经确定会被销毁，比如用户按下了返回键，或者调用了finish()方法销毁activity，则 onSaveInstanceState 不会被调用。或者也可以说，此方法只有在activity被异常终止的情况下会被调用。</p>
+<p>总结一下，onSaveInstanceState() 会在以下情况被调用：<br>1、当用户按下HOME键时。<br>2、从最近应用中选择运行其他的程序时。<br>3、按下电源按键（关闭屏幕显示）时。<br>4、从当前activity启动一个新的activity时。<br>5、屏幕方向切换时(无论竖屏切横屏还是横屏切竖屏都会调用)。</p>
+<h4 id="onRestoreInstanceState-的调用时机"><a href="#onRestoreInstanceState-的调用时机" class="headerlink" title="onRestoreInstanceState() 的调用时机"></a>onRestoreInstanceState() 的调用时机</h4><p>onRestoreInstanceState(Bundle savedInstanceState) 方法只有在 activity 确实是被系统回收，重新创建 activity 的情况下才会被调用。如我们上面讨论的默认情况下的旋转屏幕这种情况，在这里 onRestoreInstanceState 被调用，是因为屏幕切换时原来的 activity 确实被系统回收了，又重新创建了一个新的 activity。所以我们可以得出如下的结论，如果 onRestoreInstanceState 被调用了，则页面必然被回收过，则 onSaveInstanceState 必然被调用过。</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>项目地址：<a href="https://github.com/duang0626/CodeCollection/tree/master/demo/LifeCycleDemo" target="_blank" rel="noopener">github-duang0626: LifeCycleDemo</a></p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 changyan -->
+<div id="changyan-comment">
+    <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2018/03/07/Activity生命周期详解/"></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cytFgASPt';
+var conf = '21a481f8e281cdb130c8816a0a1b4b5c';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+</div>
+<style>
+    #changyan-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/03/08/捋一捋Java中关系复杂的容器/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2012/09/14/彩虹糖的艺术/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avator.jpg" alt="dengw's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        duang0626@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:duang06262qq.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">23</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
+            </li></ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">label</i>
+                
+                标签云
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/resource" title="资源">
+                
+                    <i class="material-icons sidebar-material-icons">cloud_download</i>
+                
+                资源
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="图库">
+                
+                    <i class="material-icons sidebar-material-icons">image</i>
+                
+                图库
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="友情链接">
+                
+                    <i class="material-icons sidebar-material-icons">link</i>
+                
+                友情链接
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/duang0626" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/duang666/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year=""></span>&nbsp;dengw‘s blog
+            
+                <br>
+                
+                    hello world
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?Bn9UzEm8RrBSxqyZB0zPjA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+    <!-- Leancloud -->
+    <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+    <script>
+        AV.initialize('4RXXI7JGllT8IVC7vhgameTz-gzGzoHsz', '12p4GWu6SEO4Qpa1WboTz1P3');
+    </script>
+    <script type="text/ls-javascript" id="leancloud-views-script">
+    function showTime(Counter) {
+        var query = new AV.Query(Counter);
+        $('.leancloud-views_num').each(function() {
+            var url = $(this).attr('id').trim();
+            query.equalTo('url', url);
+            query.find({
+                success: function(results) {
+                    if (results.length === 0) {
+                        var content = '0 ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                        return;
+                    }
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+                        var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    }
+                },
+                error: function(object, error) {
+                    console.log('Error: ' + error.code + ' ' + error.message);
+                }
+            });
+        });
+    }
+
+    function addCount(Counter) {
+      var Counter = AV.Object.extend('Counter');
+      url = $('.leancloud-views_num').attr('id').trim();
+      title = $('.leancloud-views_num').attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo('url', url);
+      query.find({
+          success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment('time');
+                counter.save(null, {
+                    success: function(counter) {
+                        var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+              var newcounter = new Counter();
+              newcounter.set('title', title);
+              newcounter.set('url', url);
+              newcounter.set('time', 1);
+              newcounter.save(null, {
+                  success: function(newcounter) {
+                      console.log('newcounter.get(\'time\')='+newcounter.get('time'));
+                      var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+                      $(document.getElementById(url)).text(content);
+                  },
+                  error: function(newcounter, error) {
+                      console.log('Failed to create');
+                  }
+              });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + ' ' + error.message);
+        }
+      });
+    }
+    $(function() {
+        var Counter = AV.Object.extend('Counter');
+        if ($('.leancloud-views_num').length === 1) {
+            addCount(Counter);
+        } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+        }
+    });
+</script>
+
+
+
+
+
+
+   <!-- 畅言公共 js 代码 start -->
+<script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytFgASPt">
+</script>
+<!-- 畅言公共 js 代码 end -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 2018;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

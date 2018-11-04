@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+    <link rel="dns-prefetch" href="https://cdn1.lncld.net">
+
+
+
+
+    <link rel="dns-prefetch" href="https://changyan.sohu.com">
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Retrofit2.0完全解读（三） | 
+        
+        dengw‘s blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/dw.jpg">
+    <link rel="icon" href="/img/dw.jpg">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",Retrofit,网络框架">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?NKhlKQkXw/c66TR5p4wO+w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.jpg);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="dengw‘s blog">
+    <meta name="msapplication-starturl" content="http://dengw.xyz/2018/03/31/Retrofit2.0完全解读（三）/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="dengw‘s blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/dw.jpg">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://dengw.xyz/2018/03/31/Retrofit2.0完全解读（三）/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Retrofit2.0完全解读（三） | dengw‘s blog">
+    <meta property="og:image" content="/img/dw.jpg">
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="Retrofit"> <meta property="og:article:tag" content="网络框架"> 
+
+    
+        <meta property="article:published_time" content="Sat Mar 31 2018 15:44:13 GMT+0800">
+        <meta property="article:modified_time" content="Wed Oct 03 2018 18:52:10 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://dengw.xyz/2018/03/31/Retrofit2.0完全解读（三）/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://dengw.xyz/2018/03/31/Retrofit2.0完全解读（三）/index.html",
+    "headline": "Retrofit2.0完全解读（三）",
+    "datePublished": "Sat Mar 31 2018 15:44:13 GMT+0800",
+    "dateModified": "Wed Oct 03 2018 18:52:10 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "dengw",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avator.jpg"
+        },
+        "description": "Just tango on"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "dengw‘s blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/dw.jpg"
+        }
+    },
+    "keywords": ",Retrofit,网络框架",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#依赖添加"><span class="post-toc-number">1.</span> <span class="post-toc-text">依赖添加</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#接口创建"><span class="post-toc-number">2.</span> <span class="post-toc-text">接口创建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网络请求方法"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">网络请求方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#标记"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">标记</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网络请求参数"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">网络请求参数</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建Retrofit-实例"><span class="post-toc-number">3.</span> <span class="post-toc-text">创建Retrofit 实例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#OkHttpClient"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">OkHttpClient</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据解析器（Converter）"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">数据解析器（Converter）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网络请求适配器（CallAdapter）"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">网络请求适配器（CallAdapter）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#发送网络请求"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">发送网络请求</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Retrofit2.0完全解读（三）
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avator.jpg" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>dengw</strong>
+        <span>3月 31, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Retrofit/">Retrofit</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/网络框架/">网络框架</a>
+    </li></ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2018/03/31/Retrofit2.0完全解读（三）/" class="leancloud-views_num" data-flag-title="Retrofit2.0完全解读（三）">
+     &nbsp;浏览量
+</span>
+
+            </li>
+        </a>
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Retrofit2.0完全解读（三）&url=http://dengw.xyz/2018/03/31/Retrofit2.0完全解读（三）/index.html&pic=http://dengw.xyz/img/dw.jpg&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Retrofit2.0完全解读（三）&url=http://dengw.xyz/2018/03/31/Retrofit2.0完全解读（三）/index.html&via=dengw" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=dengw‘s blog&title=Retrofit2.0完全解读（三）&summary=&pics=http://dengw.xyz/img/dw.jpg&url=http://dengw.xyz/2018/03/31/Retrofit2.0完全解读（三）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>在前面一篇文章中介绍了Retrofit的快速使用，根据这些介绍就可以搭建一个简单的Demo来练练手了。但是这些对了掌握Retrofit来说当然是远远不够，下面就详细地讲解一下在步骤中一些很重要的东西吧。</p>
+<h2 id="依赖添加"><a href="#依赖添加" class="headerlink" title="依赖添加"></a>依赖添加</h2><p>Retrofit 2.0以后的版本已经默认使用OkHttp作为作为HTTP 连接接口，在之前的版本是可以选择的。所以在之前的版本里面，如果想要使用OkHttp，就必须要像下面这样把OkHttp的依赖也添加到依赖文件里面：</p>
+<pre><code class="java">dependencies {
+    ...
+    compile &#39;com.squareup.retrofit2:retrofit:2.0.2&#39;
+
+    compile &#39;com.squareup.okhttp3:okhttp:3.1.2&#39;
+
+  }
+</code></pre>
+<p>但是在Retrofit 2.0中，已经自动为OkHttp设置了依赖：</p>
+<pre><code>&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.squareup.okhttp&lt;/groupId&gt;
+        &lt;artifactId&gt;okhttp&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    ...
+&lt;/dependencies&gt;
+</code></pre><p>所以在依赖文件只需要添加Retrofit的依赖即可:</p>
+<pre><code>dependencies {
+    ...
+    implementation &#39;com.squareup.retrofit2:retrofit:2.3.0&#39;
+  }
+
+</code></pre><p>当然一般我们都会集合Gson使用，有时候还会使用RxJava，这些也要添加依赖的：</p>
+<pre><code>dependencies {
+    ...
+    implementation &#39;com.squareup.retrofit2:retrofit:2.3.0&#39;
+    implementation &#39;com.squareup.retrofit2:adapter-rxjava:2.3.0&#39;
+    implementation &#39;com.squareup.retrofit2:converter-gson:2.3.0&#39;
+
+    implementation &#39;io.reactivex:rxandroid:1.2.1&#39;
+  }
+</code></pre><h2 id="接口创建"><a href="#接口创建" class="headerlink" title="接口创建"></a>接口创建</h2><p>官方给的是这样的一个样例，看着简单，但是这里面却有很多要说</p>
+<pre><code class="java">public interface GitHubService {
+  @GET(&quot;users/{user}/repos&quot;)
+  Call&lt;List&lt;Repo&gt;&gt; listRepos(@Path(&quot;user&quot;) String user);
+}
+</code></pre>
+<p>可以看到在接口设置这儿有很多的注解类型，Retrofit2.0 中有三种类型的注解，分别是：网络请求方法、标记类、网络请求参数。</p>
+<h3 id="网络请求方法"><a href="#网络请求方法" class="headerlink" title="网络请求方法"></a>网络请求方法</h3><p>这儿对应Http request的请求类型，上面示范代码中的<code>@Get</code>就是网络请求方法的一种，不同的注解代表不同的操作，Http请求方法有以下几种，其中，除HTTP以外都对应了HTTP标准中的请求方法：</p>
+<p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180331/Hci6kla12g.png" alt="HTTP请求方法注解"></p>
+<p>对于每种方法的作用这里就不详细的介绍，具体的讲一下每一种请求类型在这儿的使用方法。</p>
+<ul>
+<li>@GET、@POST、@PUT、@DELETE、@HEAD、@Path、@HEAD、@OPTIONS</li>
+</ul>
+<p>这些方法都是HTTP的请求方法，它们的使用方法很类似，都可以以下面这样的形式：</p>
+<pre><code class="java">@XXX(path)
+
+比如：
+@GET(&quot;users/list&quot;)
+
+@POST(&quot;users/new&quot;)
+
+@PUT(&quot;user/photo&quot;)
+</code></pre>
+<p>说到这儿了，就很有必要讲一下Retrofit2.0 的URL组成了。一般都是由两部分组成: baseUrl + path， 其中baseUrl是在创建Retrofit2.0 实例时设置的，path就是上面请求方法中括号中的path。组合的规则如下：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>具体的使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path = 完整的Url</td>
+<td>Url =  <a href="https://api.github.com/users/list" target="_blank" rel="noopener">https://api.github.com/users/list</a><br>path =   <a href="https://api.github.com/users/list" target="_blank" rel="noopener">https://api.github.com/users/list</a><br>baseUrl不设置</td>
+</tr>
+<tr>
+<td>path = 绝对路径</td>
+<td>Url =  <a href="https://api.github.com/users/list" target="_blank" rel="noopener">https://api.github.com/users/list</a><br>path = /users/list<br>baseUrl = <a href="https://api.github.com/a/b" target="_blank" rel="noopener">https://api.github.com/a/b</a></td>
+</tr>
+<tr>
+<td>path =  相对路径<br>baseUrl = 目录形式</td>
+<td>Url =  <a href="https://api.github.com/users/list" target="_blank" rel="noopener">https://api.github.com/users/list</a><br>path = users/list<br>baseUrl = <a href="https://api.github.com/" target="_blank" rel="noopener">https://api.github.com/</a></td>
+</tr>
+</tbody>
+</table>
+<p>一种比较好的定义形式是第三种，即</p>
+<blockquote>
+<p>Base URL: 总是以 /结尾<br>@Url: 不要以 / 开头</p>
+</blockquote>
+<ul>
+<li>HTTP</li>
+<li>作用：替换上面提到的七种注解 及 更多功能拓展</li>
+<li>具体使用：通过属性method、path、hasBody进行设置</li>
+</ul>
+<p>例如，下面两段代码等价：</p>
+<pre><code class="java">    @GET(&quot;users/{user}&quot;)
+    Observable&lt;User&gt; getUser(@Path(&quot;user&quot;) String user);
+
+      //使用@HTTP替代@GET
+      @HTTP(method=&quot;GET&quot;, path=&quot;users/{user}&quot;, hasBody = false)
+    Observable&lt;User&gt; getUser(@Path(&quot;user&quot;) String user);
+</code></pre>
+<ul>
+<li>method 表示请求的方法，区分大小写</li>
+<li>path表示路径</li>
+<li>hasBody表示是否有请求体</li>
+</ul>
+<h3 id="标记"><a href="#标记" class="headerlink" title="标记"></a>标记</h3><p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180331/LB9HF0e2ak.png" alt="标记类注解"></p>
+<p>@FormUrlEncoded</p>
+<p>作用：表示发送form-encoded的数据<br>每个键值对需要用@Filed来注解键名，随后的对象需要提供值。</p>
+<p>@Multipart</p>
+<p>作用：表示发送form-encoded的数据（适用于 有文件 上传的场景）<br>每个键值对需要用@Part来注解键名，随后的对象需要提供值。 </p>
+<p>@Streaming</p>
+<p>如果下载一个非常大的文件，Retrofit会试图将整个文件读进内存。为了避免这种现象的发生，我们添加了一个特殊的注解来声明请求。</p>
+<p>声明@Streaming并不是意味着你需要观察一个Netflix文件。它意味着立刻传递字节码，而不需要把整个文件读进内存。值得注意的是，如果你使用了@Streaming，并且依然使用以上的代码片段来进行处理。Android将会抛出android.os.NetworkOnMainThreadException异常。</p>
+<pre><code class="java">/**
+ * {@link FormUrlEncoded} 表明是一个表单格式的请求（Content-Type:application/x-www-form-urlencoded）
+ * &lt;code&gt;Field(&quot;username&quot;)&lt;/code&gt; 表示将后面的 &lt;code&gt;String name&lt;/code&gt; 中name的取值作为 username 的值
+ */
+@POST(&quot;/form&quot;)
+@FormUrlEncoded
+Call&lt;ResponseBody&gt; testFormUrlEncoded1(@Field(&quot;username&quot;) String name, @Field(&quot;age&quot;) int age);
+
+/**
+ * {@link Part} 后面支持三种类型，{@link RequestBody}、{@link okhttp3.MultipartBody.Part} 、任意类型
+ * 除 {@link okhttp3.MultipartBody.Part} 以外，其它类型都必须带上表单字段({@link okhttp3.MultipartBody.Part} 中已经包含了表单字段的信息)，
+ */
+@POST(&quot;/form&quot;)
+@Multipart
+Call&lt;ResponseBody&gt; testFileUpload1(@Part(&quot;name&quot;) RequestBody name, @Part(&quot;age&quot;) RequestBody age, @Part MultipartBody.Part file);
+</code></pre>
+<h3 id="网络请求参数"><a href="#网络请求参数" class="headerlink" title="网络请求参数"></a>网络请求参数</h3><p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180331/mbLCdbcdId.png" alt="参数类注解"></p>
+<ul>
+<li>@Header &amp; @Headers</li>
+</ul>
+<p>开始这部分内容之前可以先了解一下Http的请求头。</p>
+<blockquote>
+<p>作用：添加请求头 &amp;添加不固定的请求头</p>
+</blockquote>
+<pre><code class="java">// @Header
+@GET(&quot;user&quot;)
+Call&lt;User&gt; getUser(@Header(&quot;Authorization&quot;) String authorization)
+
+// @Headers
+@Headers(&quot;Authorization: authorization&quot;)
+@GET(&quot;user&quot;)
+Call&lt;User&gt; getUser()
+
+// 以上的效果是一致的。
+// 区别在于使用场景和使用方式
+// 1. 使用场景：@Header用于添加不固定的请求头，@Headers用于添加固定的请求头
+// 2. 使用方式：@Header作用于方法的参数；@Headers作用于方法
+</code></pre>
+<ul>
+<li>@Body</li>
+</ul>
+<blockquote>
+<p>作用：以 Post方式 传递 自定义数据类型 给服务器<br>特别注意：如果提交的是一个Map，那么作用相当于 @Field </p>
+</blockquote>
+<pre><code class="java">@POST(&quot;blog&quot;)
+Call&lt;Result&lt;Blog&gt;&gt; createBlog(@Body Blog blog);
+</code></pre>
+<p>被@Body注解的的Blog将会被Gson转换成RequestBody发送到服务器。</p>
+<p>具体使用：</p>
+<pre><code class="java">BlogService service = retrofit.create(BlogService.class);
+Blog blog = new Blog();
+blog.content = &quot;新建的Blog&quot;;
+blog.title = &quot;测试&quot;;
+blog.author = &quot;怪盗kidou&quot;;
+Call&lt;Result&lt;Blog&gt;&gt; call = service.createBlog(blog);
+</code></pre>
+<p>服务器收到的数据：</p>
+<pre><code class="java">Result{code=200, msg=&#39;OK&#39;, data=Blog{id=20, date=&#39;2016-04-21 05:29:58&#39;, author=&#39;怪盗kidou&#39;, title=&#39;测试&#39;, content=&#39;新建的Blog&#39;}, count=0, page=0}
+</code></pre>
+<ul>
+<li>@Field &amp; @FieldMap<blockquote>
+<p>作用：发送 Post请求 时提交请求的表单字段<br>具体使用：与 @FormUrlEncoded 注解配合使用</p>
+</blockquote>
+</li>
+</ul>
+<pre><code class="java">public interface GetRequest_Interface {
+    /**
+     *表明是一个表单格式的请求（Content-Type:application/x-www-form-urlencoded）
+     * &lt;code&gt;Field(&quot;username&quot;)&lt;/code&gt; 表示将后面的 &lt;code&gt;String name&lt;/code&gt; 中name的取值作为 username 的值
+     */
+    @POST(&quot;/form&quot;)
+    @FormUrlEncoded
+    Call&lt;ResponseBody&gt; testFormUrlEncoded1(@Field(&quot;username&quot;) String name, @Field(&quot;age&quot;) int age);
+
+    /**
+      * Map的key作为表单的键
+      */
+    @POST(&quot;/form&quot;)
+    @FormUrlEncoded
+    Call&lt;ResponseBody&gt; testFormUrlEncoded2(@FieldMap Map&lt;String, Object&gt; map);
+}
+
+// 具体使用
+
+    // @Field
+    Call&lt;ResponseBody&gt; call1 = service.testFormUrlEncoded1(&quot;Carson&quot;, 24);
+
+    // @FieldMap
+    // 实现的效果与上面相同，但要传入Map
+    Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();
+    map.put(&quot;username&quot;, &quot;Carson&quot;);
+    map.put(&quot;age&quot;, 24);
+    Call&lt;ResponseBody&gt; call2 = service.testFormUrlEncoded2(map);
+</code></pre>
+<ul>
+<li>@Part &amp; @PartMap<blockquote>
+<p>作用：发送 Post请求 时提交请求的表单字段<br>与@Field的区别：功能相同，但携带的参数类型更加丰富，包括数据流，所以适用于 有文件上传 的场景</p>
+</blockquote>
+</li>
+</ul>
+<p>具体使用：与 @Multipart 注解配合使用</p>
+<pre><code class="java">public interface GetRequest_Interface {
+
+    /**
+     * {@link Part} 后面支持三种类型，{@link RequestBody}、{@link okhttp3.MultipartBody.Part} 、任意类型
+     * 除 {@link okhttp3.MultipartBody.Part} 以外，其它类型都必须带上表单字段({@link okhttp3.MultipartBody.Part} 中已经包含了表单字段的信息)，
+     */
+    @POST(&quot;/form&quot;)
+    @Multipart
+    Call&lt;ResponseBody&gt; testFileUpload1(@Part(&quot;name&quot;) RequestBody name, @Part(&quot;age&quot;) RequestBody age, @Part MultipartBody.Part file);
+
+    /**
+     * PartMap 注解支持一个Map作为参数，支持 {@link RequestBody } 类型，
+     * 如果有其它的类型，会被{@link retrofit2.Converter}转换，如后面会介绍的 使用{@link com.google.gson.Gson} 的 {@link retrofit2.converter.gson.GsonRequestBodyConverter}
+     * 所以{@link MultipartBody.Part} 就不适用了,所以文件只能用&lt;b&gt; @Part MultipartBody.Part &lt;/b&gt;
+     */
+    @POST(&quot;/form&quot;)
+    @Multipart
+    Call&lt;ResponseBody&gt; testFileUpload2(@PartMap Map&lt;String, RequestBody&gt; args, @Part MultipartBody.Part file);
+
+    @POST(&quot;/form&quot;)
+    @Multipart
+    Call&lt;ResponseBody&gt; testFileUpload3(@PartMap Map&lt;String, RequestBody&gt; args);
+}
+
+    // 具体使用
+    MediaType textType = MediaType.parse(&quot;text/plain&quot;);
+    RequestBody name = RequestBody.create(textType, &quot;Carson&quot;);
+    RequestBody age = RequestBody.create(textType, &quot;24&quot;);
+    RequestBody file = RequestBody.create(MediaType.parse(&quot;application/octet-stream&quot;), &quot;这里是模拟文件的内容&quot;);
+
+    // @Part
+    MultipartBody.Part filePart = MultipartBody.Part.createFormData(&quot;file&quot;, &quot;test.txt&quot;, file);
+    Call&lt;ResponseBody&gt; call3 = service.testFileUpload1(name, age, filePart);
+    ResponseBodyPrinter.printResponseBody(call3);
+
+    // @PartMap
+    // 实现和上面同样的效果
+    Map&lt;String, RequestBody&gt; fileUpload2Args = new HashMap&lt;&gt;();
+    fileUpload2Args.put(&quot;name&quot;, name);
+    fileUpload2Args.put(&quot;age&quot;, age);
+    //这里并不会被当成文件，因为没有文件名(包含在Content-Disposition请求头中)，但上面的 filePart 有
+    //fileUpload2Args.put(&quot;file&quot;, file);
+    Call&lt;ResponseBody&gt; call4 = service.testFileUpload2(fileUpload2Args, filePart); //单独处理文件
+    ResponseBodyPrinter.printResponseBody(call4);
+</code></pre>
+<ul>
+<li>@Query和@QueryMap<blockquote>
+<p>作用：用于 @GET 方法的查询参数（Query = Url 中 ‘?’ 后面的 key-value）</p>
+</blockquote>
+</li>
+</ul>
+<p>具体使用：配置时只需要在接口方法中增加一个参数即可：</p>
+<pre><code class="java">//url = http://www.println.net/?cate=android，其中，Query = cate
+@GET(&quot;/&quot;)    
+Call&lt;String&gt; cate(@Query(&quot;cate&quot;) String cate);
+</code></pre>
+<ul>
+<li>@Path<blockquote>
+<p>作用：URL地址的缺省值</p>
+</blockquote>
+</li>
+</ul>
+<p>具体使用：</p>
+<pre><code class="java">public interface GetRequest_Interface {
+
+    @GET(&quot;users/{user}/repos&quot;)
+    Call&lt;ResponseBody&gt;  getBlog（@Path(&quot;user&quot;) String user ）;
+    // 访问的API是：https://api.github.com/users/{user}/repos
+    // 在发起请求时， {user} 会被替换为方法的第一个参数 user（被@Path注解作用）
+ }
+</code></pre>
+<ul>
+<li>@Url</li>
+</ul>
+<blockquote>
+<p>作用：直接传入一个请求的 URL变量 用于URL设置</p>
+</blockquote>
+<p>具体使用：</p>
+<pre><code class="java">public interface GetRequest_Interface {
+
+    @GET
+    Call&lt;ResponseBody&gt; testUrlAndQuery(@Url String url, @Query(&quot;showAll&quot;) boolean showAll);
+    // 当有URL注解时，@GET传入的URL就可以省略
+    // 当GET、POST...HTTP等方法中没有设置Url时，则必须使用 {@link Url}提供
+}
+</code></pre>
+<h2 id="创建Retrofit-实例"><a href="#创建Retrofit-实例" class="headerlink" title="创建Retrofit 实例"></a>创建Retrofit 实例</h2><p>在这一步中也有很多需要注意的地方。</p>
+<h3 id="OkHttpClient"><a href="#OkHttpClient" class="headerlink" title="OkHttpClient"></a>OkHttpClient</h3><p>前面已经提到，Retrofit2.0中会自动使用OkHttp实现HTTP连接，所以没有特殊需求的话，可以向下面这样很快的创建一个Retrofit 实例：</p>
+<pre><code class="java">Retrofit retrofit = new Retrofit.Builder()
+    .baseUrl(&quot;https://api.github.com&quot;)
+    .addConverterFactory(GsonConverterFactory.create())
+    .build();
+</code></pre>
+<p>但是当你需要进行一些特殊化处理的时候，比如cookie的设置、网络超时的设置、请求header设置等，这个时候我们就需要自己先配置好好OkHttpClient然后手动地设置Retrofit 的Client。</p>
+<pre><code class="java">//先配置好一个OkHttpClient
+OkHttpClient okHttpClient = new OkHttpClient.Builder()  
+            .connectTimeout(5*1000, TimeUnit.MILLISECONDS) //链接超时  
+            .readTimeout(10*1000,TimeUnit.MILLISECONDS) //读取超时  
+            .writeTimeout(10*1000,TimeUnit.MILLISECONDS) //写入超时  
+            .addInterceptor(new HttpHeadInterceptor()) //应用拦截器：统一添加消息头  
+            .addNetworkInterceptor(new NetworkspaceInterceptor())//网络拦截器  
+            .addInterceptor(loggingInterceptor)//应用拦截器：打印日志  
+            .cache(cache)  //设置缓存  
+            .build();
+
+retrofit = new Retrofit.Builder()
+        .baseUrl(baseUrl)
+         .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+         .client(okHttpClient)                      //设置配置好的OkHttpClient为Retrofit的Client
+         .build();
+</code></pre>
+<p><strong>NOTE：</strong>具体可配置参数见<a href="http://square.github.io/okhttp/3.x/okhttp/okhttp3/OkHttpClient.Builder.html" target="_blank" rel="noopener">OkHttpClient.Builder</a>类。</p>
+<h3 id="数据解析器（Converter）"><a href="#数据解析器（Converter）" class="headerlink" title="数据解析器（Converter）"></a>数据解析器（Converter）</h3><p>Retrofit2.0 支持多种数据解析方式，官方给了下面几种解析器，根据自己需要选择。</p>
+<table>
+<thead>
+<tr>
+<th>数据解析器</th>
+<th>Gradle依赖</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/google/gson" target="_blank" rel="noopener">Gson</a></td>
+<td>com.squareup.retrofit2:converter-gson</td>
+</tr>
+<tr>
+<td><a href="http://wiki.fasterxml.com/JacksonHome" target="_blank" rel="noopener">Jackson</a></td>
+<td>com.squareup.retrofit2:converter-jackson</td>
+</tr>
+<tr>
+<td><a href="https://github.com/square/moshi/" target="_blank" rel="noopener">Mossi</a></td>
+<td>com.squareup.retrofit2:converter-moshi</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="noopener">Protobuf</a></td>
+<td>com.squareup.retrofit2:converter-protobuf</td>
+</tr>
+<tr>
+<td><a href="https://github.com/square/wire" target="_blank" rel="noopener">Wire</a></td>
+<td>com.squareup.retrofit2:converter-wire</td>
+</tr>
+<tr>
+<td><a href="http://simple.sourceforge.net/" target="_blank" rel="noopener">Simple XML</a></td>
+<td>com.squareup.retrofit2:converter-simplexml</td>
+</tr>
+<tr>
+<td>Scalars (primitives, boxed, and String)</td>
+<td>com.squareup.retrofit2:converter-scalars</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注</strong>：上述依赖中还需要在后面添加特定的版本号。</p>
+<h3 id="网络请求适配器（CallAdapter）"><a href="#网络请求适配器（CallAdapter）" class="headerlink" title="网络请求适配器（CallAdapter）"></a>网络请求适配器（CallAdapter）</h3><blockquote>
+<p>使用时如使用的是 Android 默认的 CallAdapter，则不需要添加网络请求适配器的依赖，否则则需要按照需求进行添加 </p>
+</blockquote>
+<p>Retrofit2.0 除了默认的 CallAdapter外，还支持多种网络请求适配器方式：guava、Java8和 rxjava<br>不过我就只用过RxJava，这应该是Retrofit名气最大的适配器，确实非常好用，多好用呢？自己去感受一下。关于RxJava的使用也有很多是要学习的，这里帖两篇很好的博客。<br><a href="http://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="noopener">给 Android 开发者的 RxJava 详解</a><br><a href="https://gank.io/post/56e80c2c677659311bed9841" target="_blank" rel="noopener">RxJava 与 Retrofit 结合的最佳实践</a></p>
+<h3 id="发送网络请求"><a href="#发送网络请求" class="headerlink" title="发送网络请求"></a>发送网络请求</h3><p>Retrofit 2.0发送网络请求有两种方法，同步和异步。我们在Retrofit 2.0 和Retrofit 1.0的差别中有介绍到，Retrofit 2.0不管是使用同步还是使用异步的方法，都是同一个函数接口，这一点相比Retrofit 1.0，省去不少功夫，具体的调用方法如下：</p>
+<pre><code class="java">// 发送网络请求（同步）
+Response&lt;Reception&gt; response = call.execute();
+
+//发送网络请求(异步)
+call.enqueue(new Callback&lt;Translation&gt;() {
+      //请求成功时回调
+      @Override
+      public void onResponse(Call&lt;Translation&gt; call, Response&lt;Translation&gt; response) {
+        //请求处理,输出结果
+
+    }
+
+    //请求失败时候的回调
+    @Override
+    public void onFailure(Call&lt;Translation&gt; call, Throwable throwable) {
+
+      }
+});
+</code></pre>
+<p><strong>注</strong>：本文大部分内容来自<a href="https://blog.csdn.net/carson_ho/article/details/73732076" target="_blank" rel="noopener"> 这是一份很详细的 Retrofit 2.0 使用教程（含实例讲解）</a>，我写出来主要是为了加深自己的印象，作为个人博客能够好好系统总结一下，并结合自己理解对内容作了部分修改。</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 changyan -->
+<div id="changyan-comment">
+    <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2018/03/31/Retrofit2.0完全解读（三）/"></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cytFgASPt';
+var conf = '21a481f8e281cdb130c8816a0a1b4b5c';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+</div>
+<style>
+    #changyan-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/04/18/Android-MVP初体验/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/03/22/Retrofit2.0完全解读（二）/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avator.jpg" alt="dengw's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        duang0626@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:duang06262qq.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">23</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
+            </li></ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">label</i>
+                
+                标签云
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/resource" title="资源">
+                
+                    <i class="material-icons sidebar-material-icons">cloud_download</i>
+                
+                资源
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="图库">
+                
+                    <i class="material-icons sidebar-material-icons">image</i>
+                
+                图库
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="友情链接">
+                
+                    <i class="material-icons sidebar-material-icons">link</i>
+                
+                友情链接
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/duang0626" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/duang666/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year=""></span>&nbsp;dengw‘s blog
+            
+                <br>
+                
+                    hello world
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?Bn9UzEm8RrBSxqyZB0zPjA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+    <!-- Leancloud -->
+    <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+    <script>
+        AV.initialize('4RXXI7JGllT8IVC7vhgameTz-gzGzoHsz', '12p4GWu6SEO4Qpa1WboTz1P3');
+    </script>
+    <script type="text/ls-javascript" id="leancloud-views-script">
+    function showTime(Counter) {
+        var query = new AV.Query(Counter);
+        $('.leancloud-views_num').each(function() {
+            var url = $(this).attr('id').trim();
+            query.equalTo('url', url);
+            query.find({
+                success: function(results) {
+                    if (results.length === 0) {
+                        var content = '0 ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                        return;
+                    }
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+                        var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    }
+                },
+                error: function(object, error) {
+                    console.log('Error: ' + error.code + ' ' + error.message);
+                }
+            });
+        });
+    }
+
+    function addCount(Counter) {
+      var Counter = AV.Object.extend('Counter');
+      url = $('.leancloud-views_num').attr('id').trim();
+      title = $('.leancloud-views_num').attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo('url', url);
+      query.find({
+          success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment('time');
+                counter.save(null, {
+                    success: function(counter) {
+                        var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+              var newcounter = new Counter();
+              newcounter.set('title', title);
+              newcounter.set('url', url);
+              newcounter.set('time', 1);
+              newcounter.save(null, {
+                  success: function(newcounter) {
+                      console.log('newcounter.get(\'time\')='+newcounter.get('time'));
+                      var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+                      $(document.getElementById(url)).text(content);
+                  },
+                  error: function(newcounter, error) {
+                      console.log('Failed to create');
+                  }
+              });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + ' ' + error.message);
+        }
+      });
+    }
+    $(function() {
+        var Counter = AV.Object.extend('Counter');
+        if ($('.leancloud-views_num').length === 1) {
+            addCount(Counter);
+        } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+        }
+    });
+</script>
+
+
+
+
+
+
+   <!-- 畅言公共 js 代码 start -->
+<script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytFgASPt">
+</script>
+<!-- 畅言公共 js 代码 end -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 2018;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

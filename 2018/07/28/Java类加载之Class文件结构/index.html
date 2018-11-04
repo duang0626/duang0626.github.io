@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+    <link rel="dns-prefetch" href="https://cdn1.lncld.net">
+
+
+
+
+    <link rel="dns-prefetch" href="https://changyan.sohu.com">
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Java类加载之Class文件结构 | 
+        
+        dengw‘s blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/dw.jpg">
+    <link rel="icon" href="/img/dw.jpg">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",Java虚拟机,类加载">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?NKhlKQkXw/c66TR5p4wO+w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.jpg);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="dengw‘s blog">
+    <meta name="msapplication-starturl" content="http://dengw.xyz/2018/07/28/Java类加载之Class文件结构/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="dengw‘s blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/dw.jpg">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://dengw.xyz/2018/07/28/Java类加载之Class文件结构/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Java类加载之Class文件结构 | dengw‘s blog">
+    <meta property="og:image" content="/img/dw.jpg">
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="Java虚拟机"> <meta property="og:article:tag" content="类加载"> 
+
+    
+        <meta property="article:published_time" content="Sat Jul 28 2018 14:47:48 GMT+0800">
+        <meta property="article:modified_time" content="Wed Oct 03 2018 18:38:04 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://dengw.xyz/2018/07/28/Java类加载之Class文件结构/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://dengw.xyz/2018/07/28/Java类加载之Class文件结构/index.html",
+    "headline": "Java类加载之Class文件结构",
+    "datePublished": "Sat Jul 28 2018 14:47:48 GMT+0800",
+    "dateModified": "Wed Oct 03 2018 18:38:04 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "dengw",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avator.jpg"
+        },
+        "description": "Just tango on"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "dengw‘s blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/dw.jpg"
+        }
+    },
+    "keywords": ",Java虚拟机,类加载",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于Class文件"><span class="post-toc-number">1.</span> <span class="post-toc-text">关于Class文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Class文件结构"><span class="post-toc-number">2.</span> <span class="post-toc-text">Class文件结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#测试类代码："><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">测试类代码：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Test-class对应的二进制流（使用WinHex软件打开）"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">Test.class对应的二进制流（使用WinHex软件打开）</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用javap反汇编命令生成的字节码："><span class="post-toc-number">2.1.</span> <span class="post-toc-text">使用javap反汇编命令生成的字节码：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#魔数"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">魔数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#版本号"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">版本号</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常量池"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">常量池</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#访问标志"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">访问标志</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#类索引、父类索引和接口索引集合"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">类索引、父类索引和接口索引集合</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字段表集合"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">字段表集合</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#方法集合"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">方法集合</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#属性表集合"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">属性表集合</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#属性表集合之Code属性"><span class="post-toc-number">2.9.1.</span> <span class="post-toc-text">属性表集合之Code属性</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Java类加载之Class文件结构
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avator.jpg" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>dengw</strong>
+        <span>7月 28, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Java虚拟机/">Java虚拟机</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/类加载/">类加载</a>
+    </li></ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2018/07/28/Java类加载之Class文件结构/" class="leancloud-views_num" data-flag-title="Java类加载之Class文件结构">
+     &nbsp;浏览量
+</span>
+
+            </li>
+        </a>
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java类加载之Class文件结构&url=http://dengw.xyz/2018/07/28/Java类加载之Class文件结构/index.html&pic=http://dengw.xyz/img/dw.jpg&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Java类加载之Class文件结构&url=http://dengw.xyz/2018/07/28/Java类加载之Class文件结构/index.html&via=dengw" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=dengw‘s blog&title=Java类加载之Class文件结构&summary=&pics=http://dengw.xyz/img/dw.jpg&url=http://dengw.xyz/2018/07/28/Java类加载之Class文件结构/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>抱着《深入理解Java虚拟机》这本书啃了两天时间，再结合网上相关的博客，虽然好几次看着看着就差点就睡着了，不过坚持下来终于对这部分的内容终于有一个大致的了解了，今天下午借着这个空闲时间，就把这部分内容总结一下，希望有所收获。</p>
+<h3 id="关于Class文件"><a href="#关于Class文件" class="headerlink" title="关于Class文件"></a>关于Class文件</h3><p>我们现在知道在Java中每个类都会对应一个Class对象，每当我们编写并且编译一个新创建的类就会产生一个对应Class对象并且这个Class对象会被保存在同名.class文件里(编译后的字节码文件保存的就是Class对象)。当我们new 一个新对象或者引用静态成员变量时，Java虚拟机(JVM)中的类加载器子系统会将对应Class对象加载到JVM中，然后JVM再根据这个类型信息相关的Class对象创建我们需要实例对象或者提供静态变量的引用值。</p>
+<p>所以在使用一个类时，类加载器首先会检查这个类的 Class 对象是否已被加载，如果还没有加载，默认的类加载器就会先根据类名查找.class文件，加载完成后 Class 对象也就被载入内存，也就可以被用来创建这个类的所有实例对象。</p>
+<h3 id="Class文件结构"><a href="#Class文件结构" class="headerlink" title="Class文件结构"></a>Class文件结构</h3><p>根据《深入理解Java虚拟机》一书上的说法，Class 文件是由一组以8位字节为基础单位的二进制流，各个数据项目严格按照顺序<strong>紧凑地</strong>排列在Class文件之中，中间没有任何分隔符，这样整个Class文件全都是程序运行时的必要数据。</p>
+<p>对于那些空间大于8位的数据则会分为若干个8位字节按照”高位在前(Big-Endian)”进行存储，比如的16位、32位和64位长度的数据将被构造成 2个、4个和8个8字节单位来表示。</p>
+<p><strong>NOTE</strong>: 注意：Big-Endian 顺序是指按高位字节在地址最低位，最低字节在地址最高位来存储数据，它是 SPARC、PowerPC等处理器的默认多字节存储顺序，而x86等处理器则是使用了相反的Little-Endian顺序来存储数据。</p>
+<p>Class文件格式采用类似C语言结构体的伪结构来描述Class文件格式。在这种结构体只有两种数据类型：无符号数和表。</p>
+<p>其中无符号数属于基本的数据类型，以u1、u2、u4、u8来分别表示1个字节、2个字节、4个字节、8个字节的无符号数，无符号数可以用来描述数字、索引引用、数量值或者按照UTF-8编码构成的字符串值。表是由多个无符号或者其他表作为数据项构成的复合数据类型，习惯性地以”_info”结尾，这样来看，整个Class文件本质上也就是一张表。</p>
+<pre><code class="cpp">ClassFile { 
+    u4 magic; 
+    u2 minor_version; 
+    u2 major_version; 
+    u2 constant_pool_count; 
+    cp_info constant_pool[constant_pool_count-1]; 
+    u2 access_flags; 
+    u2 this_class; 
+    u2 super_class; 
+    u2 interfaces_count; 
+    u2 interfaces[interfaces_count]; 
+    u2 fields_count; 
+    field_info fields[fields_count]; 
+    u2 methods_count; 
+    method_info methods[methods_count]; 
+    u2 attributes_count; 
+    attribute_info attributes[attributes_count]; 
+}
+</code></pre>
+<p>我们使用表格的形式表示一下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">U4</td>
+<td style="text-align:left">magic</td>
+<td style="text-align:left">魔数</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">U2</td>
+<td style="text-align:left">minor_version</td>
+<td style="text-align:left">副版本号</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">U2</td>
+<td style="text-align:left">major_version</td>
+<td style="text-align:left">主版本号</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">U2</td>
+<td style="text-align:left">constant_pool_count</td>
+<td style="text-align:left">常量池计数器</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">cp_info</td>
+<td style="text-align:left">constant_pool</td>
+<td style="text-align:left">常量池</td>
+<td style="text-align:left">constant_pool_count - 1</td>
+</tr>
+<tr>
+<td style="text-align:left">U2</td>
+<td style="text-align:left">access_flags</td>
+<td style="text-align:left">访问标志</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">U2</td>
+<td style="text-align:left">this_class</td>
+<td style="text-align:left">类索引</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">U2</td>
+<td style="text-align:left">super_class</td>
+<td style="text-align:left">父类索引</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">U2</td>
+<td style="text-align:left">interfaces_count</td>
+<td style="text-align:left">接口索引计数器</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">U2</td>
+<td style="text-align:left">interfaces</td>
+<td style="text-align:left">接口索引</td>
+<td style="text-align:left">interfaces_count</td>
+</tr>
+<tr>
+<td style="text-align:left">U2</td>
+<td style="text-align:left">fields_count</td>
+<td style="text-align:left">字段表计数器</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">field_info</td>
+<td style="text-align:left">fields</td>
+<td style="text-align:left">字段表</td>
+<td style="text-align:left">fields_count</td>
+</tr>
+<tr>
+<td style="text-align:left">U2</td>
+<td style="text-align:left">methods_count</td>
+<td style="text-align:left">方法表计数器</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">method_info</td>
+<td style="text-align:left">methods</td>
+<td style="text-align:left">方法表</td>
+<td style="text-align:left">methods_count</td>
+</tr>
+<tr>
+<td style="text-align:left">U2</td>
+<td style="text-align:left">attributes_count</td>
+<td style="text-align:left">属性表计数器</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">attribute_info</td>
+<td style="text-align:left">attributes</td>
+<td style="text-align:left">属性表</td>
+<td style="text-align:left">attributes_count</td>
+</tr>
+</tbody>
+</table>
+<p>而我们接下要做的就是结合一个实际的Class文件字节码来逐个理解这些字段。</p>
+<h5 id="测试类代码："><a href="#测试类代码：" class="headerlink" title="测试类代码："></a>测试类代码：</h5><pre><code class="java">public class Test {
+    private String name;
+
+    private int m;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int calcM() {
+        return m + 1;
+    }
+}
+</code></pre>
+<h5 id="Test-class对应的二进制流（使用WinHex软件打开）"><a href="#Test-class对应的二进制流（使用WinHex软件打开）" class="headerlink" title="Test.class对应的二进制流（使用WinHex软件打开）"></a>Test.class对应的二进制流（使用WinHex软件打开）</h5><p><img src="http://p61038gmb.bkt.clouddn.com/blog/180728/K9c9Lef045.png?imageslim" alt="enter image description here"></p>
+<h4 id="使用javap反汇编命令生成的字节码："><a href="#使用javap反汇编命令生成的字节码：" class="headerlink" title="使用javap反汇编命令生成的字节码："></a>使用<code>javap</code>反汇编命令生成的字节码：</h4><pre><code>PS C:\Users\Administrator\Desktop&gt; Javap -verbose Test
+Classfile /C:/Users/Administrator/Desktop/Test.class
+  Last modified 2018-7-28; size 395 bytes
+  MD5 checksum edee74c07502d68f5e7aea198366f496
+  Compiled from &quot;Test.java&quot;
+public class Test
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #5.#20         // java/lang/Object.&quot;&lt;init&gt;&quot;:()V
+   #2 = Fieldref           #4.#21         // Test.name:Ljava/lang/String;
+   #3 = Fieldref           #4.#22         // Test.m:I
+   #4 = Class              #23            // Test
+   #5 = Class              #24            // java/lang/Object
+   #6 = Utf8               name
+   #7 = Utf8               Ljava/lang/String;
+   #8 = Utf8               m
+   #9 = Utf8               I
+  #10 = Utf8               &lt;init&gt;
+  #11 = Utf8               ()V
+  #12 = Utf8               Code
+  #13 = Utf8               LineNumberTable
+  #14 = Utf8               setName
+  #15 = Utf8               (Ljava/lang/String;)V
+  #16 = Utf8               calcM
+  #17 = Utf8               ()I
+  #18 = Utf8               SourceFile
+  #19 = Utf8               Test.java
+  #20 = NameAndType        #10:#11        // &quot;&lt;init&gt;&quot;:()V
+  #21 = NameAndType        #6:#7          // name:Ljava/lang/String;
+  #22 = NameAndType        #8:#9          // m:I
+  #23 = Utf8               Test
+  #24 = Utf8               java/lang/Object
+{
+  public Test();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V
+         4: return
+      LineNumberTable:
+        line 1: 0
+
+  public void setName(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #2                  // Field name:Ljava/lang/String;
+         5: return
+      LineNumberTable:
+        line 7: 0
+        line 8: 5
+
+  public int calcM();
+    descriptor: ()I
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #3                  // Field m:I
+         4: iconst_1
+         5: iadd
+         6: ireturn
+      LineNumberTable:
+        line 11: 0
+}
+SourceFile: &quot;Test.java&quot;
+</code></pre><p>准备工作做完了下面就开始解析了：</p>
+<h4 id="魔数"><a href="#魔数" class="headerlink" title="魔数"></a>魔数</h4><p>class文件的头4个字节称为魔数，它的唯一作用就是确定这个文件时候是一个能被虚拟机接受的class文件。使用魔数而不是用文件扩展名来区别Class文件的原因在于魔数不可更改，而文件扩展名可以随意更改。在java中魔数为一个常量: 0xCAFEBABE</p>
+<p><img src="http://p61038gmb.bkt.clouddn.com/blog/180728/K2dl8FG5D7.png?imageslim" alt="enter image description here"></p>
+<h4 id="版本号"><a href="#版本号" class="headerlink" title="版本号"></a>版本号</h4><p>接下来就是class文件的版本号，第5、6个字节是次版本号，第7、8个字节是主版本号。</p>
+<p>如上图所示，副版本号是：0x0000，主版本号是 0x0034，也就是十进制的52，java 的版本号是从45开始，高版本的 JDK 能向下兼容以前版本的 Class 文件，虚拟机拒绝执行超过其版本号的 Class 文件。</p>
+<h4 id="常量池"><a href="#常量池" class="headerlink" title="常量池"></a>常量池</h4><p>常量池的数量不是固定的，所以常量池的入口需要放置一个u2类型的数据来代表常量池的容量计数器。由于这个容器的计数是从1开始的而不是从0开始的，常量池的常量个数与常量池计数器的关系是 <code>count = counter - 1</code>。根据 WinHex 软件打开看到的字节流显示容量计数器的十六进制数为 0x0019，即十进制的25，这就代表常量池中有24项常量，索引范围是1~24。这个也可以从我们上面的 <code>javap</code> 反汇编命令生成的字节码中看到。</p>
+<p>常量池可以理解为结构中文件之中的资源仓库，主要存放两大类常量：字面量和符号引用。</p>
+<blockquote>
+<p>字面量：接近java语言层面的常量概念，如文本字符串、final常量值等。</p>
+</blockquote>
+<blockquote>
+<p>符号引用：类和接口的全限定名、字段的名称和描述符、方法的名称和描述符。</p>
+</blockquote>
+<p>常量池中的每一项都是一个表，现在的 JDK 版本中一共有14种表。这14个表都有一个特点，第一项均为 u1 类型的 tag，代表常量池项目的类型，这14种常量类型所代表的具体含义如下：<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180728/A3Lkidc9Hm.png?imageslim" alt="enter image description here"><br><img src="http://p61038gmb.bkt.clouddn.com/blog/180728/391KEbGbkg.png?imageslim" alt="enter image description here"></p>
+<p>下面来根据我们的字节码来分析常量池（蓝色背景部分）。<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180728/EI0BH4JFim.png?imageslim" alt="enter image description here"></p>
+<p>然后把每个常量的字节流截取出来，显示如下(实际上字节之间是不存在空格的，这里方便查看)：</p>
+<pre><code>#1: 0A 00 05 00 14
+#2: O9 00 04 00 15
+#3: 09 00 04 00 16
+#4: 07 00 17
+#5: 07 00 18
+#6: 01 00 04 6E 61 6D 65
+#7: 01 00 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B
+#8: 01 00 01 6D
+#9: 01 00 01 49
+#10: 01 00 06 3C 69 6E 69 74 3E
+#11: 01 00 03 28 29 56
+#12: 01 00 04 43 6F 64 65
+#13: 01 00 0F 4C 69 6E 65 4E 75 6D 62 65 72 54 61 62 6C 65
+#14: 01 00 07 73 65 74 4E 61 6D 65
+#15: 01 00 15 28 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 29 56
+#16: 01 00 05 63 61 6C 63 4D
+#17: 01 00 03 28 29 49 
+#18: 01 00 0A 53 6F 75 72 63 65 46 69 6C 65
+#19: 01 00 09 54 65 73 74 2E 6A 61 76 61
+#20: 0C 00 0A 00 0B
+#21: 0C 00 06 00 07
+#22: 0C 00 08 00 09
+#23: 01 00 04 54 65 73 74
+#24: 01 00 10 6A 61 76 61 2F 6C 61 6E 67 2F 4F 62 6A 65 63 74
+</code></pre><p>可以看到第一项常量的 tag 为 0x0A，即十进制的10，查表得知这个常量属于 CONSTANT_Methordref_info 类型，表示对一个类中方法的符号引用，该项常量占用的字节流为 0x0A(tag)、 0x0005(index)、0x0014(index)，即分别指向第5个常量和第20个常量，对应的字节流分别为 0x07 00 18 和 0x0C 00 0A 00 0B，然后通过 tag 又知道了这两个常量的类型分别为CONSTANT_Class_info 和 CONSTANT_NameAndType_info 类型，这样第一个常量就解析完成了。而我们再看一下反编译结果中的常量表发现确实也是这样。</p>
+<h4 id="访问标志"><a href="#访问标志" class="headerlink" title="访问标志"></a>访问标志</h4><p>在常量池结束之后，紧接着的两个字节代表访问标志，用于识别类或接口层次的访问信息，包括这个 Class 是类还是接口，是否定义为 public 类型、abstract 类型等等。具体的标志位以及标志的含义见下表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">标志名称</th>
+<th style="text-align:left">标志值</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ACC_PUBLIC</td>
+<td style="text-align:left">0x0001</td>
+<td style="text-align:left">是否为public类型</td>
+</tr>
+<tr>
+<td style="text-align:left">ACC_FINAL</td>
+<td style="text-align:left">0x0010</td>
+<td style="text-align:left">是否被声明为final，只有类可设置</td>
+</tr>
+<tr>
+<td style="text-align:left">ACC_SUPER</td>
+<td style="text-align:left">0x0020</td>
+<td style="text-align:left">是否允许使用invokespecial字节码指令的新语义，JDK1.0.2之后编译出来的类这个标志必须为真</td>
+</tr>
+<tr>
+<td style="text-align:left">ACC_INTERFACE</td>
+<td style="text-align:left">0x0200</td>
+<td style="text-align:left">标识这是一个接口</td>
+</tr>
+<tr>
+<td style="text-align:left">ACC_ABSTRACT</td>
+<td style="text-align:left">0x0400</td>
+<td style="text-align:left">是否为abstract类型，对于接口或抽象类来说此值为真，其他类值为假</td>
+</tr>
+<tr>
+<td style="text-align:left">ACC_SYNTHETIC</td>
+<td style="text-align:left">0x1000</td>
+<td style="text-align:left">标识这个类并非由用户代码产生的</td>
+</tr>
+<tr>
+<td style="text-align:left">ACC_ANNOTATION</td>
+<td style="text-align:left">0x2000</td>
+<td style="text-align:left">标识这个一个注解</td>
+</tr>
+<tr>
+<td style="text-align:left">ACC_ENUM</td>
+<td style="text-align:left">0x4000</td>
+<td style="text-align:left">标识这是一个枚举</td>
+</tr>
+</tbody>
+</table>
+<p>我们定义的 Test 类被 public 关键字修饰，因此它的ACC_PUBLIC、ACC_SUPER标志应当为真，因此其 access_flags 值应为<code>0x0001|0x0020=0x0021</code>,字节流显示的也确实是<code>0x0021</code><br><img src="http://p61038gmb.bkt.clouddn.com/blog/180728/a4689fG3Gf.png?imageslim" alt="enter image description here"></p>
+<h4 id="类索引、父类索引和接口索引集合"><a href="#类索引、父类索引和接口索引集合" class="headerlink" title="类索引、父类索引和接口索引集合"></a>类索引、父类索引和接口索引集合</h4><p>在访问标志 access_flags 后接下来就是类索引（this_class）和父类索引（super_class），这两个数据都是u2类型的，他们各自指向一个类型为  CONSTANT_Class_info 的类描述符常量，而接下来的接口索引集合是一个 u2 类型的集合，class 文件由这三个数据项来确定类的继承关系。由于 Java 中是单继承，所以父类索引只有一个；但Java类可以实现多个接口，所以接口索引是一个集合。</p>
+<p>类索引用来确定这个类的全限定名，父类索引确定这个类的父类的全限定名，除了 Object 之外，所有的类都有父类，接口索引集合存储了implements 语句后面按照从左到右的顺序的接口。</p>
+<p><img src="http://p61038gmb.bkt.clouddn.com/blog/180728/KBda0EIfjj.png?imageslim" alt="enter image description here"></p>
+<p>从上图可以看出3个 u2 类型的值分别为 0x0004、0x0005、0x0000。也就是类索引指向常量表的第4个常量，父类索引指向常量表的第5个常量，接口索引为0，也就是没有实现接口。</p>
+<pre><code>   #4 = Class              #23            // Test
+   #5 = Class              #24            // java/lang/Object
+</code></pre><h4 id="字段表集合"><a href="#字段表集合" class="headerlink" title="字段表集合"></a>字段表集合</h4><p>字段表用来描述接口或类中声明的变量。字段包括类级变量和实例级变量，但不包括方法内变量，也就是局部变量。所谓的类级变量就是静态变量，这个变量不属于这个类的任何实例，可以不用定义类实例就可以使用；实例级变量不是静态变量，是和类实例相关联的，需要定义类实例才能使用。</p>
+<p>我们可以先想一下一个字段包含有哪些信息呢？</p>
+<p>可以包含的信息有：字段的作用域（public、private和protected修饰符）、是实例变量还是类变量（static修饰符）、可变性（final修饰符）、并发可见性（volatile修饰符）、是否可被序列化（transient修饰符）、字段的数据类型（基本类型、对象、数组）以及字段名称。对于上述这些信息，每一个修饰符都是布尔值，有或者没有，字段名引用常量池的常量来进行描述。下表是字段表的最终格式：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">u2</td>
+<td style="text-align:left">access_flags</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">u2</td>
+<td style="text-align:left">name_index</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">u2</td>
+<td style="text-align:left">descriptor_index</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">u2</td>
+<td style="text-align:left">attributes_count</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">attribute_info</td>
+<td style="text-align:left">attributes</td>
+<td style="text-align:left">attributes_count</td>
+</tr>
+</tbody>
+</table>
+<p>其中的字段修饰符 access_flags，和类中的 access_flags 类似，对于字段来说可以设置的标志位及含义如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">标志名称</th>
+<th style="text-align:left">标志值</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ACC_PUBLIC</td>
+<td style="text-align:left">0x0001</td>
+<td style="text-align:left">字段是否是public</td>
+</tr>
+<tr>
+<td style="text-align:left">ACC_PRIVATE</td>
+<td style="text-align:left">0x0002</td>
+<td style="text-align:left">字段是否是private</td>
+</tr>
+<tr>
+<td style="text-align:left">ACC_PROTECTED</td>
+<td style="text-align:left">0x0004</td>
+<td style="text-align:left">字段是否是protected</td>
+</tr>
+<tr>
+<td style="text-align:left">ACC_STATIC</td>
+<td style="text-align:left">0x0008</td>
+<td style="text-align:left">字段是否是static</td>
+</tr>
+<tr>
+<td style="text-align:left">ACC_FINAL</td>
+<td style="text-align:left">0x0010</td>
+<td style="text-align:left">字段是否是final</td>
+</tr>
+<tr>
+<td style="text-align:left">ACC_VOLATILE</td>
+<td style="text-align:left">0x0040</td>
+<td style="text-align:left">字段是否是volatile</td>
+</tr>
+<tr>
+<td style="text-align:left">ACC_TRANSIENT</td>
+<td style="text-align:left">0x0080</td>
+<td style="text-align:left">字段是否是transient</td>
+</tr>
+<tr>
+<td style="text-align:left">ACC_SYNTHETIC</td>
+<td style="text-align:left">0x1000</td>
+<td style="text-align:left">字段是否是由编译器自动产生的</td>
+</tr>
+<tr>
+<td style="text-align:left">ACC_ENUM</td>
+<td style="text-align:left">0x4000</td>
+<td style="text-align:left">字段是否是enum</td>
+</tr>
+</tbody>
+</table>
+<p>显然，ACC_PUBLIC、ACC_PRIVATE 和 ACC_PROTECTED 只能选择一个，ACC_FINAL 和 ACC_VOLATILE 不能同时选择。接口中的字段必须有 ACC_PUBLIC、ACC_STATIC 和 ACC_FINAL 标志，这是Java语言本身的规则决定的。</p>
+<p>access_flags 后面的是 name_index 和descriptor_index，前者是字段简单名称名的常量池索引，后者是字段描述符的常量池索引。</p>
+<blockquote>
+<p>全限定名：就是把带路径类名中的”.”替换成“/”后的字符串，比如<code>java/lang/Object</code>或者<code>Test</code>就是两个全限定名。</p>
+<p>简单名称：是指没有类型和参数修饰的方法或者字段名称。</p>
+<p>描述符：用来描述字段的数据类型、方法的参数列表（包括数量、类型、顺序）和返回值。</p>
+</blockquote>
+<p>对于方法的描述符，参数类型都使用一个大写字母来表示，具体表示如下表：<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180728/fh36JhJ0ga.png?imageslim" alt="enter image description here"></p>
+<p>对于数组类型，每一个维度将使用一个前置的“[”字符来描述。比如定义一个<code>java.lang.String[][]</code>类型的二维数组，将记录为<code>[[Ljava/lang/String</code>，一个 double 数组<code>double[]</code>将标记为<code>[D</code>。</p>
+<p>当描述符用来描述方法时，按照先参数列表，后返回值的顺序描述，参数列表按照参数的严格顺序放在一组小括号<code>()</code>内。比如方法<code>void setName(String name)</code>的描述符是<code>(S)V</code>。方法<code>java.lang.String toString()</code>的描述符是<code>()Ljava/lang/String</code>；方法<code>int indexOf(char[] source,int sourceOffset,int sourceCount,char[] target,int targetOffset,int targetCount,int fromIndex)</code>的描述符是<code>([CII[CIII)I</code>。</p>
+<p>descriptor_info后面是属性信息，对于字段，可以使用属性表描述一下额外信息，比如如果将字段<code>m</code>的声明改为<code>final static int m = 123;</code>，那就会存在一个项名称为<code>ConstantValue</code>的属性，值指向常量123。关于属性表后面还会详细介绍。</p>
+<p>我们回到字节流中再详细地分析一下：<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180728/dJ6hijm4am.png?imageslim" alt="enter image description here"></p>
+<pre><code>00 02  // fileds_count:代表有两个字段
+// 第一个字段，下同
+00 02  // access_flag: 具备的所有访问权限按位或运算的结果
+00 06  // name_index: 指向常量池的第6个常量
+00 07  // description_index: 指向常量池的第7个常量
+00 00  // attribute_count: 属性数量
+// 第二个字段
+00 02 
+00 08 
+00 09
+00 00
+</code></pre><p>这里需要注意的是字段表集合中不会列出从父类或接口中继承来的字段，但有可能会出现原本Java程序中没有的字段。比较典型的例子是内部类，为了在内部类中保持对外部类的访问性，会增加一个指向外部类实例的字段<code>this</code>。另外，在Java语言中字段无法重载，也就是字段名不能重复，即使两个字段的数据类型、修饰符都不相同。不过对于字节码来说，如果两个字段的描述符不一致，那么就可以有重复的字段名。</p>
+<h4 id="方法集合"><a href="#方法集合" class="headerlink" title="方法集合"></a>方法集合</h4><p>class文件存储格式中对方法的描述和对字段的描述几乎相同，方法表的结构也和字段表相同。</p>
+<p>不过因为 volatile 和 transient 关键字不能修饰方法，而synchronized、native、strictfp 和 abstract 关键字可以修饰方法，所以方法表的标志位及其取值如下：<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180728/B96a8GAgig.png?imageslim" alt="enter image description here"></p>
+<p>另外一点方法肯定就包括代码了，如果方法表和字段表的结构相同，那代码去哪儿了呢？答案是经过编译器编译成字节码指令后，存放在方法属性表集合中一个名为<code>Code</code>的属性里面，关于属性表后面再详细介绍。</p>
+<p>我们再结合字节流详细了解一下：</p>
+<p><img src="http://p61038gmb.bkt.clouddn.com/blog/180728/c3c6G06F40.png?imageslim" alt="enter image description here"></p>
+<pre><code>00 03 //表示有三个方法，这里只介绍第一个方法
+00 01 // 访问标志： 具备的所有访问权限按位或运算的结果
+00 0A // 名称索引：指向第10个常量
+00 0B // 描述符索引：指向第11个常量
+00 01 // 有一项属性
+00 0C //属性名称索引，指向第12个常量，值为&quot;Code&quot;,即方法的字节码描述
+</code></pre><p>在Java中，要重载一个方法，除了要与原方法具有相同的方法名称之外，还要求必须拥有一个与原方法不同的特征签名，特征签名就是一个方法中各个参数在常量池中的字段符号引用的集合，也就是特征签名只包含参数个数和类型，并不包含返回值类型，所以Java语言中是无法仅仅依靠返回值的不同来对一个方法重载的。但是在class文件格式中，特征签名还包括返回值类型，也就是说只有返回值类型不同的两个方法也可以存在。这一点在泛型中编译后类型擦除后生成的桥接方法上有所体现。不过这里就不过多介绍了。</p>
+<h4 id="属性表集合"><a href="#属性表集合" class="headerlink" title="属性表集合"></a>属性表集合</h4><p>属性表在前面出现了多次，在class文件、字段表和方法表都可以携带自己的属性表集合，来描述某些场景专有的信息。</p>
+<p>与class文件中其他的数据项目要求严格的顺序、长度和内容不同，属性表集合的限制比较少，不要求严格的顺序，只要不与已有的属性名重复，任何人实现的编译器都可以向属性表中写入自定义的属性信息，Java虚拟机会在运行时忽略掉那些不认识的信息。为了能正确解析class文件，《Java虚拟机规范（第二版）》中预定义了9项虚拟机应当识别的属性。现在，属性已经达到了21项。具体信息如下表：<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180730/6G557DKfGj.png?imageslim" alt="enter image description here"><br><img src="http://p61038gmb.bkt.clouddn.com/blog/180730/I2GllEllmf.png?imageslim" alt="enter image description here"><br><img src="http://p61038gmb.bkt.clouddn.com/blog/180730/2fF1EFG133.png?imageslim" alt="enter image description here"></p>
+<p>从上表可以看出，属性表集合存在的位置也是不确定的，不仅可以存储在class文件结尾处，还可以作为数据项存在于类、方法表集合和字段表集合中。对于存在于class类文件中的属性表集合很好理解，毕竟在开头的class文件结构图中的最后一部分就是属性表集合，这时属性表集合作为构成class文件结构的一个大部分。剩下的存在于类中、方法表集合与字段表集合中的属性表集合，其实是作为它们的一个数据项存在的。</p>
+<p>存在于类中的属性表集合，存储了关于这个类的一些信息。比如这个类是否是过时的（Deprecated）、在泛型中保存类的类型参数（由于生成class文件后会进行类型擦除，Java中的泛型是一种伪泛型）和动态注解等信息；存放在方法表集合中的属性表集合存储了关于方法的信息，最主要的就是Code属性，存储了字节码指令；存放于字段表集合中的属性表集合存储了关于字段的信息，我们这里的例子没有涉及到字段的属性，不过当在类中定义了静态常量（static final）并且这个常量有初始值时会将这个值作为属性存储在字段表中的属性表集合中。</p>
+<p>对于每个属性，class文件规定的属性格式只有前6个字节：2字节的属性名称的索引和4个字节的属性长度，名称是指向 CONSTANT_Utf8_info 类型常量的索引，一个 u4 的长度属性 attribute_length 说明属性值作用的占用位数，接下来就要按照这个长度存储属性值。一个符合规则的属性表的结构如下：<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180730/Fd3hDFcA7J.png?imageslim" alt="enter image description here"></p>
+<p>下面我们着重学习一下 Code 属性。</p>
+<h5 id="属性表集合之Code属性"><a href="#属性表集合之Code属性" class="headerlink" title="属性表集合之Code属性"></a>属性表集合之Code属性</h5><p>Java 程序方法体中的代码经过 Javac 编译处理后，最终变为字节码指令存储在 Code 属性中，Code 属性出现在方法表的属性集合之中。但是需要注意的是也并非所有方法表都有 Code 属性，例如抽象类或接口，Code 属性的结构如下：<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180730/BhIcG6G9kk.png?imageslim" alt="enter image description here"></p>
+<p>其中 attribute_name_index 和 attribute_length 前面已经介绍过了。</p>
+<p>max_stack代表了操作数栈的最大深度。在方法执行的任意时刻，操作数栈都不会超过这个深度。虚拟机执行时需要根据这个值来分配栈帧中的操作栈深度。</p>
+<p>max_locals代表了局部变量表所需要的存储空间。在这里，max_locals的单位是slot，HotSpot虚拟机在分配对象时使用的单位就是slot。方法参数（包括隐式参数this）、显式异常处理器的参数（try-catch块中catch块中定义的异常）以及方法体中定义的局部变量都需要局部变量表来存放。需要注意的是，由于局部变量表中的slot可以重用，所以并不是所有的局部变量的总slot就是max_locals。编译器会根据变量的作用域来分配 slot 给各个变量使用，然后计算 max_locals 的大小。</p>
+<p>code_length 和code用来存储字节码指令。Java的字节码指令的长度都是一个字节，即最多可以有256个指令，实际上一共有大约200条指令。对于字节码指令这里不过多介绍。</p>
+<p>code_length和 code是用来存储 Java源程序编译后产生的字节码指令，code_length代表字节码长度。既然叫字节码，每个指令就是一个u1类型的单字节，当虚拟机读取到code中的一个字节码时，就可以找出这个字节码代表的是什么指令，并且可以知道这条指令后面是否需要跟随参数，以及参数应当如何理解。一个字节取值范围为0~255，所以字节码指令肯定不会超过256个指令，目前Java虚拟机规范定义了其中约200条编码值对应指令的含义。</p>
+<p>因为 code_length 是一个 u4 类型，所以理论上每个方法的字节长度不能超过2^23-1，但是虚拟机规范中明确限定了一个方法不能超过65535条字节码指令，即实际只用到了u2的长度，如果超过这个限制，Javac 编译器会拒绝编译。</p>
+<p>最后我们再结合 Test.Class 文件的二进制流来具体分析一下。</p>
+<p>上面我们分析方法表的时候，看到有一个指向常量池中值为 Code 的索引值，这就是该方法 Code 表的 attribute_name_index 属性，下面我们接着那儿分析吧：<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180730/Df4Ck86AAC.png?imageslim" alt="enter image description here"></p>
+<pre><code>00 0C // attribute_name_index
+00 00 00 1D // attribute_length
+00 01 // max_stack
+00 01 // max_locals
+00 00 00 05 // code_length
+2A B7 00 01 B1 // code(对应指令)
+00000001000D00000006000100000001  // 剩下的部分
+</code></pre>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 changyan -->
+<div id="changyan-comment">
+    <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2018/07/28/Java类加载之Class文件结构/"></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cytFgASPt';
+var conf = '21a481f8e281cdb130c8816a0a1b4b5c';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+</div>
+<style>
+    #changyan-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/07/28/Java类加载之类加载过程/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/07/25/Java反射机制的初步了解/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avator.jpg" alt="dengw's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        duang0626@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:duang06262qq.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">23</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
+            </li></ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">label</i>
+                
+                标签云
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/resource" title="资源">
+                
+                    <i class="material-icons sidebar-material-icons">cloud_download</i>
+                
+                资源
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="图库">
+                
+                    <i class="material-icons sidebar-material-icons">image</i>
+                
+                图库
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="友情链接">
+                
+                    <i class="material-icons sidebar-material-icons">link</i>
+                
+                友情链接
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/duang0626" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/duang666/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year=""></span>&nbsp;dengw‘s blog
+            
+                <br>
+                
+                    hello world
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?Bn9UzEm8RrBSxqyZB0zPjA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+    <!-- Leancloud -->
+    <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+    <script>
+        AV.initialize('4RXXI7JGllT8IVC7vhgameTz-gzGzoHsz', '12p4GWu6SEO4Qpa1WboTz1P3');
+    </script>
+    <script type="text/ls-javascript" id="leancloud-views-script">
+    function showTime(Counter) {
+        var query = new AV.Query(Counter);
+        $('.leancloud-views_num').each(function() {
+            var url = $(this).attr('id').trim();
+            query.equalTo('url', url);
+            query.find({
+                success: function(results) {
+                    if (results.length === 0) {
+                        var content = '0 ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                        return;
+                    }
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+                        var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    }
+                },
+                error: function(object, error) {
+                    console.log('Error: ' + error.code + ' ' + error.message);
+                }
+            });
+        });
+    }
+
+    function addCount(Counter) {
+      var Counter = AV.Object.extend('Counter');
+      url = $('.leancloud-views_num').attr('id').trim();
+      title = $('.leancloud-views_num').attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo('url', url);
+      query.find({
+          success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment('time');
+                counter.save(null, {
+                    success: function(counter) {
+                        var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+              var newcounter = new Counter();
+              newcounter.set('title', title);
+              newcounter.set('url', url);
+              newcounter.set('time', 1);
+              newcounter.save(null, {
+                  success: function(newcounter) {
+                      console.log('newcounter.get(\'time\')='+newcounter.get('time'));
+                      var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+                      $(document.getElementById(url)).text(content);
+                  },
+                  error: function(newcounter, error) {
+                      console.log('Failed to create');
+                  }
+              });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + ' ' + error.message);
+        }
+      });
+    }
+    $(function() {
+        var Counter = AV.Object.extend('Counter');
+        if ($('.leancloud-views_num').length === 1) {
+            addCount(Counter);
+        } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+        }
+    });
+</script>
+
+
+
+
+
+
+   <!-- 畅言公共 js 代码 start -->
+<script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytFgASPt">
+</script>
+<!-- 畅言公共 js 代码 end -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 2018;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

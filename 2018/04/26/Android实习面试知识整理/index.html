@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+    <link rel="dns-prefetch" href="https://cdn1.lncld.net">
+
+
+
+
+    <link rel="dns-prefetch" href="https://changyan.sohu.com">
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Android实习面试知识整理 | 
+        
+        dengw‘s blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/dw.jpg">
+    <link rel="icon" href="/img/dw.jpg">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",校招">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?NKhlKQkXw/c66TR5p4wO+w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.jpg);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="dengw‘s blog">
+    <meta name="msapplication-starturl" content="http://dengw.xyz/2018/04/26/Android实习面试知识整理/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="dengw‘s blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/dw.jpg">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://dengw.xyz/2018/04/26/Android实习面试知识整理/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Android实习面试知识整理 | dengw‘s blog">
+    <meta property="og:image" content="/img/dw.jpg">
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="校招"> 
+
+    
+        <meta property="article:published_time" content="Thu Apr 26 2018 01:09:47 GMT+0800">
+        <meta property="article:modified_time" content="Wed Oct 03 2018 18:28:00 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://dengw.xyz/2018/04/26/Android实习面试知识整理/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://dengw.xyz/2018/04/26/Android实习面试知识整理/index.html",
+    "headline": "Android实习面试知识整理",
+    "datePublished": "Thu Apr 26 2018 01:09:47 GMT+0800",
+    "dateModified": "Wed Oct 03 2018 18:28:00 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "dengw",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avator.jpg"
+        },
+        "description": "Just tango on"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "dengw‘s blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/dw.jpg"
+        }
+    },
+    "keywords": ",校招",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Android相关"><span class="post-toc-number">1.</span> <span class="post-toc-text">Android相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#广播（BroadcastReceiver）"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">广播（BroadcastReceiver）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ContentProvider"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">ContentProvider</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SharedPreferences"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">SharedPreferences</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SQLite"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">SQLite</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LitePal"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">LitePal</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Asset目录与res目录的区别"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">Asset目录与res目录的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#activity退出怎么保存数据"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">activity退出怎么保存数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Android的数据存储形式"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">Android的数据存储形式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Activity正常和异常情况下的生命周期"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">Activity正常和异常情况下的生命周期</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Acticity的优先级"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">Acticity的优先级</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#activity四种启动模式区别和应用场景。"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">activity四种启动模式区别和应用场景。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Android怎样退出终止App"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">Android怎样退出终止App</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Fragement的生命周期"><span class="post-toc-number">1.13.</span> <span class="post-toc-text">Fragement的生命周期</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#service生命周期，两种启动方式的区别"><span class="post-toc-number">1.14.</span> <span class="post-toc-text">service生命周期，两种启动方式的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#app如何保证后台服务不被杀死"><span class="post-toc-number">1.15.</span> <span class="post-toc-text">app如何保证后台服务不被杀死</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#HandlerThread的实现原理"><span class="post-toc-number">1.16.</span> <span class="post-toc-text">HandlerThread的实现原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#IntentService比Service好在哪"><span class="post-toc-number">1.17.</span> <span class="post-toc-text">IntentService比Service好在哪</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ThreadLocal"><span class="post-toc-number">1.18.</span> <span class="post-toc-text">ThreadLocal</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#handler的内在原理"><span class="post-toc-number">1.19.</span> <span class="post-toc-text">handler的内在原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Looper原理"><span class="post-toc-number">1.20.</span> <span class="post-toc-text">Looper原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Android进程与线程的区别"><span class="post-toc-number">1.21.</span> <span class="post-toc-text">Android进程与线程的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#IPC（进程间通信）的实现方法有哪些"><span class="post-toc-number">1.22.</span> <span class="post-toc-text">IPC（进程间通信）的实现方法有哪些</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内存泄露"><span class="post-toc-number">1.23.</span> <span class="post-toc-text">内存泄露</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内存溢出（OOM）"><span class="post-toc-number">1.24.</span> <span class="post-toc-text">内存溢出（OOM）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是ANR，如何避免"><span class="post-toc-number">1.25.</span> <span class="post-toc-text">什么是ANR，如何避免</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么情况会导致Force-Close-如何避免-能否捕获导致其的异常"><span class="post-toc-number">1.26.</span> <span class="post-toc-text">什么情况会导致Force Close ?如何避免?能否捕获导致其的异常?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NDK是什么"><span class="post-toc-number">1.27.</span> <span class="post-toc-text">NDK是什么</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何将SQLite数据库与apk文件一起发布"><span class="post-toc-number">1.28.</span> <span class="post-toc-text">如何将SQLite数据库与apk文件一起发布</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#View的事件分发机制"><span class="post-toc-number">1.29.</span> <span class="post-toc-text">View的事件分发机制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#View的绘制机制"><span class="post-toc-number">1.30.</span> <span class="post-toc-text">View的绘制机制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ListView优化"><span class="post-toc-number">1.31.</span> <span class="post-toc-text">ListView优化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RecyclerView和ListView"><span class="post-toc-number">1.32.</span> <span class="post-toc-text">RecyclerView和ListView</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何优雅的展示Bitmap大图"><span class="post-toc-number">1.33.</span> <span class="post-toc-text">如何优雅的展示Bitmap大图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Bitmap的四种属性"><span class="post-toc-number">1.34.</span> <span class="post-toc-text">Bitmap的四种属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多进程和多线程的实现，进程和线程区别"><span class="post-toc-number">1.35.</span> <span class="post-toc-text">多进程和多线程的实现，进程和线程区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lambda表达式"><span class="post-toc-number">1.36.</span> <span class="post-toc-text">lambda表达式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设计模式"><span class="post-toc-number">1.37.</span> <span class="post-toc-text">设计模式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EventBus"><span class="post-toc-number">1.38.</span> <span class="post-toc-text">EventBus</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AsyncTask"><span class="post-toc-number">1.39.</span> <span class="post-toc-text">AsyncTask</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Retrofit原理："><span class="post-toc-number">1.40.</span> <span class="post-toc-text">Retrofit原理：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RxJava原理"><span class="post-toc-number">1.41.</span> <span class="post-toc-text">RxJava原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Glide"><span class="post-toc-number">1.42.</span> <span class="post-toc-text">Glide</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解析xml文件的两种方法：Pull和SAX"><span class="post-toc-number">1.43.</span> <span class="post-toc-text">解析xml文件的两种方法：Pull和SAX</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Json有什么优劣势"><span class="post-toc-number">1.44.</span> <span class="post-toc-text">Json有什么优劣势</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义View过程"><span class="post-toc-number">1.45.</span> <span class="post-toc-text">自定义View过程</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Java相关"><span class="post-toc-number">2.</span> <span class="post-toc-text">Java相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#int和Integer的区别"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">int和Integer的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java面向对象的三个特征与含义"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Java面向对象的三个特征与含义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是多态"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">什么是多态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Interface与abstract类的区别"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">Interface与abstract类的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反射的作用与原理"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">反射的作用与原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#泛型相关"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">泛型相关</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Collection包结构，与Collections的区别"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">Collection包结构，与Collections的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#equals方法是怎么来的"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">equals方法是怎么来的</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hashcode和equals有什么关系"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">hashcode和equals有什么关系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Object有公用方法："><span class="post-toc-number">2.10.</span> <span class="post-toc-text">Object有公用方法：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hashcode的作用"><span class="post-toc-number">2.11.</span> <span class="post-toc-text">Hashcode的作用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Switch能否用string做参数"><span class="post-toc-number">2.12.</span> <span class="post-toc-text">Switch能否用string做参数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#String、StringBuffer与StringBuilder的区别"><span class="post-toc-number">2.13.</span> <span class="post-toc-text">String、StringBuffer与StringBuilder的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Comparator和Comparable"><span class="post-toc-number">2.14.</span> <span class="post-toc-text">Comparator和Comparable</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java的浅拷贝和深拷贝"><span class="post-toc-number">2.15.</span> <span class="post-toc-text">java的浅拷贝和深拷贝</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java静态内部类和内部类的区别"><span class="post-toc-number">2.16.</span> <span class="post-toc-text">Java静态内部类和内部类的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#public等四个权限关键字的区别"><span class="post-toc-number">2.17.</span> <span class="post-toc-text">public等四个权限关键字的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#final作用："><span class="post-toc-number">2.18.</span> <span class="post-toc-text">final作用：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#static的作用："><span class="post-toc-number">2.19.</span> <span class="post-toc-text">static的作用：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#try-里面return了finally还会执行吗"><span class="post-toc-number">2.20.</span> <span class="post-toc-text">try 里面return了finally还会执行吗</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程安全集合类与非线程安全集合类"><span class="post-toc-number">2.21.</span> <span class="post-toc-text">线程安全集合类与非线程安全集合类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#classloader"><span class="post-toc-number">2.22.</span> <span class="post-toc-text">classloader</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java中强软弱虚四种引用"><span class="post-toc-number">2.23.</span> <span class="post-toc-text">Java中强软弱虚四种引用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#foreach与正常for循环效率对比"><span class="post-toc-number">2.24.</span> <span class="post-toc-text">foreach与正常for循环效率对比</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java保证线程安全有哪些方法"><span class="post-toc-number">2.25.</span> <span class="post-toc-text">java保证线程安全有哪些方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程安全的理解："><span class="post-toc-number">2.26.</span> <span class="post-toc-text">线程安全的理解：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java有哪几种创建新线程的方法及区别"><span class="post-toc-number">2.27.</span> <span class="post-toc-text">Java有哪几种创建新线程的方法及区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Thread和Runnable比较："><span class="post-toc-number">2.28.</span> <span class="post-toc-text">Thread和Runnable比较：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#synchronized的用法"><span class="post-toc-number">2.29.</span> <span class="post-toc-text">synchronized的用法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Volatile的用法："><span class="post-toc-number">2.30.</span> <span class="post-toc-text">Volatile的用法：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#wait和sleep的区别，应用场景"><span class="post-toc-number">2.31.</span> <span class="post-toc-text">wait和sleep的区别，应用场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#死锁："><span class="post-toc-number">2.32.</span> <span class="post-toc-text">死锁：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法与数据结构相关"><span class="post-toc-number">3.</span> <span class="post-toc-text">算法与数据结构相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#链表和数组比较"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">链表和数组比较</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hashmap的原理（很重要）"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Hashmap的原理（很重要）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hashmap和hashtable比较"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Hashmap和hashtable比较</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TreeMap、HashMap、LindedHashMap的区别"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">TreeMap、HashMap、LindedHashMap的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ArrayList和LinkedList的实现和区别"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">ArrayList和LinkedList的实现和区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#List与Set、Map"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">List与Set、Map</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Map、Set、List、Queue、Stack的特点与用法。"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">Map、Set、List、Queue、Stack的特点与用法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#HashSet和TreeSet"><span class="post-toc-number">3.8.</span> <span class="post-toc-text">HashSet和TreeSet</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#快速排序"><span class="post-toc-number">3.9.</span> <span class="post-toc-text">快速排序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#堆排序"><span class="post-toc-number">3.10.</span> <span class="post-toc-text">堆排序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#归并排序"><span class="post-toc-number">3.11.</span> <span class="post-toc-text">归并排序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二分查找"><span class="post-toc-number">3.12.</span> <span class="post-toc-text">二分查找</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#KMP算法"><span class="post-toc-number">3.13.</span> <span class="post-toc-text">KMP算法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AVL树-平衡二叉树"><span class="post-toc-number">3.14.</span> <span class="post-toc-text">AVL树(平衡二叉树)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#哈夫曼树"><span class="post-toc-number">3.15.</span> <span class="post-toc-text">哈夫曼树</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#完全二叉树"><span class="post-toc-number">3.16.</span> <span class="post-toc-text">完全二叉树</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#满二叉树"><span class="post-toc-number">3.17.</span> <span class="post-toc-text">满二叉树</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#操作系统相关"><span class="post-toc-number">4.</span> <span class="post-toc-text">操作系统相关</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#计算机网络相关"><span class="post-toc-number">5.</span> <span class="post-toc-text">计算机网络相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#http1-1相比以前版本（http1-0）有什么改变"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">http1.1相比以前版本（http1.0）有什么改变</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#七层-五层模型"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">七层/五层模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Get和Post区别"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">Get和Post区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Http的报文结构"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">Http的报文结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Http的状态码含义"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">Http的状态码含义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Http-request的几种类型"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">Http request的几种类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#HTTP和HTTPS协议的差别："><span class="post-toc-number">5.7.</span> <span class="post-toc-text">HTTP和HTTPS协议的差别：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SSL-TLS-握手"><span class="post-toc-number">5.8.</span> <span class="post-toc-text">SSL/TLS 握手</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TCP与UDP的区别"><span class="post-toc-number">5.9.</span> <span class="post-toc-text">TCP与UDP的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TCP报文结构"><span class="post-toc-number">5.10.</span> <span class="post-toc-text">TCP报文结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TCP滑动窗口与回退N针协议"><span class="post-toc-number">5.11.</span> <span class="post-toc-text">TCP滑动窗口与回退N针协议</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TCP选择重传"><span class="post-toc-number">5.12.</span> <span class="post-toc-text">TCP选择重传</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TCP拥塞控制"><span class="post-toc-number">5.13.</span> <span class="post-toc-text">TCP拥塞控制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Tcp三次握手的过程"><span class="post-toc-number">5.14.</span> <span class="post-toc-text">Tcp三次握手的过程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Tcp四次挥手的过程"><span class="post-toc-number">5.15.</span> <span class="post-toc-text">Tcp四次挥手的过程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#电脑上访问一个网页的过程"><span class="post-toc-number">5.16.</span> <span class="post-toc-text">电脑上访问一个网页的过程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Ping的整个过程"><span class="post-toc-number">5.17.</span> <span class="post-toc-text">Ping的整个过程</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Android实习面试知识整理
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avator.jpg" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>dengw</strong>
+        <span>4月 26, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/校招/">校招</a>
+    </li></ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2018/04/26/Android实习面试知识整理/" class="leancloud-views_num" data-flag-title="Android实习面试知识整理">
+     &nbsp;浏览量
+</span>
+
+            </li>
+        </a>
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Android实习面试知识整理&url=http://dengw.xyz/2018/04/26/Android实习面试知识整理/index.html&pic=http://dengw.xyz/img/dw.jpg&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Android实习面试知识整理&url=http://dengw.xyz/2018/04/26/Android实习面试知识整理/index.html&via=dengw" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=dengw‘s blog&title=Android实习面试知识整理&summary=&pics=http://dengw.xyz/img/dw.jpg&url=http://dengw.xyz/2018/04/26/Android实习面试知识整理/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>今晚把准备面试的过程中遇到的一些问题总结了一下。</p>
+<h2 id="Android相关"><a href="#Android相关" class="headerlink" title="Android相关"></a>Android相关</h2><h3 id="广播（BroadcastReceiver）"><a href="#广播（BroadcastReceiver）" class="headerlink" title="广播（BroadcastReceiver）"></a>广播（BroadcastReceiver）</h3><p>静态广播：程序未启动的情况下也能启动，在注册文件里面注册，广播有一个属性action，根据action的name进行匹配。<br>静态广播即使Activity销毁了，仍然可以收到广播。</p>
+<p>动态广播：程序启动之后才能接收到广播，使用Java代码注册 。<br>注册广播的时候提供广播的名字以及启动广播的条件，即intentFilter，通过给intentfilter设置action实现。<br>动态广播必须手动关闭，不然会有内存泄漏的风险。</p>
+<p>处理广播消息的时候需要写一个继承BroadcastReceiver的类，重写里面的接收函数onReceive()处理逻辑。</p>
+<p>有序广播：广播接收器是有先后顺序的，可以设置接收器的权重，并且先接收到的接收器可以截断广播的传递。</p>
+<h3 id="ContentProvider"><a href="#ContentProvider" class="headerlink" title="ContentProvider"></a>ContentProvider</h3><p>Android应用间的数据交互，本质上是进程进行数据交互&amp;共享，是一种跨进程通信的方式。</p>
+<p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180426/AF40Lemhce.png" alt=""><br>ContentProvider的底层是采用 Android中的Binder机制。</p>
+<p>借助ContentResolver实现，提供一系列进行数据CURD的操作，</p>
+<p>通过URI参数访问特定的数据表，区分不同应用以及用一应用中的不同表。<br>获得表之后通过增删改查操作数据。</p>
+<h3 id="SharedPreferences"><a href="#SharedPreferences" class="headerlink" title="SharedPreferences"></a>SharedPreferences</h3><p>使用键值对的方式存储数据。<br>数据存储过程：</p>
+<blockquote>
+<p>根据get方法获取一个SharedPreferences对象，这里需要文件名，路径是默认的<br>然后调用edit()获取一个editor对象<br>然后进行put操作，比如putString<br>调用apply（）提交数据</p>
+</blockquote>
+<p>数据读取：</p>
+<blockquote>
+<p>根据get方法获取一个SharedPreferences对象<br>然后通过getXXX的方法，比如：getInt(“key”, 默认值)的方式读取。</p>
+</blockquote>
+<h3 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h3><p>首先自己使用String的方式定义表的格式，</p>
+<p>继承SQLiteOpenHelper帮助类，重写里面的创建表和升级表的方法。<br>实例化一个自定义类的实例，使用getWritableDatabase()或者getReadableDatabase()方法获取一个SQLiteDatabase对象，然后就可以通过增删改查的函数进行操作了</p>
+<p>NOTE：ContentValues的使用</p>
+<h3 id="LitePal"><a href="#LitePal" class="headerlink" title="LitePal"></a>LitePal</h3><p>是一个开源库，需要添加依赖，配置litepal.xml文件（包括数据库名以及版本号），最后在AndroidMainfest.xml文件中注册一个name = “org.litepal.LitePalApplication”的application。</p>
+<p>对象关系映射：面向对象的语言和面向关系的数据库建立映射关系<br>需要自定义一个Java Bean继承自DataSupport，然后就可以使用面向对象的语言进行操作了。</p>
+<h3 id="Asset目录与res目录的区别"><a href="#Asset目录与res目录的区别" class="headerlink" title="Asset目录与res目录的区别"></a>Asset目录与res目录的区别</h3><p>assets: 需要自己手动创建的，用于存放需要打包到应用程序的静态文件，以便部署到设备中。与res/raw不同点在于，ASSETS支持任意深度的子目录。很重要的一点是这些文件不会生成资源ID，必须使用/assets开始（不包含它）的相对路径名。<br>res: 自动创建的， 能够被系统编译的，用于存放应用程序的资源，比如布局文件，图标等，支持以根据资源ID的形式访问。</p>
+<h3 id="activity退出怎么保存数据"><a href="#activity退出怎么保存数据" class="headerlink" title="activity退出怎么保存数据"></a>activity退出怎么保存数据</h3><p><a href="http://blog.csdn.net/huaheshangxo/article/details/50829752" target="_blank" rel="noopener">http://blog.csdn.net/huaheshangxo/article/details/50829752</a></p>
+<h3 id="Android的数据存储形式"><a href="#Android的数据存储形式" class="headerlink" title="Android的数据存储形式"></a>Android的数据存储形式</h3><blockquote>
+<p>使用SharedPreferences：存储数据: 轻量级的存储，保存一些常用的配置比如窗口状态，比如onSaveInstanceState保存一般使用SharedPreferences完成，主要存储一些基本数据类型以及String类型，数据保存在xml文件里。<br>文件存储数据：java提供的数据保存方法，文件可用来存放大量数据，如文本、图片、音频等。<br>SQLite数据库存储数据：使用sql语言的轻量级嵌入式数据库引擎，主要是对表格类型的数据进行操作，具体的包括增删改查。<br>使用ContentProvider存储数据 ：是应用程序之间共享数据的接口，以数据库形式存入手机内存，可以共享自己的数据给其他应用使用。<br>网络存储数据：比如什么云备份，就是把数据存储在云端，通过网络请求实现数据交互。</p>
+</blockquote>
+<h3 id="Activity正常和异常情况下的生命周期"><a href="#Activity正常和异常情况下的生命周期" class="headerlink" title="Activity正常和异常情况下的生命周期"></a>Activity正常和异常情况下的生命周期</h3><p>活动的几个状态，具体的边界</p>
+<ul>
+<li>Active (运行状态)：Activity 运行中的状态，可与用户之间进行交互，此时当前Activity位于栈顶。</li>
+<li>Paused (暂停状态)：当Activity 暂时暗下来，退到背景画面的状态</li>
+<li>Stopped (停止状态)：Activity完全被另一个Activity所覆盖，则其状态为Stopped。</li>
+<li>Dead (销毁状态)：Activity 尚未被启动、已经被手动终止，或已经被系统回收的状态。</li>
+<li><p>主要是异常情况，起作用的是onSaveInstanceState()函数，调用的实际，活动被非应用行为退出，如：</p>
+</li>
+<li><p>当用户按下HOME键时</p>
+</li>
+<li>长按HOME键，选择运行其他的程序时</li>
+<li>按下电源按键（关闭屏幕显示）时</li>
+<li>从activity A中启动一个新的activity时</li>
+<li>屏幕方向切换时，例如从竖屏切换到横屏时，</li>
+<li>资源内存不足杀死低优先级的活动<br>应用行为主要包括：主动调用finish()方法，或者主动按Back键，让Activity结束，这个时候就不会调用onSaveInstanceState()函数。</li>
+</ul>
+<p>数据恢复：</p>
+<ul>
+<li>onCreate：恢复了Paracelable对象下的Fragment</li>
+<li>onRestoryInstanceState：恢复数据HierarchyState（View树的状态）</li>
+</ul>
+<p>注：要保存View的状态，View必须要有id，作为key<br>方法：针对某一个特定的View，进行保存，每个View都有onSaveInstanceState和onRestoreInstanceState方法<br>相关，Acticity的configChanges属性，View的保存，委托的思想，活动的三种优先级</p>
+<h3 id="Acticity的优先级"><a href="#Acticity的优先级" class="headerlink" title="Acticity的优先级"></a>Acticity的优先级</h3><ul>
+<li>前台活动</li>
+<li>可见但非前台活动</li>
+<li>后台活动</li>
+</ul>
+<h3 id="activity四种启动模式区别和应用场景。"><a href="#activity四种启动模式区别和应用场景。" class="headerlink" title="activity四种启动模式区别和应用场景。"></a>activity四种启动模式区别和应用场景。</h3><p>在特性的任务栈中启动一个Activity，通过设置TaskAffinity参数实现，主要是结合singleTask使用<br>应用场景： </p>
+<blockquote>
+<p>singleTop适合接收通知启动的内容显示页面。适用于接受到消息后显示的界面，例如QQ接受到消息后弹出Activity，如果一次来10条消息，总不能一次弹10个Activity。</p>
+</blockquote>
+<blockquote>
+<p>singleTask适合作为程序入口点。在进入程序的第一个界面点击返回按钮，正常的逻辑是退出程序。满足这种情况。</p>
+</blockquote>
+<blockquote>
+<p>singleInstance适合需要与程序分离开的页面。比如说，使用微信调起自己的客户端某个页面，不做任何处理的情况下，按下回退或者当前Activity.finish()，页面不会停留在自己的客户端而是返回到微信的客户端页面。但是如果这个页面的启动模式设置为singleTask，当按下返回键或者Activity。finish（）例如闹铃提醒，将闹铃提醒与闹铃设置分离。singleInstance不要用于中间页面，如果用于中间页面，跳转会有问题，比如：A -&gt; B (singleInstance) -&gt; C，完全退出后，在此启动，首先打开的是B。</p>
+</blockquote>
+<p>相关：任务栈，onNewIntent方法的调用</p>
+<h3 id="Android怎样退出终止App"><a href="#Android怎样退出终止App" class="headerlink" title="Android怎样退出终止App"></a>Android怎样退出终止App</h3><p>使用单例模式创建一个Activity管理对象ActivityManager，该对象中有一个Activity容器，可以使用LinkedList实现（一个容器代表一个app实例）专门负责存储新开启的每一个Activity。</p>
+<pre><code class="java">private static ActivityManager instance;
+
+    //单例模式中获取唯一的app实例
+    public static ActivityManager getInstance() {
+        if(null == instance) {
+            instance = new ActivityManager();
+        }
+        return instance;
+    }
+
+</code></pre>
+<p>使用：</p>
+<blockquote>
+<p>在每一个Activity中的onCreate方法里添加该Activity到AppUtils对象实例容器中<br>ActivityManager.getInstance().addActivity(this);</p>
+</blockquote>
+<blockquote>
+<p>在需要结束所有Activity的时候调用exit方法<br>ActivityManager.getInstance().exit();</p>
+</blockquote>
+<h3 id="Fragement的生命周期"><a href="#Fragement的生命周期" class="headerlink" title="Fragement的生命周期"></a>Fragement的生命周期</h3><p>getFragementById()：在活动中获取碎片的方法<br>getActivity()：在碎片中获取活动的方法<br>几个重要的函数：</p>
+<blockquote>
+<p>onAttach()当碎片和活动建立关联的时候调用。</p>
+</blockquote>
+<blockquote>
+<p>onCreateView()为碎片建立视图的时候调用, 加载布局和findViewById的操作通常在此函数内完成。</p>
+</blockquote>
+<blockquote>
+<p>onActivityCreated() 确保碎片与碎片相关联的活动已经创建完时调用, 在该方法内可以进行与Activity交互的UI操作。</p>
+</blockquote>
+<blockquote>
+<p>onDestroyView() 当与碎片关联的视图被移除的时候调用, 销毁与Fragment有关的视图，但未与Activity解除绑定，依然可以通过onCreateView方法重新创建视图</p>
+</blockquote>
+<blockquote>
+<p>onDetach() 当碎片和活动解除关联的时候调用</p>
+</blockquote>
+<p>一旦activity进入running状态，你就可以自由地添加和删除fragment了，fragment的生命周期才能独立的运转，其它时候是依赖于activity的生命周期变化的。</p>
+<p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180426/cA1kBDeEH1.png" alt=""></p>
+<h3 id="service生命周期，两种启动方式的区别"><a href="#service生命周期，两种启动方式的区别" class="headerlink" title="service生命周期，两种启动方式的区别"></a>service生命周期，两种启动方式的区别</h3><blockquote>
+<p>startService 方法启动，该Service在后台运行。如果一个Service被startService 方法多次启动，onCreate方法只会调用一次，onStartCommand将会被调用多次，并且系统只会创建Service的一个实例，因此只需要一次stopService。该Service将会一直在后台运行，而不管对应程序的Activity是否在运行，直到被调用stopService，或自身的stopSelf方法。当然如果系统资源不足，android系统也可能结束服务。</p>
+</blockquote>
+<blockquote>
+<p>bindService 方法绑定启动，不管调用 bindService 调用几次，onCreate方法都只会调用一次，同时onStartCommand方法始终不会被调用。当连接建立之后，Service将会一直运行，除非调用Context.unbindService 断开连接或者之前调用bindService 的 Context 不存在了（如Activity被finish的时候），系统将会自动停止Service，对应onDestroy将被调用。一定要显示使用unbindService()解除引用。</p>
+</blockquote>
+<p><strong>NOTE</strong>: 如果一个Service又被启动又被绑定，则该Service将会一直在后台运行。并且不管如何调用，onCreate始终只会调用一次，对应startService调用多少次，Service的onStart便会调用多少次。调用unbindService将不会停止Service，而必须调用 stopService 或 Service的 stopSelf 来停止服务。<br><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180426/e93db3aFH2.png" alt=""></p>
+<h3 id="app如何保证后台服务不被杀死"><a href="#app如何保证后台服务不被杀死" class="headerlink" title="app如何保证后台服务不被杀死"></a>app如何保证后台服务不被杀死</h3><ul>
+<li><p>建立两个service互相监听，当一个service被kill掉的时候马上启动另一个</p>
+</li>
+<li><p>在onDestory里自监听，service +broadcast 方式，就是当service走ondestory的时候，发送一个自定义的广播，当收到广播的时候，重新启动service</p>
+</li>
+<li><p>提升进程优先级（有6个优先级）</p>
+</li>
+</ul>
+<h3 id="HandlerThread的实现原理"><a href="#HandlerThread的实现原理" class="headerlink" title="HandlerThread的实现原理"></a>HandlerThread的实现原理</h3><p>HandlerThread继承自Thread，内部保存一个Looper对象。<br>这是一个系统帮我们包装好的Thread，这个线程的run方法已经调用了Looper.prepare和Looper.loop（即已经绑定了一个Looper对象，并且可以开始轮询消息），创建该对象之后可以通过获得对象获取到一个Looper对象，然后可以当前Looper的引用返回以方便调用，将Looper对象传递给Handler（通过Looper可以实例化一个Handler），完成Handler和Looper以及MessageQueue的绑定，最终handleMessage方法会在HandlerThread线程中被调用。最后再其他的线程中调用Handler的sendMessage或者post(Runable)方法发送消息，handler中的callback.handleMessage方法会在HandlerThread中运行。即，将消息发送到了特定的线程（此处是HandlerThread）处理。</p>
+<p>继承自Thread，是一种可以使用handler的Thread，实现很简单，就是在run方法中通过Looper.prepare（）方法来创建一个消息队列。普通的Thread主要用来在run方法中执行一个耗时任务，handlerThread则是通过handler的消息方式来通知handlerThread执行一个具体的任务，主要的使用场景就是IntentService。</p>
+<p>使用方法：一般是把HandlerThread线程的Looper，在需要的地方使用new Handler(Looper)创建一个WorkerHandler处理业务逻辑。</p>
+<h3 id="IntentService比Service好在哪"><a href="#IntentService比Service好在哪" class="headerlink" title="IntentService比Service好在哪"></a>IntentService比Service好在哪</h3><p>IntentService继承自Service，运行时优先级更高，内部使用了HandlerThread作为处理消息的线程。内部有一个私有内部类ServiceHandler继承自Handler，并且会创建一个ServiceHandler对象。 </p>
+<p>使用startService()方法启动IntentService时，不会重新创建一个服务，会调用ServiceHandler对象发送包含该Intent的Message对象，该对象通过HandlerThread处理后交给ServiceHandler重写的handleMessage方法进行处理，处理的方式是调用IntentService的onHandleIntent（Intent）方法，所以使用的方式就是创建一个继承自IntentService类的子类，并重写onHandleIntent方法，在该方法中处理startService时传递的Intent。Intent中包含有要交给Service处理的信息。</p>
+<p>Service缺点：不是专门的一个新的线程，因此不能够在里面执行耗时操作。<br>IntentService： IntentService封装了HandlerThread和Handler，内部创建一个HandlerThread开辟新的线程。</p>
+<p>重写继承的handler</p>
+<pre><code class="java">private final class ServiceHandler extends Handler {
+    public ServiceHandler(Looper looper) {
+        super(looper);
+    }
+
+    @Override
+    public void handleMessage(Message msg) {
+        onHandleIntent((Intent)msg.obj);
+        stopSelf(msg.arg1);
+    }
+}
+</code></pre>
+<pre><code class="java">@Override
+public void onCreate() {
+    // TODO: It would be nice to have an option to hold a partial wakelock
+    // during processing, and to have a static startService(Context, Intent)
+    // method that would launch the service &amp; hand off a wakelock.
+
+    super.onCreate();
+    HandlerThread thread = new HandlerThread(&quot;IntentService[&quot; + mName + &quot;]&quot;);
+    thread.start();
+
+    mServiceLooper = thread.getLooper();
+    mServiceHandler = new ServiceHandler(mServiceLooper);
+}
+</code></pre>
+<p>是通过Handler、looper、message的方式实现了一个多线程的操作，同时耗时操作也可以被这个线程管理和执行<br>（1）IntentService会创建单独的worker线程来处理所有的intent请求。<br>（2）IntentService会创建单独的worker线程来处理onHandleIntent（）方法实现的代码。<br>     继承类重写IntentService的onHandleIntent（）方法，处理具体的业务逻辑<br>（3）当所有的请求处理完之后，IntentService会自动停止。<br>（4）为Service的OnBind（）方法提供了默认的实现，返回null。<br>（5）为service的onStartCommand（）方法提供了默认的实现，该实现会将请求intent添加到队列中。<br>所以对IntentService的使用就是：继承IntentService，重写onHandleIntent()方法即可。</p>
+<h3 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h3><p>设计的初衷：提供线程内部的局部变量，在本线程内随时随地可取，并且在多线程环境下每个线程里的变量独立于其他线程内的变量。</p>
+<p>ThreadLocal的作用是提供线程内的局部变量，这种变量在线程的生命周期内起作用，减少同一个线程内多个函数或者组件之间一些公共变量的传递的复杂度。</p>
+<p>实现：<br>每个Thread维护一个ThreadLocalMap映射表，这个映射表的key是每个线程的ThreadLocal实例本身，value是真正需要存储的Object。</p>
+<p>用法：<br>initialValue函数：用来设置ThreadLocal的初始值<br>get函数：用来获取与当前线程关联的ThreadLocal的值<br>set函数：用来设置当前线程的ThreadLocal的值<br>remove函数：用来将当前线程的ThreadLocal绑定的值删除</p>
+<h3 id="handler的内在原理"><a href="#handler的内在原理" class="headerlink" title="handler的内在原理"></a>handler的内在原理</h3><p>消息队列为空会怎样？<br>消息队列为空时，消息队列的方法next就会一直阻塞，这样造成looper的loop方法也会被阻塞，直到Looper检测到消息队列中有新的消息时</p>
+<h3 id="Looper原理"><a href="#Looper原理" class="headerlink" title="Looper原理"></a>Looper原理</h3><p>Looper主要是用来传递消息的，在消息机制里面扮演者一种消息循环的角色，会不停的从消息队列中查看是否有新消息，有消息的话就取出来才交给handler处理，没有的话就一直阻塞<br>Looper是存在于线程中的，一个线程中有Looper才能工作，<br>Prepare(): 创建Looper，在构造函数里面会声明一个消息队列，用于存放新收到的消息<br>Loop(): 启动消息循环<br>主要是loop函数起作用， 死循环，跳出循环的条件（消息队列的next方法）</p>
+<h3 id="Android进程与线程的区别"><a href="#Android进程与线程的区别" class="headerlink" title="Android进程与线程的区别"></a>Android进程与线程的区别</h3><p>操作系统上来说：</p>
+<blockquote>
+<p>进程是资源的分配和调度的一个独立单元，而线程是CPU调度的基本单元.</p>
+</blockquote>
+<blockquote>
+<p>同一个进程中可以包括多个线程，并且线程共享整个进程的资源（寄存器、堆栈、上下文），一个进程至少包括一个线程。</p>
+</blockquote>
+<blockquote>
+<p>进程有自己独立的地址空间，线程共享所属进程的地址空间。</p>
+</blockquote>
+<blockquote>
+<p>线程中执行时一般都要进行同步和互斥，因为他们共享同一进程的所有资源</p>
+</blockquote>
+<p>在安卓上体现：</p>
+<blockquote>
+<p>一个进程看成一个独立的程序，默认情况下一个app运行在一个进程内。</p>
+</blockquote>
+<blockquote>
+<p>同样的，一个进程可以有多个线程，线程共享所属进程的地址空间，但是每个线程又有自己的栈空间。</p>
+</blockquote>
+<p>注：进程的资源包括各种表格、内存空间、磁盘空间、I／O设备等。</p>
+<h3 id="IPC（进程间通信）的实现方法有哪些"><a href="#IPC（进程间通信）的实现方法有哪些" class="headerlink" title="IPC（进程间通信）的实现方法有哪些"></a>IPC（进程间通信）的实现方法有哪些</h3><p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180426/A81G5DlI2b.png" alt=""></p>
+<h3 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h3><p>一般来说，内存泄漏都是因为泄漏对象的引用被传递到该对象的范围之外，或者说内存泄漏是因为持有对象的长期引用，导致对象无法被 GC 回收。<br>开发过程中有没有实际遇到内存泄露情况，怎么解决的。</p>
+<blockquote>
+<p>单例造成的内存泄漏，单例是静态的，生命周期和应用的生命周期一样长，如果说单例获取的context是一个activity的context，那么当前activity销毁的时候还被引用，资源不能及时被回收，解决方法，使传入的context参数为application的context, context.getApplicationContext();</p>
+</blockquote>
+<blockquote>
+<p>匿名内部内部类或者非静态内部类创建了一个静态的实例，他们都会持有外部类的引用，该实例的生命周期和应用的一样长，这就导致了该静态实例一直会持有该Activity的引用，导致Activity的内存资源不能正常回收。</p>
+</blockquote>
+<blockquote>
+<p>Handler造成的内存泄漏，非静态匿名内部类的实例，持有外部类Activity的引用，消息队列是在一个Looper线程中不断轮询处理消息，当这个Activity退出时消息队列中还有未处理的消息或者正在处理消息，而消息队列中的Message持有handler实例的引用，handler又持有Activity的引用，所以导致该Activity的内存资源无法及时回收，解决方法，将内部类声明为静态的，对Handler持有的对象使用弱引用，这样在回收时可以回收Handler持有的对象，避免了Activity，或者在onDestroy中中断子线程的运行。</p>
+</blockquote>
+<blockquote>
+<p>资源未关闭注销造成的内存泄漏，EventBus、BroadcastReceiver，ContentObserver，File，Cursor，Stream，Bitmap等资源的使用，应该在Activity销毁时及时关闭或者注销，否则这些资源将不会被回收，造成内存泄漏。</p>
+</blockquote>
+<blockquote>
+<p>线程导致内存泄漏。我们经常会执行一些长期运行的任务，避免在这些任务中持有 Activity 对象的引用，如果持有了引用的话，我们应该在对象生命周期结束的时候，释放引用。<br>解决方法：</p>
+</blockquote>
+<p><strong>一句话归纳：</strong>（生命周期比Activity长的类不要去强引用Activity）</p>
+<h3 id="内存溢出（OOM）"><a href="#内存溢出（OOM）" class="headerlink" title="内存溢出（OOM）"></a>内存溢出（OOM）</h3><p>原理：系统会给每一个app的堆内存分配一个固定值heapSize，app运行一段时间后堆内存超过了系统规定的最大值heapSize。<br>主要是图片Bitmap的操作上，图片太大了，以及内存泄漏造成的</p>
+<h3 id="什么是ANR，如何避免"><a href="#什么是ANR，如何避免" class="headerlink" title="什么是ANR，如何避免"></a>什么是ANR，如何避免</h3><p>Application Not Responding，在Android中，活动管理器和窗口管理器这两个系统服务负责监视应用程序的响应，当用户操作在5秒内应用程序未做出响应，或者BroadcastReceiver在10秒内没有执行完毕，就会出现应用程序无响应对话框，即是ANR</p>
+<h3 id="什么情况会导致Force-Close-如何避免-能否捕获导致其的异常"><a href="#什么情况会导致Force-Close-如何避免-能否捕获导致其的异常" class="headerlink" title="什么情况会导致Force Close ?如何避免?能否捕获导致其的异常?"></a>什么情况会导致Force Close ?如何避免?能否捕获导致其的异常?</h3><p>导致出现Force Close的原因有很多，常见的有比如空指针啦，类没有找到啦，资源没找到，就连Android API使用的顺序错误也可能导致（比如setContentView()之前进行了findViewById()操作）；<br>编写程序时逻辑连贯、思维缜密；<br>能捕获异常，在logcat中能看到异常信息。</p>
+<h3 id="NDK是什么"><a href="#NDK是什么" class="headerlink" title="NDK是什么"></a>NDK是什么</h3><p>NDK是用来给安卓手机开发软件用的，但是和SDK不同的是它用的是C语言，而SDK用的是Java语言。<br>NDK开发的软件在安卓的环境里是直接运行的，一般只能在特定的CPU指令集的机器上运行，而且C语言可以直接和硬件对话，因此一般用它开给手机开发驱动或底层应用；而SDK开发出的软件在安卓上靠Dalvik虚拟机来运行，所以如果没有特殊的需要或署专门针对某个硬件去开发，那就一般用SDK。<br>NDK是一系列工具的集合，帮助开发者迅速地开发C/C++动态库，并能自动将so和java应用打成apk包；NDK集成了交叉编译器，并提供了相应的mk文件和隔离CPU、平台等差异，开发人员只需简单的修改mk文件就可以创建出so</p>
+<h3 id="如何将SQLite数据库与apk文件一起发布"><a href="#如何将SQLite数据库与apk文件一起发布" class="headerlink" title="如何将SQLite数据库与apk文件一起发布"></a>如何将SQLite数据库与apk文件一起发布</h3><p>可以将XX.db文件复制到Eclipse Android工程中的res\raw目录中，如图1所示。所有在res\raw目录中的文件不会被压缩，这样可以直接提取该目录中的文件。<br>使用openDatabase方法来打开数据库文件，如果该文件不存在，系统会自动创建/sdcard/dictionary目录，并将res\raw目录中的 XX.db文件复制到/sdcard/dictionary目录中。</p>
+<h3 id="View的事件分发机制"><a href="#View的事件分发机制" class="headerlink" title="View的事件分发机制"></a>View的事件分发机制</h3><h3 id="View的绘制机制"><a href="#View的绘制机制" class="headerlink" title="View的绘制机制"></a>View的绘制机制</h3><h3 id="ListView优化"><a href="#ListView优化" class="headerlink" title="ListView优化"></a>ListView优化</h3><blockquote>
+<p>使用convertView保存加载好的布局，当使用getView()方法时，可以将缓存好的布局重用，避免从新加载。便于复用View</p>
+</blockquote>
+<blockquote>
+<p>使用ViewHolder保存控件实例，当convertView为null的时候，就是用LayoutInflater加载布局，创建一个ViewHolder并将所有控件存放在里面，然后View.settag()将ViewHolder保存在View里面，当convertView不为null的时候，通过view.getTag（）把ViewHolder重新提取出来，这一样就避免多次加载控件的实例，便于复用控件实例</p>
+</blockquote>
+<blockquote>
+<p>ListView加载图片时, 如果需要显示从网络上下载的图片的话，我们不要在ListView滑动的时候加载图片，那样会使ListView变得卡顿，所以我们需要再监听器里面监听ListView的状态，如果滑动的时候，停止加载图片，如果没有滑动，则开始加载图片。</p>
+</blockquote>
+<h3 id="RecyclerView和ListView"><a href="#RecyclerView和ListView" class="headerlink" title="RecyclerView和ListView"></a>RecyclerView和ListView</h3><p>ViewHolder: ListView种需要自己来定义，可以实现可以不实现，而在RecyclerView中必须要自己实现RecyclerView.ViewHolder<br>LayoutManager：在布局效果上，RecyclerView支持线性布局、网格布局、瀑布流布局三种效果，同时还能够控制横向还是纵向滚动，从效果上recyclerview的使用场景更多。而ListView在Android API中只支持<br>ItemAnimator： 提供在删除或添加item时产生动画效果，<br>各自缓存原理，ListView是两级缓存，recyclerview是四级缓存。</p>
+<h3 id="如何优雅的展示Bitmap大图"><a href="#如何优雅的展示Bitmap大图" class="headerlink" title="如何优雅的展示Bitmap大图"></a>如何优雅的展示Bitmap大图</h3><p>主要目的：避免程序占用了过高的内存就容易出现OOM<br>压缩：使用BitmapFactory提供的解析方法，BitmapFactory.Options参数，计算压缩因子inSampleSize<br>使用图片缓存：LruCache和LruDiskCache</p>
+<h3 id="Bitmap的四种属性"><a href="#Bitmap的四种属性" class="headerlink" title="Bitmap的四种属性"></a>Bitmap的四种属性</h3><p>每种属性队形的大小。</p>
+<h3 id="多进程和多线程的实现，进程和线程区别"><a href="#多进程和多线程的实现，进程和线程区别" class="headerlink" title="多进程和多线程的实现，进程和线程区别"></a>多进程和多线程的实现，进程和线程区别</h3><p>1、子进程和父进程有不同的代码和数据空间，而多个线程则共享数据空间，每个线程有自己的执行堆栈和程序计数器为其执行上下文。<br>2、进程间相互独立，同一进程的各线程间共享。某进程内的线程在其它进程不可见。<br>3、进程间通信IPC，线程间可以直接读写进程数据段（如全局变量）来进行通信——需要进程同步和互斥手段的辅助，以保证数据的一致性。<br>4、线程上下文切换比进程上下文切换要快得多。<br>（1）一个线程只能属于一个进程，而一个进程可以有多个线程，但至少有一个线程。<br>（2）资源分配给进程，同一进程的所有线程共享该进程的所有资源。<br>（3）处理机分给线程，即真正在处理机上运行的是线程。<br>（4）线程在执行过程中，需要协作同步。不同进程的线程间要利用消息通信的办法实现同步。</p>
+<h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><p>Java8中的新功能<br>Interface函数接口的<br>使用Lambda表达式必须满足只有一个待实现方法</p>
+<p><strong>和匿名内部类的不同</strong><br>lambda表达式是某些匿名表达式的简写<br>【相同点】</p>
+<ol>
+<li>都可以直接访问”effectively final”的局部变量，以及外部类的成员变量（包括实例变量和类变量）</li>
+<li>都可以直接调用从接口中继承的默认方法。<br>【区别】</li>
+<li>匿名内部类可以为任意接口创建实例——不管有多少个抽象方法，只要匿名内部类实现了所有方法即可。<br>但是Lambda表达式只能为函数式接口创建实例，只有一个待实现方法。</li>
+<li>匿名内部类可以为抽象类甚至普通类创创建实例，<br>但lambda表达式只能为函数式接口创建实例。</li>
+<li>匿名内部类实现的抽象方法体允许调用接口中的默认方法，<br>但Lambda表达式的代码块不允许调用接口中的默认方法。</li>
+</ol>
+<h3 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h3><p>单例、工厂、适配器、责任链、观察者<br>设计模式六大原则：</p>
+<blockquote>
+<p>开闭原则（Open Close Principle）<br>开闭原则就是说对扩展开放，对修改关闭。在程序需要进行拓展的时候，不能去修改原有的代码，实现一个热插拔的效果。所以一句话概括就是：为了使程序的扩展性好，易于维护和升级。想要达到这样的效果，我们需要使用接口和抽象类，后面的具体设计中我们会提到这点。</p>
+</blockquote>
+<blockquote>
+<p>里氏代换原则（Liskov Substitution Principle）<br>里氏代换原则(Liskov Substitution Principle LSP)面向对象设计的基本原则之一。<br>里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。<br>LSP是继承复用的基石，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。里氏代换原则是对“开-闭”原则的补充。实现“开-闭”原则的关键步骤就是抽象化。而基类与子类的继承关系就是抽象化的具体实现，所以里氏代换原则是对实现抽象化的具体步骤的规范。</p>
+</blockquote>
+<blockquote>
+<p>   依赖倒转原则（Dependence Inversion Principle）<br>这个是开闭原则的基础，具体内容：真对接口编程，依赖于抽象而不依赖于具体。</p>
+</blockquote>
+<blockquote>
+<p>   接口隔离原则（Interface Segregation Principle）<br>这个原则的意思是：使用多个隔离的接口，比使用单个接口要好。还是一个降低类之间的耦合度的意思，从这儿我们看出，其实设计模式就是一个软件的设计思想，从大型软件架构出发，为了升级和维护方便。所以上文中多次出现：降低依赖，降低耦合。</p>
+</blockquote>
+<blockquote>
+<p>   迪米特法则（最少知道原则）（Demeter Principle）<br>为什么叫最少知道原则，就是说：一个实体应当尽量少的与其他实体之间发生相互作用，使得系统功能模块相对独立。</p>
+</blockquote>
+<blockquote>
+<p>   合成复用原则（Composite Reuse Principle）<br>原则是尽量使用合成/聚合的方式，而不是使用继承。</p>
+</blockquote>
+<h3 id="EventBus"><a href="#EventBus" class="headerlink" title="EventBus"></a>EventBus</h3><p>发布/订阅事件总线，<br>基本使用：解耦性高，开销小，<br>三要素：<br>Event：任意类型的对象<br>Subscriber：在EventBus3.0之后，事件处理的方法可以随便取名，但是需要添加一个注解@Subscribe，并且要指定线程模型（默认为POSTING）<br>Publisher：能在任意线程任意位置发送事件，直接调用EventBus的post(Event)方法<br>线程模型ThreadMode：</p>
+<ul>
+<li>POSTING（默认）</li>
+<li>MAIN</li>
+<li>BACKGROUND</li>
+<li>ASYNC</li>
+</ul>
+<p>使用方法：</p>
+<pre><code class="java">   @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMoonEvent(MessageEvent messageEvent){
+        tv_message.setText(messageEvent.getMessage());
+    }
+</code></pre>
+<p>使用步骤：<br>（1）    添加依赖<br>（2）    在自定义一个类<br>（3）    要接收消息的页面注册<br>（4）    发送消息<br>（5）    接受消息的页面实现订阅函数（有四种类型的函数）<br>（6）    解除注册</p>
+<p>支持粘性事件：发送事件之后才订阅该事件，依然能够接收该事件</p>
+<p>EventBus2.0的版本中，</p>
+<blockquote>
+<p>onEvent：事件在哪个线程发布出来的，onEvent就会在这个线程中运行，在onEvent方法中不能执行耗时操作，如果执行耗时操作容易导致事件分发延迟。</p>
+</blockquote>
+<blockquote>
+<p>onEventMainThread：不论事件是在哪个线程中发布出来的，接收事件就会在UI线程中运行，所以可以在里面更新UI，不能执行耗时操作</p>
+</blockquote>
+<blockquote>
+<p>onEventBackground: 如果事件是在UI线程中发布出来的，那么onEventBackground就会在子线程中运行，如果事件本来就是子线程中发布出来的，那么onEventBackground函数直接在该子线程中执行。</p>
+</blockquote>
+<blockquote>
+<p>onEventAsync：无论事件在哪个线程发布，都会创建新的子线程在执行onEventAsync</p>
+</blockquote>
+<h3 id="AsyncTask"><a href="#AsyncTask" class="headerlink" title="AsyncTask"></a>AsyncTask</h3><p>是一个abstract类，底层是对Handler与线程池的封装，使用线程池的主要原因是避免不必要的创建及销毁线程的开销。</p>
+<pre><code class="java">public abstract class AsyncTask&lt;Params, Progress, Result&gt;
+</code></pre>
+<ul>
+<li>Params：doInBackground方法的参数类型；</li>
+<li>Progress：AsyncTask所执行的后台任务的进度类型；</li>
+<li>Result：后台任务的返回结果类型。</li>
+</ul>
+<p>提供的方法：除了doInBackground方法由AsyncTask内部线程池执行外，其余方法均在主线程中执行。</p>
+<blockquote>
+<p>onPreExecute() //此方法会在后台任务执行前被调用，用于进行一些准备工作 </p>
+</blockquote>
+<blockquote>
+<p>doInBackground(Params… params) //此方法中定义要执行的后台任务，在这个方法中可以调用publishProgress来更新任务进度（publishProgress内部会调用onProgressUpdate方法） </p>
+</blockquote>
+<blockquote>
+<p>onProgressUpdate(Progress… values) //由publishProgress内部调用，表示任务进度更新 </p>
+</blockquote>
+<blockquote>
+<p>onPostExecute(Result result) //后台任务执行完毕后，此方法会被调用，参数即为后台任务的返回结果</p>
+</blockquote>
+<blockquote>
+<pre><code> onCancelled() //此方法会在后台任务被取消时被调用
+</code></pre></blockquote>
+<p><strong>存在的不足：</strong></p>
+<ul>
+<li>AsyncTask对象必须在主线程中创建 </li>
+<li>AsyncTask对象的execute方法必须在主线程中调用 </li>
+<li>一个AsyncTask对象只能调用一次execute方法</li>
+</ul>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li><p>AsyncTask实例必须在UI Thread中创建</p>
+</li>
+<li><p>execute方法必须在UI Thread中调</p>
+</li>
+<li><p>onPreExecute()、onPostExecute(),、doInBackground() 和 onProgressUpdate()这四个方法都是回调方法，Android会自动调用，我们不应自己调用。</p>
+</li>
+<li><p>对于一个AsyncTack的实例，只能执行一次execute方法，在该实例上第二次执行execute方法时就会抛出异常</p>
+</li>
+</ul>
+<p><strong>OkHttp</strong><br>特点：</p>
+<ul>
+<li>支持http2，对一台机器的所有请求共享同一个socket </li>
+<li>内置连接池，支持连接复用，减少延迟 </li>
+<li>支持透明的gzip压缩响应体 </li>
+<li>通过缓存避免重复的请求 </li>
+<li>请求失败时自动重试主机的其他ip，自动重定向 </li>
+<li>好用的API</li>
+</ul>
+<p>定义一个OkHttpClient， 定义一个Request,将url添加到Request,</p>
+<pre><code class="java">mHttpClient = new OkHttpClient();
+Request request = new Request.Builder().url(url).build();
+response = mHttpClient.newCall(request).execute();
+</code></pre>
+<p>执行函数：同步请求execute或者异步请求enqueue（new Callback（））</p>
+<h3 id="Retrofit原理："><a href="#Retrofit原理：" class="headerlink" title="Retrofit原理："></a>Retrofit原理：</h3><p>使用 Retrofit 的步骤共有7个：<br>步骤1：添加Retrofit库的依赖<br>步骤2：创建 接收服务器返回数据 的类<br>步骤3：创建 用于描述网络请求 的接口<br>步骤4：创建 Retrofit 实例<br>步骤5：创建 网络请求接口实例 并 配置网络请求参数<br>步骤6：发送网络请求（异步 / 同步）</p>
+<h3 id="RxJava原理"><a href="#RxJava原理" class="headerlink" title="RxJava原理"></a>RxJava原理</h3><p>优缺点, map，flatmap的原理,可不可以多次subscribeOn，ObserveOn，会有什么后果。</p>
+<p>基于观察者模式实现的异步调用，简洁，链式调用，处理复杂的逻辑的时候，消除或者减少嵌套使用的次数，代码更加容易理解</p>
+<blockquote>
+<p>flatMap() 和 map() 有一个相同点：它也是把传入的参数转化之后返回另一个对象，<br>flatMap()和map() 不同的是， flatMap()中返回的是个 Observable 对象，并且这个 Observable 对象并不是被直接发送到了 Subscriber 的回调方法中。</p>
+</blockquote>
+<p><strong>flatMap() 的原理：</strong></p>
+<ol>
+<li>使用传入的事件对象创建一个 Observable 对象；</li>
+<li>并不发送这个 Observable, 而是将它激活，于是它开始发送事件；</li>
+<li>每一个创建出来的 Observable 发送的事件，都被汇入同一个 Observable ，而这个 Observable 负责将这些事件统一交给 Subscriber 的回调方法。<br>这三个步骤，把事件拆成了两级，通过一组新创建的 Observable 将初始的对象『铺平』之后通过统一路径分发了下去。<br>ObserveOn（）可以使用多次，一个observeOn() 指定的是 一个特性Observable 所对应的 Subscriber所在的线程，即Observable的直接下级Subscriber， 但是当我们使用lift（）函数的时候，过程中会出现对个Observable，然后对应多个observer,因此这个使用就会使用到多个observeOn()，然后在代码上体现在observeOn() 指定的是紧跟着它之后的操作所在的线程：</li>
+</ol>
+<pre><code class="java">Observable.just(1, 2, 3, 4) // IO 线程，由 subscribeOn() 指定
+    .subscribeOn(Schedulers.io())
+    .observeOn(Schedulers.newThread())
+    .map(mapOperator) // 新线程，由 observeOn() 指定
+    .observeOn(Schedulers.io())
+    .map(mapOperator2) // IO 线程，由 observeOn() 指定
+    .observeOn(AndroidSchedulers.mainThread) 
+    .subscribe(subscriber);  // Android 主线程，由 observeOn() 指定
+</code></pre>
+<p>subscribeOn()是不可以使用多次的，因为起作用的只有一个原始被订阅源所在的那个subscribeOn()，所以使用多次也没什么意义。</p>
+<p>Observable (可观察者，即被观察者)、 Observer (观察者)/subscriber (订阅者)、subscriber (订阅)事件。Observable 和 Observer 通过 subscribe() 方法实现订阅关系，从而 Observable 可以在需要的时候发出事件来通知 Observer。</p>
+<p>Observer/ subscriber的创建方法，注意带上参数类型，解除订阅的方法</p>
+<p>创建 Observable，三种方法，Observable 的OnSubscribe 对象：会被存储在返回的 Observable 对象中，它的作用相当于一个计划表，当 Observable 被订阅的时候，OnSubscribe 中定义好的 call() 方法会自动调用，执行一些具体的逻辑</p>
+<p>重点是Create函数的写法：参数，参数类型等</p>
+<pre><code class="java">Observable.create(new OnSubscribe&lt;Drawable&gt;() {
+    @Override
+    public void call(Subscriber&lt;? super Drawable&gt; subscriber) {
+        Drawable drawable = getTheme().getDrawable(drawableRes));
+        subscriber.onNext(drawable);
+        subscriber.onCompleted();
+    }
+})
+</code></pre>
+<p>订阅函数：observable.subscribe(subscriber);</p>
+<p>内部核心代码：</p>
+<pre><code class="java">public Subscription subscribe(Subscriber subscriber) {
+    subscriber.onStart();
+    onSubscribe.call(subscriber);    //事件发送的逻辑开始运行
+    return subscriber; 
+}
+</code></pre>
+<p>subscribe() 还支持不完整定义的回调</p>
+<pre><code class="java">Action1&lt;String&gt; onNextAction = new Action1&lt;String&gt;() {   //注意Action1的含义
+    // onNext()
+    @Override
+    public void call(String s) {
+        Log.d(tag, s);
+    }
+};
+// 自动创建 Subscriber ，并使用 onNextAction 来定义 onNext()
+observable.subscribe(onNextAction);
+</code></pre>
+<blockquote>
+<p>Schedulers.immediate(): 直接在当前线程运行，相当于不指定线程。这是默认的 Scheduler。</p>
+</blockquote>
+<blockquote>
+<p>Schedulers.newThread(): 总是启用新线程，并在新线程执行操作。</p>
+</blockquote>
+<blockquote>
+<p>Schedulers.io(): I/O 操作（读写文件、读写数据库、网络信息交互等）所使用的 Scheduler。行为模式和 newThread() 差不多，区别在于 io() 的内部实现是是用一个无数量上限的线程池，可以重用空闲的线程，因此多数情况下 io() 比 newThread() 更有效率。不要把计算工作放在 io() 中，可以避免创建不必要的线程。</p>
+</blockquote>
+<blockquote>
+<p>Schedulers.computation(): 计算所使用的 Scheduler。这个计算指的是 CPU 密集型计算，即不会被 I/O 等操作限制性能的操作，例如图形的计算。这个 Scheduler 使用的固定的线程池，大小为 CPU 核数。不要把 I/O 操作放在 computation() 中，否则 I/O 操作的等待时间会浪费 CPU。</p>
+</blockquote>
+<blockquote>
+<p>另外， Android 还有一个专用的 AndroidSchedulers.mainThread()，它指定的操作将在 Android 主线程运行。</p>
+</blockquote>
+<p><strong>map()</strong> ：用于对象的转换，转换参数类型<br>注意Func1的含义与用法：一个参数</p>
+<pre><code class="java">Observable.just(&quot;images/logo.png&quot;) // 输入类型 String
+    .map(new Func1&lt;String, Bitmap&gt;() {
+        @Override
+        public Bitmap call(String filePath) { // 参数类型 String
+            return getBitmapFromPath(filePath); // 返回类型 Bitmap
+        }
+    })
+    .subscribe(new Action1&lt;Bitmap&gt;() {
+        @Override
+        public void call(Bitmap bitmap) { // 参数类型 Bitmap
+            showBitmap(bitmap);
+        }
+});
+</code></pre>
+<p><strong>flatMap()</strong>：</p>
+<pre><code class="java">Subscriber&lt;Course&gt; subscriber = new Subscriber&lt;Course&gt;() {
+    @Override
+    public void onNext(Course course) {
+        Log.d(tag, course.getName());
+    }
+    ...
+};
+Observable.from(students)
+    .flatMap(new Func1&lt;Student, Observable&lt;Course&gt;&gt;() {
+        @Override
+        public Observable&lt;Course&gt; call(Student student) {
+            return Observable.from(student.getCourses());
+        }
+    })
+    .subscribe(subscriber);
+</code></pre>
+<h3 id="Glide"><a href="#Glide" class="headerlink" title="Glide"></a>Glide</h3><h3 id="解析xml文件的两种方法：Pull和SAX"><a href="#解析xml文件的两种方法：Pull和SAX" class="headerlink" title="解析xml文件的两种方法：Pull和SAX"></a>解析xml文件的两种方法：Pull和SAX</h3><p>Pull解析方式：<br>基于事件的模式，需要自己获取产生的事件然后做相应的操作。<br>特点：PULL解析器小巧轻便，解析速度快，简单易用，非常适合在Android移动设备中使用，Android系统内部在解析各种XML时也是用PULL解析器。<br>五种事件类型：</p>
+<ul>
+<li><p>START_DOCUMENT：文档开始，解析器还未读取到任何输入的时候</p>
+</li>
+<li><p>START_TAG：解析到开始标签</p>
+</li>
+<li>TEXT：解析到文本节点</li>
+<li>END_TAG：解析到结束标签</li>
+<li>END_DOCUMENT：文档结束</li>
+</ul>
+<p><strong>XmlPullParser常用方法</strong><br>// 获取指定索引属性的属性值，索引从0开始</p>
+<blockquote>
+<p>public abstract String getAttributeValue (int index);</p>
+</blockquote>
+<p>// 返回当前事件类型</p>
+<blockquote>
+<p>public abstract int getEventType ();</p>
+</blockquote>
+<p>// 返回当前事件类型的内容字符串形式</p>
+<blockquote>
+<p>public abstract String getText ();</p>
+</blockquote>
+<p>// 获取下一个解析事件类型</p>
+<blockquote>
+<p>public abstract int next ();</p>
+</blockquote>
+<p>// 当前是开始标签，如果下一个元素为文本，则返回该文本字符串，<br>// 如果下一个元素是结束标签，则返回空字符串，其它情况将抛出异常</p>
+<blockquote>
+<p>public abstract String nextText ();</p>
+</blockquote>
+<p>// 设置即将被解析的输入流</p>
+<blockquote>
+<p>public abstract void setInput (InputStream inputStream, String inputEncoding);</p>
+</blockquote>
+<p><strong>SAX解析方式</strong><br>也是事件驱动的模式<br>特点：边扫描边解析，自顶向下依次解析，由于边扫描边解析，所以它解析XML具有速度快，占用内存少的优点。<br>方法：<br>重写一个继承DefaultHandler的类,然后重写一下方法。</p>
+<blockquote>
+<p>startDocument()：文档解析开始时调用，该方法只会调用一次</p>
+</blockquote>
+<blockquote>
+<p>startElement(String uri, String localName, String qName, Attributes attributes):标签（节点）解析开始时调用</p>
+<ul>
+<li>uri：xml文档的命名空间</li>
+<li>localName：标签的名字</li>
+<li>qName：带命名空间的标签的名字</li>
+<li>attributes：标签的属性集</li>
+<li>characters(char[] ch, int start, int length)：解析标签的内容的时候调用</li>
+<li>ch：当前读取到的TextNode(文本节点)的字节数组</li>
+<li>start：字节开始的位置，为0则读取全部</li>
+<li>length：当前TextNode的长度</li>
+<li>endElement(String uri, String localName, String qName)：标签（节点）解析结束后调用</li>
+<li>endDocument()：文档解析结束后调用，该方法只会调用一次</li>
+</ul>
+</blockquote>
+<p>最后在需要解析的地方调用：</p>
+<pre><code class="java">String responseData = response.body().string();
+parseXMLWithSAX(responseData);
+</code></pre>
+<p>解析Json数据的两种可行方式：JSONObject和GSON</p>
+<p><strong>JSONObject的方式：</strong><br>结合JSONObject这个对象，结合JSONArray，可以将简单的Json字符串， 嵌套的json字符串，Bean对象，json数组转化为JSONObject<br>从JSONObject对象中获取值的方法：obj.get(属性名)；<br>Obj.put(“level”, “A”);</p>
+<p><strong>GSON解析：</strong><br>通过Java Bean的方式：</p>
+<pre><code class="java">List&lt;App&gt; applist = gson.fromJson(jsonData. New TypeToken&lt;List&lt;App&gt;&gt;) (){}.getType());
+</code></pre>
+<p>其中，jsonData为reponse.Body();App为自定义的java Bean;</p>
+<h3 id="Json有什么优劣势"><a href="#Json有什么优劣势" class="headerlink" title="Json有什么优劣势"></a>Json有什么优劣势</h3><p>优点：</p>
+<ul>
+<li>Json的分隔符简化了数据访问</li>
+<li>数据格式简单，方便读写，传输效率高</li>
+<li>支持语言很多</li>
+</ul>
+<p>缺点：</p>
+<h3 id="自定义View过程"><a href="#自定义View过程" class="headerlink" title="自定义View过程"></a>自定义View过程</h3><p>onMeasure()、onLayout()、onDraw()</p>
+<h2 id="Java相关"><a href="#Java相关" class="headerlink" title="Java相关"></a>Java相关</h2><h3 id="int和Integer的区别"><a href="#int和Integer的区别" class="headerlink" title="int和Integer的区别"></a>int和Integer的区别</h3><p>1、Integer是int的包装类，int则是java的一种基本数据类型<br>2、Integer变量必须实例化后才能使用，而int变量不需要<br>3、Integer实际是对象的引用，当new一个Integer时，实际上是生成一个指针指向此对象；而int则是直接存储数据值<br>4、Integer的默认值是null，int的默认值是0</p>
+<h3 id="Java面向对象的三个特征与含义"><a href="#Java面向对象的三个特征与含义" class="headerlink" title="Java面向对象的三个特征与含义"></a>Java面向对象的三个特征与含义</h3><p>封装：封装是指将某事物的属性和行为包装到对象中，这个对象只对外公布需要公开的属性和行为，而这个公布也是可以有选择性的公布给其它对象。<br>继承：继承是子对象可以继承父对象的属性和行为<br>多态：</p>
+<h3 id="什么是多态"><a href="#什么是多态" class="headerlink" title="什么是多态"></a>什么是多态</h3><p>含义：我的理解是就像名字一样，表现出多个形态。父类的引用变量指向子类对象，当调用父类中存在的方法时，实际上会调用子类重写之后的方法几个相关概念：<br>重载（overload）<br>在子类中重写父类中的某个方法，这两个方法函数名相同，但是参数不同，可以是参数的类型或者参数的个数不同<br>覆盖（override）<br>在子类中重写父类中的某个函数，这两个函数函数名和参数都完全相同。<br>多态，三个条件</p>
+<ol>
+<li>要有继承关系</li>
+<li>子类要重写父类的方法：这里的重写指的是覆盖（override），</li>
+<li>父类数据的引用指向子类对象，例：Animal am = new Cat();</li>
+</ol>
+<h3 id="Interface与abstract类的区别"><a href="#Interface与abstract类的区别" class="headerlink" title="Interface与abstract类的区别"></a>Interface与abstract类的区别</h3><p>1). 抽象类可以有构造方法，接口中不能有构造方法。<br>2). 抽象类中可以有普通成员变量，接口中没有普通成员变量<br>3). 抽象类中可以包含非抽象的普通方法，接口中的所有方法必须都是抽象的，不能有非抽象的普通方法。<br>4). 抽象类中的抽象方法的访问类型可以是public，protected和（默认类型,虽然 eclipse下不报错，但应该也不行）,但接口中的抽象方法只能是public类型的，并且默认即为public abstract类型。<br>5). 抽象类中可以包含静态方法，接口中不能包含静态方法<br>6). 抽象类和接口中都可以包含静态成员变量，抽象类中的静态成员变量的访问类型可以任意，但接口中定义的变量只能是public static final类型，并且默认即为public static final类型。<br>7). 一个类可以实现多个接口，但只能继承一个抽象类。</p>
+<h3 id="反射的作用与原理"><a href="#反射的作用与原理" class="headerlink" title="反射的作用与原理"></a>反射的作用与原理</h3><h3 id="泛型相关"><a href="#泛型相关" class="headerlink" title="泛型相关"></a>泛型相关</h3><h3 id="Collection包结构，与Collections的区别"><a href="#Collection包结构，与Collections的区别" class="headerlink" title="Collection包结构，与Collections的区别"></a>Collection包结构，与Collections的区别</h3><p>Collections是个java.util下的类，它包含有各种有关集合操作的静态方法。<br>Collection是个java.util下的接口，它是各种集合结构的父接口。</p>
+<h3 id="equals方法是怎么来的"><a href="#equals方法是怎么来的" class="headerlink" title="equals方法是怎么来的"></a>equals方法是怎么来的</h3><p>equals 方法是子类从超类Object中继承的,所有继承Object类的方法都有，equals是用来进行比较的，可以在具体的类中自定义</p>
+<h3 id="hashcode和equals有什么关系"><a href="#hashcode和equals有什么关系" class="headerlink" title="hashcode和equals有什么关系"></a>hashcode和equals有什么关系</h3><p>hashCode()方法和equal()方法的作用一样，都是用来对比两个对象是否相等一致<br>有时候不同的对象他们生成的hashcode也会一样（生成hash值得公式可能存在的问题，比如因为表示位数被截断了）</p>
+<ol>
+<li>equal()相等的两个对象他们的hashCode()肯定相等，也就是用equal()对比是绝对可靠的。</li>
+<li>hashCode()相等的两个对象他们的equal()不一定相等，也就是hashCode()不是绝对可靠的。<br>每当需要对比的时候，首先用hashCode()去对比，如果hashCode()不一样，则表示这两个对象肯定不相等（也就是不必再用equal()去再对比了）,如果hashCode()相同，此时再对比他们的equal()，如果equal()也相同，则表示这两个对象是真的相同了，这样既能大大提高了效率也保证了对比的绝对正确性！</li>
+</ol>
+<h3 id="Object有公用方法："><a href="#Object有公用方法：" class="headerlink" title="Object有公用方法："></a>Object有公用方法：</h3><ul>
+<li>clone方法:实现对象的浅赋值</li>
+<li>getClass：返回运行时的类型</li>
+<li>toString：转化为字符串</li>
+<li>equals： 虽然很多说equals是比较值额，但是在Object中实际上还是比较地址的</li>
+<li>hashCode：比较两个对象的哈希值，一般用于哈希查找</li>
+<li>wait：使当前线程等待该对象的锁，当前线程具有该对象的锁</li>
+<li>notify，唤醒在该对象上等待的某个线程</li>
+<li>notifyAll：唤醒在该对象上等待的所有线程</li>
+</ul>
+<h3 id="Hashcode的作用"><a href="#Hashcode的作用" class="headerlink" title="Hashcode的作用"></a>Hashcode的作用</h3><p>hashCode方法就是根据一定的规则将与对象相关的信息（比如对象的存储地址，对象的字段等）映射成一个数值，这个数值称作为散列值。</p>
+<h3 id="Switch能否用string做参数"><a href="#Switch能否用string做参数" class="headerlink" title="Switch能否用string做参数"></a>Switch能否用string做参数</h3><p>这个和Java的版本有关，Java7之前无法使用字符串，在Java7以及以后的版本中可以使用字符串</p>
+<h3 id="String、StringBuffer与StringBuilder的区别"><a href="#String、StringBuffer与StringBuilder的区别" class="headerlink" title="String、StringBuffer与StringBuilder的区别"></a>String、StringBuffer与StringBuilder的区别</h3><blockquote>
+<p>String 是字符串常量，不可变的对象, 因此在每次对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String 对象。</p>
+</blockquote>
+<blockquote>
+<p>StringBuffer是字符串变量，可变的对象，每次结果都会对 StringBuffer 对象本身进行操作，而不是生成新的对象。并且StringBuffer是线程安全的，其很多方法可以带有synchronized关键字。</p>
+</blockquote>
+<blockquote>
+<p>StringBuilder也是字符串变量，很多方面都和StringBuffer类似，但是最大的区别是StringBuilder是线程不安全的。</p>
+</blockquote>
+<ol>
+<li>三者在执行速度方面的比较：StringBuilder &gt;  StringBuffer  &gt;  String</li>
+<li>StringBuffer：线程安全的、StringBuilder：线程非安全的 </li>
+</ol>
+<p>适用情况：</p>
+<ul>
+<li><p>String：适用于少量的字符串操作的情况</p>
+</li>
+<li><p>StringBuffer：适用多线程下在字符缓冲区进行大量操作的情况</p>
+</li>
+<li><p>StringBuilder：适用于单线程下在字符缓冲区进行大量操作的情况</p>
+</li>
+</ul>
+<h3 id="Comparator和Comparable"><a href="#Comparator和Comparable" class="headerlink" title="Comparator和Comparable"></a>Comparator和Comparable</h3><p>两种比较机制：Comparable 和 Comparator<br>Comparator，比较接口，涉及Collection的引入，具体的类本身不支持直接排序，重写Comparator内部的compareTo方法，可重用。<br>Comparable，排序的接口，具体的类内部实现compareTo方法，比如要比较两个Person，则需要在Person内部实现类方法compareTo，耦合性高</p>
+<h3 id="java的浅拷贝和深拷贝"><a href="#java的浅拷贝和深拷贝" class="headerlink" title="java的浅拷贝和深拷贝"></a>java的浅拷贝和深拷贝</h3><p><a href="http://blog.csdn.net/zhangjg_blog/article/details/18369201" target="_blank" rel="noopener">http://blog.csdn.net/zhangjg_blog/article/details/18369201</a></p>
+<h3 id="Java静态内部类和内部类的区别"><a href="#Java静态内部类和内部类的区别" class="headerlink" title="Java静态内部类和内部类的区别"></a>Java静态内部类和内部类的区别</h3><p>内部类的作用：</p>
+<blockquote>
+<p>封装，隐藏不想让别人看的东西</p>
+</blockquote>
+<blockquote>
+<p>完善多重继承，弥补Java只支持单继承的缺陷。当需要多重继承的时候，就可以实现多个内部类对应分别继承，实现外部类“多重继承”的效果。这也是内部类存在的最大意义。</p>
+</blockquote>
+<blockquote>
+<p>闭包，内部类不仅包含创建内部类的作用域的信息，还自动拥有一个指向此外围类对象的引用</p>
+</blockquote>
+<blockquote>
+<p>可以避免修改接口而实现同一个类中两种同名方法的调用，适用情况：当要继承的类和要实现的接口中有同名、同参数、同返回值的方法时。使用方法，让外部类去继承，内部类去实现接口</p>
+</blockquote>
+<p>（1） 被其他类访问：创建内部静态类实例的时候可以直接使用外部类名.内部类名访问内部类的静态成员或者需要新建一个内部类的实例来访问内部类的非静态成员。但非静态必须需要先新建一个外部类的实例，然后用外部类的实例创建内部类对象进行访问。<br>（2） 被外部类访问：对于非静态内部类外部类需要新建一个内部类的实例才能访问内部类，而对于静态内部类可以直接使用内部类类名访问内部类的静态成员或者新建一个内部类的实例访问内部类的非静态成员。<br>（3） 访问外部类：非静态内部类能够访问外部类的静态和非静态成员，所有访问权限。静态类不能访问外部类的非静态成员。他只能访问外部类的静态成员。<br>（4） 静态类和非静态类的共有区别：静态类，能够在这个类中定义静态的成员变量与成员方法，非静态内部类中不可以声明静态成员。</p>
+<p><strong>局部内部类</strong>：类定义在外部类的方法中，并且有自己的类名。局部内部类相当于一个局部变量，所以不能有访问控制符以及static等修饰符。局部内部类的访问（包括对象的创建、方法的调用）局限在外部类的方法内部。</p>
+<p><strong>匿名内部类</strong>：匿名内部类继承自一个类或者实现一个接口，使用方法是直接使用new 父类名称或者接口名称就可以创建自己匿名内部类的对象。</p>
+<p>静态内部类的设计意图<br>主要的思想是，不需要保存引用，直接使用方法或者变量</p>
+<h3 id="public等四个权限关键字的区别"><a href="#public等四个权限关键字的区别" class="headerlink" title="public等四个权限关键字的区别"></a>public等四个权限关键字的区别</h3><pre><code>访问权限   类   包  子类  其他包
+
+public     ∨   ∨   ∨     ∨
+
+protect    ∨   ∨   ∨     ×
+
+default    ∨   ∨   ×     ×
+
+private    ∨   ×   ×     ×
+</code></pre><h3 id="final作用："><a href="#final作用：" class="headerlink" title="final作用："></a>final作用：</h3><p>当用final修饰一个类时，表明这个类不能被继承，final类中的所有成员方法都会被隐式地指定为final方法<br>当用final修饰方法时，把方法锁定，以防任何继承类修改它的含义<br>当用final修饰变量，如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象（地址不可以改变，值可以改变）<br>当用final作用于类的成员变量时，成员变量必须在定义时或者构造器中进行初始化赋值，而且final变量一旦被初始化赋值之后，就不能再被赋值了。</p>
+<h3 id="static的作用："><a href="#static的作用：" class="headerlink" title="static的作用："></a>static的作用：</h3><p>修饰类成员变量，来让此变量变成类的所属，而不是类的对象所属（多个实例具有相同的值）<br>修饰类成员方法，可以使用”类名.方法名”的方式操作方法，不需要先new一个对象<br>修饰对象类的对象时，static修饰的成员会首先被初始化<br>修饰静态导包用法，将类的方法直接导入到当前类中，从而直接使用“方法名”即可调用类方法，更加方便。</p>
+<h3 id="try-里面return了finally还会执行吗"><a href="#try-里面return了finally还会执行吗" class="headerlink" title="try 里面return了finally还会执行吗"></a>try 里面return了finally还会执行吗</h3><p>1)、不管有木有出现异常，finally块中代码都会执行；<br>2)、当try和catch中有return时，finally仍然会执行；<br>3)、finally是在return后面的表达式运算后执行的（此时并没有返回运算后的值，而是先把要返回的值保存起来，管finally中的代码怎么样，返回的值都不会改变，任然是之前保存的值），所以函数返回值是在finally执行前确定的；<br>4)、finally中最好不要包含return，否则程序会提前退出，返回值不是try或catch中保存的返回值。</p>
+<h3 id="线程安全集合类与非线程安全集合类"><a href="#线程安全集合类与非线程安全集合类" class="headerlink" title="线程安全集合类与非线程安全集合类"></a>线程安全集合类与非线程安全集合类</h3><p>LinkedList、ArrayList、HashSet是非线程安全的，Vector是线程安全的;<br>HashMap是非线程安全的，HashTable是线程安全的;<br>StringBuilder是非线程安全的，StringBuffer是线程安全的。</p>
+<h3 id="classloader"><a href="#classloader" class="headerlink" title="classloader"></a>classloader</h3><p><a href="http://blog.csdn.net/briblue/article/details/54973413" target="_blank" rel="noopener">http://blog.csdn.net/briblue/article/details/54973413</a></p>
+<h3 id="Java中强软弱虚四种引用"><a href="#Java中强软弱虚四种引用" class="headerlink" title="Java中强软弱虚四种引用"></a>Java中强软弱虚四种引用</h3><p><a href="http://blog.csdn.net/zhuojianhai88/article/details/13503007" target="_blank" rel="noopener">http://blog.csdn.net/zhuojianhai88/article/details/13503007</a></p>
+<h3 id="foreach与正常for循环效率对比"><a href="#foreach与正常for循环效率对比" class="headerlink" title="foreach与正常for循环效率对比"></a>foreach与正常for循环效率对比</h3><h3 id="java保证线程安全有哪些方法"><a href="#java保证线程安全有哪些方法" class="headerlink" title="java保证线程安全有哪些方法"></a>java保证线程安全有哪些方法</h3><ol>
+<li>Synchronized</li>
+<li>使用锁</li>
+</ol>
+<h3 id="线程安全的理解："><a href="#线程安全的理解：" class="headerlink" title="线程安全的理解："></a>线程安全的理解：</h3><p>一段代码所在的进程中有多个线程在同时运行，而这些线程可能会同时运行这段代码。如果每次运行结果和单线程运行的结果是一样的，而且其他的变量的值也和预期的是一样的，<br>就是线程安全的。</p>
+<h3 id="Java有哪几种创建新线程的方法及区别"><a href="#Java有哪几种创建新线程的方法及区别" class="headerlink" title="Java有哪几种创建新线程的方法及区别"></a>Java有哪几种创建新线程的方法及区别</h3><p>继承Thread类创建线程类<br>通过Runnable接口创建线程类<br>通过Callable和Future创建线程</p>
+<h3 id="Thread和Runnable比较："><a href="#Thread和Runnable比较：" class="headerlink" title="Thread和Runnable比较："></a>Thread和Runnable比较：</h3><p>Thread是一个可以继承的类，Runnable是一个接口，并且从Thread的源码可以发现， Thread类也是Runnable接口的子类；<br>Runnable接口相对于继承Thread类来说，有如下优点：</p>
+<blockquote>
+<p>首先Runnable作为接口，可以避免由于Java的单继承特性带来的局限。</p>
+</blockquote>
+<blockquote>
+<p>适合多个相同程序代码的线程去处理同一资源的情况，支持线程间的资源共享。每个线程共享对象myRunnable的资源</p>
+</blockquote>
+<p>启动线程的方法：</p>
+<blockquote>
+<p>写一个类继承自Thread类,然后重写里面的run方法,用start方法启动线程</p>
+</blockquote>
+<blockquote>
+<p>写一个类实现Runnable接口,实现里面的run方法,用new Thread(Runnable target).start()方法来启动.</p>
+</blockquote>
+<h3 id="synchronized的用法"><a href="#synchronized的用法" class="headerlink" title="synchronized的用法"></a>synchronized的用法</h3><p>可否嵌套，可以嵌套，但是容易造成死锁，互相等待。<br>synchronized是Java中的关键字，是一种同步锁。它修饰的对象有以下几种： </p>
+<ol>
+<li>修饰一个代码块，被修饰的代码块称为同步语句块，其作用的范围是大括号{}括起来的代码，作用的对象是调用这个代码块的对象（此时这个对象不能执行其他的同步语句块）； </li>
+<li>修饰一个方法，被修饰的方法称为同步方法，其作用的范围是整个方法，作用的对象是调用这个方法的对象； </li>
+<li>修改一个静态的方法，其作用的范围是整个静态方法，作用的对象是这个类的所有对象； </li>
+<li>修改一个类，其作用的范围是synchronized后面括号括起来的部分，作用主的对象是这个类的所有对象。</li>
+</ol>
+<h3 id="Volatile的用法："><a href="#Volatile的用法：" class="headerlink" title="Volatile的用法："></a>Volatile的用法：</h3><h3 id="wait和sleep的区别，应用场景"><a href="#wait和sleep的区别，应用场景" class="headerlink" title="wait和sleep的区别，应用场景"></a>wait和sleep的区别，应用场景</h3><p>一般wait()和notify()方法使用于线程间的通信；sleep()方法用于暂停当前线程的执行。<br>sleep 是线程类（Thread）的静态方法，导致此线程暂停执行指定时间（阻塞当前线程），给执行机会给其他线程，但是监控状态依然保持，到时后会自动恢复，并且调用sleep不会释放对象锁。由于没有释放对象锁（锁还是存在），所以不能调用里面的同步方法。sleep必须捕获异常，可以自动唤醒<br>wait()方法是Object类里的方法；当一个线程执行到wait()方法时，它就进入到一个和该对象相关的等待池中，同时失去（释放）了对象的机锁（暂时失去机锁，wait(long timeout)超时时间到后还需要返还对象锁）；可以调用里面的同步方法，其他线程可以访问；必须要采用notify()和notifyAll()方法唤醒，<br>1，这两个方法来自不同的类分别是Thread和Object<br>2，最主要是sleep方法没有释放锁，而wait方法释放了锁，使得其他线程可以使用同步控制块或者方法。<br>3，wait，notify和notifyAll只能在同步控制方法或者同步控制块里面使用，而sleep可以在任何地方使用</p>
+<pre><code class="java">synchronized(x) {
+    x.notify()
+    //或者wait()
+}
+</code></pre>
+<p>4, sleep必须捕获异常，而wait，notify和notifyAll不需要捕获异常</p>
+<h3 id="死锁："><a href="#死锁：" class="headerlink" title="死锁："></a>死锁：</h3><p>死锁是指两个或两个以上的进程进在执行过程中，由于资源竞争或由于相互通信而造成的一种阻塞式现象，如果没有外力影响。那么它们将永远的持续下去， 此事称系统产生死锁现象，这种永远互相在等待的进程成为死锁。</p>
+<p><strong>死锁的四个产生必要条件：</strong></p>
+<p>1、（互斥）互斥条件：进程对所分配到的资源具有排他性使用，一段时间内某资源只由一个进程所占有。若此时还有其他请求资源，则请求者只能等待，知道占有资源的进程使用完毕释放。<br>2、（占有并等待）请求和保持条件：进程已经保持至少一个资源，但是又提出心得资源请求，而该资源已经被其他进程所占有，此时请求进程阻塞，但又对自己已经获得的其他资源保持不变。<br>3、（非抢占）不可剥夺条件：进程获得的资源，在未使用完之前，不能被剥夺，只能在使用完时有自己释放。<br>4、（循环等待）环路等待条件：在发生死锁时，必然存在一个进程–资源的环形链。</p>
+<h2 id="算法与数据结构相关"><a href="#算法与数据结构相关" class="headerlink" title="算法与数据结构相关"></a>算法与数据结构相关</h2><h3 id="链表和数组比较"><a href="#链表和数组比较" class="headerlink" title="链表和数组比较"></a>链表和数组比较</h3><pre><code>    数组静态分配内存，链表动态分配内存；
+
+    数组在内存中连续，链表不一定连续；
+
+    数组元素在栈区，链表元素在堆区；
+
+    数组利用下标定位，时间复杂度为O(1)，链表定位元素时间复杂度O(n)；
+
+    数组插入或删除元素的时间复杂度O(n)，链表的时间复杂度O(1)。
+</code></pre><h3 id="Hashmap的原理（很重要）"><a href="#Hashmap的原理（很重要）" class="headerlink" title="Hashmap的原理（很重要）"></a>Hashmap的原理（很重要）</h3><p>在另外一篇介绍容器的博客</p>
+<p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180426/ljG5K6bB9D.png" alt=""></p>
+<h3 id="Hashmap和hashtable比较"><a href="#Hashmap和hashtable比较" class="headerlink" title="Hashmap和hashtable比较"></a>Hashmap和hashtable比较</h3><h3 id="TreeMap、HashMap、LindedHashMap的区别"><a href="#TreeMap、HashMap、LindedHashMap的区别" class="headerlink" title="TreeMap、HashMap、LindedHashMap的区别"></a>TreeMap、HashMap、LindedHashMap的区别</h3><h3 id="ArrayList和LinkedList的实现和区别"><a href="#ArrayList和LinkedList的实现和区别" class="headerlink" title="ArrayList和LinkedList的实现和区别"></a>ArrayList和LinkedList的实现和区别</h3><h3 id="List与Set、Map"><a href="#List与Set、Map" class="headerlink" title="List与Set、Map"></a>List与Set、Map</h3><h3 id="Map、Set、List、Queue、Stack的特点与用法。"><a href="#Map、Set、List、Queue、Stack的特点与用法。" class="headerlink" title="Map、Set、List、Queue、Stack的特点与用法。"></a>Map、Set、List、Queue、Stack的特点与用法。</h3><h3 id="HashSet和TreeSet"><a href="#HashSet和TreeSet" class="headerlink" title="HashSet和TreeSet"></a>HashSet和TreeSet</h3><h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><pre><code class="java">void smap(int []a, int index1, int index2) {
+    int tem = a[index1];
+    a[index1] = a[index2];
+    a[index2] = tem;
+}
+
+int partion(int []a, int low, int high) {
+    int num = a[low];
+    while(low &lt; high) {
+        while(low &lt; high &amp;&amp; num &lt; a[high]) {
+            high--;
+        }
+        smap(a, low, high);
+        while(low &lt; high &amp;&amp; num &gt;= a[low]) {
+            low++;
+        }
+        smap(a, low, high);            
+    }
+    return low;
+}
+
+void quickSort(int []a, int low, int high) {
+    if(low &lt; high) {
+        int index = partion(a, low, high);
+        quickSort(a, low, index - 1);
+        quickSort(a, index + 1, high);
+    }
+}
+</code></pre>
+<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><h3 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h3><h3 id="AVL树-平衡二叉树"><a href="#AVL树-平衡二叉树" class="headerlink" title="AVL树(平衡二叉树)"></a>AVL树(平衡二叉树)</h3><ul>
+<li>左子树和右子树的高度之差的绝对值不超过1</li>
+<li>树中的每个左子树和右子树都是AVL树</li>
+<li>每个节点都有一个平衡因子(balance factor–bf),任一节点的平衡因子是-1,0,1。(每个节点的平衡因子等于右子树的高度减去左子树的高度 )  </li>
+</ul>
+<h3 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h3><h3 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h3><p>只能有最下面两层的子节点度数不为2</p>
+<h3 id="满二叉树"><a href="#满二叉树" class="headerlink" title="满二叉树"></a>满二叉树</h3><p>除了最下面一层外每个节点都有两个子节点</p>
+<p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180426/hh298Df396.png" alt=""></p>
+<p>红黑树<br><a href="https://blog.csdn.net/sun_tttt/article/details/65445754" target="_blank" rel="noopener">https://blog.csdn.net/sun_tttt/article/details/65445754</a></p>
+<p>Hash表<br>B+树</p>
+<h2 id="操作系统相关"><a href="#操作系统相关" class="headerlink" title="操作系统相关"></a>操作系统相关</h2><p>进程冲突，生产者消费者问题，设逻辑分页和物理分页好处是什么，什么是脏内存</p>
+<p>虚拟地址、逻辑地址、线性地址、物理地址的区别</p>
+<p><strong>什么是虚拟内存</strong></p>
+<p><strong>虚拟内存别称虚拟存储器（Virtual Memory）</strong></p>
+<p><strong>进程的几种状态</strong><br>三态模型：</p>
+<p>五态模型：</p>
+<p><strong>线程的几种状态</strong><br>线程只有3个基本状态：就绪，执行，阻塞</p>
+<p><strong>进程和线程的区别</strong><br>进程，是并发执行的程序在执行过程中分配和管理资源的基本单位，是一个动态概念，竟争计算机系统资源的基本单位。每一个进程都有一个自己的地址空间，即进程空间或(虚空间)。进程空间的大小只与处理机的位数有关，一个16位长处理机的进程空间大小为216，而32位处理机的进程空间大小为232。进程至少有5种基本状态,它们是：初始态，执行态，等待状态，就绪状态，终止状态。</p>
+<p>线程，在网络或多用户环境下，一个服务器通常需要接收大量且不确定数量用户的并发请求，为每一个请求都创建一个进程显然是行不通的，——无论是从系统资源开销方面或是响应用户请求的效率方面来看。因此，操作系统中线程的概念便被引进了。线程，是进程的一部分，一个没有线程的进程可以被看作是单线程的。线程有时又被称为轻权进程或轻量级进程，也是 CPU 调度的一个基本单位。</p>
+<p><strong>进程通信(IPC几种通信方式)</strong></p>
+<h2 id="计算机网络相关"><a href="#计算机网络相关" class="headerlink" title="计算机网络相关"></a>计算机网络相关</h2><h3 id="http1-1相比以前版本（http1-0）有什么改变"><a href="#http1-1相比以前版本（http1-0）有什么改变" class="headerlink" title="http1.1相比以前版本（http1.0）有什么改变"></a>http1.1相比以前版本（http1.0）有什么改变</h3><p>HTTP/1.0协议使用非持久连接,即在非持久连接下,一个tcp连接只传输一个Web对象,；<br>HTTP/1.1默认使用持久连接，一个tcp连接可以传输多个web对象</p>
+<h3 id="七层-五层模型"><a href="#七层-五层模型" class="headerlink" title="七层/五层模型"></a>七层/五层模型</h3><p>七层：物理层，链路层，网络层，传输层，会话层，表示层，应用层<br>五层：物理层，链路层，网络层，传输层，应用层<br>其中：</p>
+<blockquote>
+<p>表示层：信息语言语法语义以及它们的关联，如加密解密，转换翻译等<br>会话层：不同机器上的用户之间建立以及管理会话</p>
+</blockquote>
+<h3 id="Get和Post区别"><a href="#Get和Post区别" class="headerlink" title="Get和Post区别"></a>Get和Post区别</h3><p>GET主要是客户端的语义是请求获取指定的资源，主要用于客户端从服务端获取资源。GET方法是安全、幂等、可缓存的（除非有 Cache-ControlHeader的约束）,GET方法的报文主体没有任何语义，适合传输少量数据</p>
+<p>POST的语义是根据请求负荷（报文主体）对指定的资源做出处理，主要用于客户端旺服务端提交信息，具体的处理方式视资源类型而不同。POST不安全，不幂等，（大部分实现）不可缓存、对传送的数据大小没有限制</p>
+<p><strong>get和post区别</strong></p>
+<ol>
+<li><p>GET提交:<br>请求的数据会附在URL之后（就是把数据放置在HTTP协议头＜request-line＞中），以?分割URL和传输数据，多个参数用&amp;连接;例如：login.action?name=hyddd&amp;password=idontknow&amp;verify=%E4%BD%A0 %E5%A5%BD。如果数据是英文字母/数字，原样发送，如果是空格，转换为+，如果是中文/其他字符，则直接把字符串用BASE64加密，得出如： %E4%BD%A0%E5%A5%BD，其中％XX中的XX为该符号以16进制表示的ASCII。</p>
+</li>
+<li><p>POST提交：<br>把提交的数据放置在是HTTP包的包体＜request-body＞中。上文示例中红色字体标明的就是实际的传输数据</p>
+</li>
+</ol>
+<p>因此，GET提交的数据会在地址栏中显示出来，而POST提交，地址栏不会改变</p>
+<p><strong>传输数据的大小</strong>：<br>   首先声明,HTTP协议没有对传输的数据大小进行限制，HTTP协议规范也没有对URL长度进行限制。 而在实际开发中存在的限制主要有：</p>
+<p>   GET:特定浏览器和服务器对URL长度有限制，例如IE对URL长度的限制是2083字节(2K+35)。对于其他浏览器，如Netscape、FireFox等，理论上没有长度限制，其限制取决于操作系统的支持。</p>
+<p>   因此对于GET提交时，传输数据就会受到URL长度的限制。</p>
+<p>   POST:由于不是通过URL传值，理论上数据不受限。但实际各个WEB服务器会规定对post提交数据大小进行限制，Apache、IIS6都有各自的配置。</p>
+<p><strong>安全性</strong>：<br>    POST的安全性要比GET的安全性高。注意：这里所说的安全性和上面GET提到的“安全”不是同个概念。上面“安全”的含义仅仅是不作数据修改，而这里安全的含义是真正的Security的含义，比如：通过GET提交数据，用户名和密码将明文出现在URL上，因为(1)登录页面有可能被浏览器缓存， (2)其他人查看浏览器的历史纪录，那么别人就可以拿到你的账号和密码了</p>
+<h3 id="Http的报文结构"><a href="#Http的报文结构" class="headerlink" title="Http的报文结构"></a>Http的报文结构</h3><p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180426/HK0Le1E7cc.png" alt="请求报文"></p>
+<p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180426/HImLIiD8hg.png" alt="返回报文"></p>
+<h3 id="Http的状态码含义"><a href="#Http的状态码含义" class="headerlink" title="Http的状态码含义"></a>Http的状态码含义</h3><ul>
+<li>200 ：OK：请求成功</li>
+<li>204： 服务器成功处理了请求，但没有返回任何内容</li>
+<li>301  Moved Permanently：请求的网页已永久移动到新位置。当URLs发生变化时，使用301代码。搜索引擎索引中保存新的URL。 </li>
+<li>302： 请求的网页临时移动到新位置。搜索引擎索引中保存原来的URL。</li>
+<li>304： 如果网页自请求者上次请求后没有更新，则用304代码告诉搜索引擎机器人，可节省带宽和开销。</li>
+<li>400：Bad Request：一个通用差错代码，指示该请求不能被服务器理解</li>
+<li>403：服务器拒绝请求。</li>
+<li>404：Not Found：被请求的文档不在服务器上</li>
+<li>500：服务器遇到错误，无法完成请求。 </li>
+<li>503：服务器目前无法使用（由于超载或停机维护）</li>
+<li>505：HTTP Version Not Support: 服务器不支持当前http协议的版本</li>
+</ul>
+<h3 id="Http-request的几种类型"><a href="#Http-request的几种类型" class="headerlink" title="Http request的几种类型"></a>Http request的几种类型</h3><ul>
+<li>Get: 一般用来从客户端从服务器中读取内容，服务器将URL定位的资源放在响应报文的数据部分，回送给客户端</li>
+<li>Post:</li>
+<li>HEAD：HEAD就像GET，只不过服务端接受到HEAD请求后只返回响应头，而不会发送响应内容。当我们只需要查看某个页面的状态的时候，使用HEAD是非常高效的，因为在传输的过程中省去了页面内容。</li>
+<li>PUT</li>
+<li>DELETE</li>
+<li>OPTIONS</li>
+<li>TRACE</li>
+<li>CONNECT</li>
+</ul>
+<h3 id="HTTP和HTTPS协议的差别："><a href="#HTTP和HTTPS协议的差别：" class="headerlink" title="HTTP和HTTPS协议的差别："></a>HTTP和HTTPS协议的差别：</h3><p>超文本传输协议HTTP被用于在Web客户端程序和网站端程序之间传递信息，两个端系统之间通过HTTP报文进行会话，HTTP定义了这些报文的结构以及客户和服务器进行报文交换方式，它有两个很鲜明的特点：一是HTTP是一个无状态协议，二是它以明文方式发送内容，不提供任何方式的数据加密。<br>HTTPS就是为了解决HTTP协议的没办法加密的这一缺陷而产生的，毕竟不加密的话数据报文被窃取是很危险的，全称为安全套接字层超文本传输协议HTTPS，是在HTTP的基础上加入了SSL协议，使用SSL协议的加密算法来完成身份验证，并为浏览器和服务器之间的通信加密，它的安全基础是SSL协议。</p>
+<p>用的端口也不一样，前者是80，后者是443</p>
+<h3 id="SSL-TLS-握手"><a href="#SSL-TLS-握手" class="headerlink" title="SSL/TLS 握手"></a>SSL/TLS 握手</h3><p>SSL/TLS 协议是用来给HTTPS进行加密的，作用在 HTTP 协议之下，使用SSL的加密算法完成身份验证，防制报文信息被窃取（谈一谈HTTP的缺陷）</p>
+<p>过程：就是https对称加密的原理，如下</p>
+<p>https的非对称加密：非对称加密采用的是SSL协议完成的，过程如下：</p>
+<ul>
+<li>当你的浏览器使用htts的形式向服务器请求一个安全的网页</li>
+<li>服务器就把它的证书和公匙发回来</li>
+<li>浏览器检查证书是不是由可以信赖的机构颁发的，确认证书有效和此证书是此网站的。</li>
+<li>浏览器随机生成一对对称秘钥，并使用公钥（服务器端的）加密该对称秘钥，将它和对称加密后的URL一起发送到服务器</li>
+<li>服务器用自己的私匙解密了你发送的钥匙。然后用这把对称加密的钥匙给你请求的URL链接解密。</li>
+<li>服务器用你发的对称钥匙给你请求的网页加密。你也有相同的钥匙就可以解密发回来的网页</li>
+</ul>
+<h3 id="TCP与UDP的区别"><a href="#TCP与UDP的区别" class="headerlink" title="TCP与UDP的区别"></a>TCP与UDP的区别</h3><ul>
+<li><p>TCP面向连接;UDP是无连接的，即发送数据之前不需要建立连接</p>
+</li>
+<li><p>TCP提供可靠的服务。背后有一套完整的机制确保通过TCP连接传送的数据，无差错，不丢失，不重复，且按序到达; UDP尽最大努力交付，即不保证可靠交付</p>
+</li>
+<li>UDP对应用层的控制更加精确，UDP会立即将应用层的报文发送给网络层。</li>
+<li>每一条TCP连接只能是点到点的；UDP支持一对一，一对多，多对一和多对多的交互通信</li>
+<li>TCP首部开销20字节;UDP的首部开销小，只有8个字节，TCP报文有20个字节的首部</li>
+<li>一般实时类的应用选择UDP作为传输层协议。</li>
+</ul>
+<h3 id="TCP报文结构"><a href="#TCP报文结构" class="headerlink" title="TCP报文结构"></a>TCP报文结构</h3><p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180426/4fhfhjmjbE.png" alt=""></p>
+<p>上图中有几个字段需要重点介绍下：</p>
+<ol>
+<li>序号：Seq序号，占32位，用来标识从TCP源端向目的端发送的字节流，发起方发送数据时对此进行标记。</li>
+<li>确认序号： Ack序号，占32位，只有ACK标志位为1时，确认序号字段才有效，Ack=Seq+1。</li>
+<li>标志位：共6个，即URG、ACK、PSH、RST、SYN、FIN等，具体含义如下：<blockquote>
+<p>URG：紧急指针（urgent pointer）有效。<br>ACK：确认序号有效。<br>PSH：接收方应该尽快将这个报文交给应用层。<br>RST：重置连接。<br>SYN：发起一个新连接。<br>FIN：释放一个连接。</p>
+</blockquote>
+</li>
+</ol>
+<p>需要注意的是：<br>不要将确认序号Ack与标志位中的ACK搞混了。<br>确认方Ack=发起方Req+1，两端配对。</p>
+<h3 id="TCP滑动窗口与回退N针协议"><a href="#TCP滑动窗口与回退N针协议" class="headerlink" title="TCP滑动窗口与回退N针协议"></a>TCP滑动窗口与回退N针协议</h3><p>发送方只是用一个定时器，超时重传多有已发但还未被确认过的分组<br>容错率低，单个分组可能造成GBN重传大量分组：<br>P147</p>
+<h3 id="TCP选择重传"><a href="#TCP选择重传" class="headerlink" title="TCP选择重传"></a>TCP选择重传</h3><p>每个分组都有一个定时器，发送方超时只会重新发送一个分组<br>P151</p>
+<h3 id="TCP拥塞控制"><a href="#TCP拥塞控制" class="headerlink" title="TCP拥塞控制"></a>TCP拥塞控制</h3><h3 id="Tcp三次握手的过程"><a href="#Tcp三次握手的过程" class="headerlink" title="Tcp三次握手的过程"></a>Tcp三次握手的过程</h3><p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180426/dEiLHj5b1F.png" alt=""></p>
+<p>如果确认信号没传到服务器会发生什么？为什么不是两次握手？</p>
+<p>还要再发送一次确认是为了，防止已失效的连接请求报文段突然又传到了B，因而产生错误。<br>     某种情况下，A的第一个请求在某个节点滞留了，延误到达，本来这是一个早已失效的报文段，但是在A发送第二个，并且得到B的回应，建立了连接以后，这个报文段竟然到达了，于是B就认为，A又发送了一个新的请求，于是发送确认报文段，同意建立连接，假若没有三次的握手，那么这个连接就建立起来了（有一个请求和一个回应），此时，A收到B的确认，但A知道自己并没有发送建立连接的请求，因为不会理睬B的这个确认，于是呢，A也不会发送任何数据，而B呢却以为新的连接建立了起来，一直等待A发送数据给自己，此时B的资源就被白白浪费了。但是采用三次握手的话，A就不发送确认，那么B由于收不到确认，也就知道并没有要求建立连接。<br>     简而言之：第三次握手，主机A发送一次确认是为了防止：如果客户端迟迟没有收到服务器返回的确认报文，这时他会放弃连接，重新启动一条连接请求；但问题是：服务器不知客户端没收到，所以他会收到两个连接请求，白白浪费了一条连接开销。</p>
+<h3 id="Tcp四次挥手的过程"><a href="#Tcp四次挥手的过程" class="headerlink" title="Tcp四次挥手的过程"></a>Tcp四次挥手的过程</h3><p>由于TCP连接时全双工的，因此，每个方向都必须要单独进行关闭，这一原则是当一方完成数据发送任务后，发送一个FIN来终止这一方向的连接，收到一个FIN只是意味着这一方向上没有数据流动了，即不会再收到数据了，但是在这个TCP连接上仍然能够发送数据，直到这一方向也发送了FIN。首先进行关闭的一方将执行主动关闭，而另一方则执行被动关闭。</p>
+<p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180426/cagcJbgJbE.png" alt=""></p>
+<ol>
+<li>A的应用进程先向其TCP发出连接释放报文段（FIN=1，序号seq=u），并停止再发送数据，主动关闭TCP连接，进入FIN-WAIT-1（终止等待1）状态，等待B的确认。</li>
+<li>B收到连接释放报文段后即发出确认报文段，（ACK=1，确认号ack=u+1，序号seq=v），B进入CLOSE-WAIT（关闭等待）状态，此时的TCP处于半关闭状态，A到B的连接释放。</li>
+<li>A收到B的确认后，进入FIN-WAIT-2（终止等待2）状态，等待B发出的连接释放报文段。</li>
+<li>B没有要向A发出的数据，B发出连接释放报文段（FIN=1，ACK=1，序号seq=w，确认号ack=u+1），B进入LAST-ACK（最后确认）状态，等待A的确认。</li>
+<li>A收到B的连接释放报文段后，对此发出确认报文段（ACK=1，seq=u+1，ack=w+1），A进入TIME-WAIT（时间等待）状态。此时TCP未释放掉，需要经过时间等待计时器设置的时间2MSL后，A才进入CLOSED状态。</li>
+</ol>
+<h3 id="电脑上访问一个网页的过程"><a href="#电脑上访问一个网页的过程" class="headerlink" title="电脑上访问一个网页的过程"></a>电脑上访问一个网页的过程</h3><p>DNS、HTTP、TCP、OSPF、IP、ARP。</p>
+<h3 id="Ping的整个过程"><a href="#Ping的整个过程" class="headerlink" title="Ping的整个过程"></a>Ping的整个过程</h3><p>ICMP报文是什么。</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 changyan -->
+<div id="changyan-comment">
+    <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="2018/04/26/Android实习面试知识整理/"></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cytFgASPt';
+var conf = '21a481f8e281cdb130c8816a0a1b4b5c';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+</div>
+<style>
+    #changyan-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/05/04/关于Java内存机制的理解/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/04/25/2018年实习春招总结/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avator.jpg" alt="dengw's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        duang0626@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:duang06262qq.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">23</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
+            </li></ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">label</i>
+                
+                标签云
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/resource" title="资源">
+                
+                    <i class="material-icons sidebar-material-icons">cloud_download</i>
+                
+                资源
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="图库">
+                
+                    <i class="material-icons sidebar-material-icons">image</i>
+                
+                图库
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="友情链接">
+                
+                    <i class="material-icons sidebar-material-icons">link</i>
+                
+                友情链接
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/duang0626" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/duang666/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year=""></span>&nbsp;dengw‘s blog
+            
+                <br>
+                
+                    hello world
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?Bn9UzEm8RrBSxqyZB0zPjA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+    <!-- Leancloud -->
+    <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+    <script>
+        AV.initialize('4RXXI7JGllT8IVC7vhgameTz-gzGzoHsz', '12p4GWu6SEO4Qpa1WboTz1P3');
+    </script>
+    <script type="text/ls-javascript" id="leancloud-views-script">
+    function showTime(Counter) {
+        var query = new AV.Query(Counter);
+        $('.leancloud-views_num').each(function() {
+            var url = $(this).attr('id').trim();
+            query.equalTo('url', url);
+            query.find({
+                success: function(results) {
+                    if (results.length === 0) {
+                        var content = '0 ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                        return;
+                    }
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+                        var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    }
+                },
+                error: function(object, error) {
+                    console.log('Error: ' + error.code + ' ' + error.message);
+                }
+            });
+        });
+    }
+
+    function addCount(Counter) {
+      var Counter = AV.Object.extend('Counter');
+      url = $('.leancloud-views_num').attr('id').trim();
+      title = $('.leancloud-views_num').attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo('url', url);
+      query.find({
+          success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment('time');
+                counter.save(null, {
+                    success: function(counter) {
+                        var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+              var newcounter = new Counter();
+              newcounter.set('title', title);
+              newcounter.set('url', url);
+              newcounter.set('time', 1);
+              newcounter.save(null, {
+                  success: function(newcounter) {
+                      console.log('newcounter.get(\'time\')='+newcounter.get('time'));
+                      var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+                      $(document.getElementById(url)).text(content);
+                  },
+                  error: function(newcounter, error) {
+                      console.log('Failed to create');
+                  }
+              });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + ' ' + error.message);
+        }
+      });
+    }
+    $(function() {
+        var Counter = AV.Object.extend('Counter');
+        if ($('.leancloud-views_num').length === 1) {
+            addCount(Counter);
+        } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+        }
+    });
+</script>
+
+
+
+
+
+
+   <!-- 畅言公共 js 代码 start -->
+<script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytFgASPt">
+</script>
+<!-- 畅言公共 js 代码 end -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 2018;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
