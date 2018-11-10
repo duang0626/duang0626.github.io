@@ -246,7 +246,7 @@
 
     
         <meta property="article:published_time" content="Wed Apr 18 2018 01:27:18 GMT+0800">
-        <meta property="article:modified_time" content="Wed Oct 03 2018 18:33:00 GMT+0800">
+        <meta property="article:modified_time" content="Wed Nov 07 2018 20:34:05 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -269,7 +269,7 @@
     "mainEntityOfPage": "http://dengw.xyz/2018/04/18/Android-MVP初体验/index.html",
     "headline": "Android学习笔记—MVP初体验",
     "datePublished": "Wed Apr 18 2018 01:27:18 GMT+0800",
-    "dateModified": "Wed Oct 03 2018 18:33:00 GMT+0800",
+    "dateModified": "Wed Nov 07 2018 20:34:05 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "dengw",
@@ -730,7 +730,7 @@ public class MainPresenterCompl implements IMainPresenter{
     }
 }
 </code></pre>
-<h3 id="MVP各层之间的引用关系"><a href="#MVP各层之间的引用关系" class="headerlink" title="MVP各层之间的引用关系"></a>MVP各层之间的引用关系</h3><p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180420/HGCGE61a88.png" alt="层关系引用图"><br><strong>Presenterc层</strong><br>Presenter持有model接口和view接口的引用，这样也很好理解，Presenter充当一个桥梁的角色，肯定要能够使用到两个接口中的方法</p>
+<h3 id="MVP各层之间的引用关系"><a href="#MVP各层之间的引用关系" class="headerlink" title="MVP各层之间的引用关系"></a>MVP各层之间的引用关系</h3><p><img src="http://dengw.xyz/hexo-blog/180420/HGCGE61a88.png" alt="层关系引用图"><br><strong>Presenterc层</strong><br>Presenter持有model接口和view接口的引用，这样也很好理解，Presenter充当一个桥梁的角色，肯定要能够使用到两个接口中的方法</p>
 <p><strong>View层</strong><br>View层持有presenter层的接口，presenter层需要处理一些UI界面上的业务逻辑，因此将presenter接口暴露给view层方便调用。</p>
 <p>可能初学的时候大家会觉得presenter层和view层互相持有对方的接口有一点绕，可以按照下面的这个思路来理解。</p>
 <p>Model层获取到数据返回给Prensenter层，这时候需要更新UI，然后根据Presenter中引用的View接口，调用View接口中的相应方法，这是presenter层到view层。<br>当View层上获取一些逻辑命名，比如button被点击了，这个时候通过View层中引用的Presenter接口，调用presenter接口中定义相关的函数，这是view层到presenter层。</p>
@@ -881,7 +881,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
             </li></ul>
         </li>
         
@@ -899,7 +899,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">24</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">25</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
             </li></ul>
         </li>
         

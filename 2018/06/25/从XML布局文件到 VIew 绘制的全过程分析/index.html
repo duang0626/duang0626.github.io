@@ -246,7 +246,7 @@
 
     
         <meta property="article:published_time" content="Mon Jun 25 2018 17:28:57 GMT+0800">
-        <meta property="article:modified_time" content="Wed Oct 03 2018 18:56:18 GMT+0800">
+        <meta property="article:modified_time" content="Wed Nov 07 2018 20:34:05 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -269,7 +269,7 @@
     "mainEntityOfPage": "http://dengw.xyz/2018/06/25/从XML布局文件到 VIew 绘制的全过程分析/index.html",
     "headline": "从XML布局文件到 View 绘制的全过程分析",
     "datePublished": "Mon Jun 25 2018 17:28:57 GMT+0800",
-    "dateModified": "Wed Oct 03 2018 18:56:18 GMT+0800",
+    "dateModified": "Wed Nov 07 2018 20:34:05 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "dengw",
@@ -623,7 +623,7 @@ public void setContentView(int layoutResID) {
 // mDecor itself, or a child of mDecor where the contents go.
 private ViewGroup mContentParent;
 </code></pre><p>首先它的数据类型 ViewGroup，再结合<code>①</code>处代码可以得知，这个 mContentParent 是我们设置的布局(即main_activity.xml )的父布局。此外注释还提到了，这个 mContentParent 是 mDecor 本身或者是 mDecor 的一个子元素，mContentParent 是 mDecor 的子元素很好理解，但是为什么是 mDecor 本身呢？对于这一点，个人理解是当设置了 FEATURE_NO_ACTIONBAR，即设置了不显示标题栏的时候，此时 DecorView 内部的Linearlayout 就没有任何的意义，并且 DecorView 和 mContentParent 都采用的是 Framelayout 的布局类型，所以从布局的效果上来看可以认为 mContentParent 就是 mDecor 的本身。</p>
-<p>到这里我们就把 Window 涉及到的所有 View 都介绍了一遍，下面给一张图形象地表示一下他们的关系：<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180628/63FeffG9AL.png?imageslim%29" alt="enter image description here"></p>
+<p>到这里我们就把 Window 涉及到的所有 View 都介绍了一遍，下面给一张图形象地表示一下他们的关系：<br><img src="http://dengw.xyz/blog/180628/63FeffG9AL.png?imageslim%29" alt="enter image description here"></p>
 <p>对于这个图，还真是花了挺多功夫的，刚开始看了网上挺多的博客，但是发现都比较零散，没有一个比较系统的，完整介绍这个 View Tree 的，而且里面有一些概念很容易混淆，所以对各个 View 之间的关系不是十分的明确。后来通过对比各方面资料以及根据源码自己理解，也算是确定了他们的关系，绘制了上面的图。</p>
 <p>概念清楚了我们接着看在 PhoneWindow 中的 installDecor() 方法：</p>
 <pre><code>private void installDecor() {
@@ -664,9 +664,9 @@ private ViewGroup mContentParent;
 </code></pre><p>展示的代码部分将布局添加到 DecorView 中，并且将 contentParent 布局中 id 为 ID_ANDROID_CONTENT 的 FrameLayout 绑定。所以我们可以通过 findViewById(ID_ANDROID_CONTENT) 获取到 contentParent. 其中 ID_ANDROID_CONTENT 的定义如下，这个 id 所对应的 ViewGroup 就是 mContentParent ：</p>
 <pre><code>public static final int ID_ANDROID_CONTENT = com.android.internal.R.id.content;
 </code></pre><p>上述整个步骤可以用下面的图表示：</p>
-<p><img src="http://p61038gmb.bkt.clouddn.com/blog/180627/4Ag21f0ll3.png?imageslim" alt=""></p>
+<p><img src="http://dengw.xyz/blog/180627/4Ag21f0ll3.png?imageslim" alt=""></p>
 <h3 id="Window-的添加"><a href="#Window-的添加" class="headerlink" title="Window 的添加"></a>Window 的添加</h3><p>经过上面的步骤，DecorView 已经被创建并初始化完毕，Activity 的布局文件也已经成功添加到了 DecorView 的 mContentParent 中，但是这个时候 DecorView 还没有被 WindowManager 正式添加到 Window 中，我们的 View 还是不可见的，因为我们仅仅是加载了布局，并没有对View进行任何的测量、布局、绘制工作。在 View 进行测量流程之前，还要进行一个步骤，那就是把 DecorView 添加至 window中。</p>
-<p>下面我们就来讨论这个过程，先上一个图来表示整个过程：<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180627/i9ciHJkedj.png?imageslim" alt=""></p>
+<p>下面我们就来讨论这个过程，先上一个图来表示整个过程：<br><img src="http://dengw.xyz/blog/180627/i9ciHJkedj.png?imageslim" alt=""></p>
 <p>我们继续看 Activity 启动的方法 handleLaunchActivity() 中调用的 handleResumeActivity() 方法。</p>
 <pre><code>final void handleResumeActivity(IBinder token, boolean clearHide, boolean isForward) { 
     //...
@@ -987,7 +987,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
             </li></ul>
         </li>
         
@@ -1005,7 +1005,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">24</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">25</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
             </li></ul>
         </li>
         

@@ -50,7 +50,7 @@
     
     <title>
         
-            从源码层面解析Android消息机制 | 
+            在Android中获取存储空间方法总结 | 
         
         dengw‘s blog
     </title>
@@ -61,7 +61,7 @@
 
     <meta name="format-detection" content="telephone=no">
     <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content=",Android消息机制">
+    <meta name="keywords" content="">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -222,7 +222,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="dengw‘s blog">
-    <meta name="msapplication-starturl" content="http://dengw.xyz/2018/07/03/Handler的几种实例化方式/">
+    <meta name="msapplication-starturl" content="http://dengw.xyz/2018/11/07/在Android中获取存储空间方法总结/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="dengw‘s blog">
@@ -237,16 +237,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://dengw.xyz/2018/07/03/Handler的几种实例化方式/">
+    <meta property="og:url" content="http://dengw.xyz/2018/11/07/在Android中获取存储空间方法总结/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="从源码层面解析Android消息机制 | dengw‘s blog">
+    <meta property="og:title" content="在Android中获取存储空间方法总结 | dengw‘s blog">
     <meta property="og:image" content="/img/dw.jpg">
     <meta property="og:description" content="">
-    <meta property="og:article:tag" content="Android消息机制"> 
+    
 
     
-        <meta property="article:published_time" content="Tue Jul 03 2018 09:20:43 GMT+0800">
-        <meta property="article:modified_time" content="Wed Nov 07 2018 20:35:52 GMT+0800">
+        <meta property="article:published_time" content="Wed Nov 07 2018 19:46:25 GMT+0800">
+        <meta property="article:modified_time" content="Sat Nov 10 2018 22:27:25 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -254,7 +254,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://dengw.xyz/2018/07/03/Handler的几种实例化方式/index.html">
+        <link rel="canonical" href="http://dengw.xyz/2018/11/07/在Android中获取存储空间方法总结/index.html">
     
 
     <!-- Structured-data for SEO -->
@@ -266,10 +266,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://dengw.xyz/2018/07/03/Handler的几种实例化方式/index.html",
-    "headline": "从源码层面解析Android消息机制",
-    "datePublished": "Tue Jul 03 2018 09:20:43 GMT+0800",
-    "dateModified": "Wed Nov 07 2018 20:35:52 GMT+0800",
+    "mainEntityOfPage": "http://dengw.xyz/2018/11/07/在Android中获取存储空间方法总结/index.html",
+    "headline": "在Android中获取存储空间方法总结",
+    "datePublished": "Wed Nov 07 2018 19:46:25 GMT+0800",
+    "dateModified": "Sat Nov 10 2018 22:27:25 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "dengw",
@@ -287,7 +287,7 @@
             "url": "/img/dw.jpg"
         }
     },
-    "keywords": ",Android消息机制",
+    "keywords": "",
     "description": "",
 }
 </script>
@@ -347,6 +347,14 @@
     <!-- Left aligned menu below button -->
     
     
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">概念介绍</span></a></li></ol>
+    </ul>
+    
 
 
 
@@ -376,7 +384,7 @@
         
     
             <p class="article-headline-p">
-                从源码层面解析Android消息机制
+                在Android中获取存储空间方法总结
             </p>
         </div>
 
@@ -395,7 +403,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>dengw</strong>
-        <span>7月 03, 2018</span>
+        <span>11月 07, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -413,15 +421,6 @@
 
     <!-- Tags (bookmark) -->
     
-    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-        <i class="material-icons" role="presentation">bookmark</i>
-        <span class="visuallyhidden">bookmark</span>
-    </button>
-    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
-        <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Android消息机制/">Android消息机制</a>
-    </li></ul>
-    
 
     <!-- Share -->
     
@@ -434,7 +433,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/2018/07/03/Handler的几种实例化方式/" class="leancloud-views_num" data-flag-title="从源码层面解析Android消息机制">
+                <span id="/2018/11/07/在Android中获取存储空间方法总结/" class="leancloud-views_num" data-flag-title="在Android中获取存储空间方法总结">
      &nbsp;浏览量
 </span>
 
@@ -446,7 +445,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=从源码层面解析Android消息机制&url=http://dengw.xyz/2018/07/03/Handler的几种实例化方式/index.html&pic=http://dengw.xyz/img/dw.jpg&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=在Android中获取存储空间方法总结&url=http://dengw.xyz/2018/11/07/在Android中获取存储空间方法总结/index.html&pic=http://dengw.xyz/img/dw.jpg&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -455,7 +454,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=从源码层面解析Android消息机制&url=http://dengw.xyz/2018/07/03/Handler的几种实例化方式/index.html&via=dengw" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=在Android中获取存储空间方法总结&url=http://dengw.xyz/2018/11/07/在Android中获取存储空间方法总结/index.html&via=dengw" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -473,7 +472,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=dengw‘s blog&title=从源码层面解析Android消息机制&summary=&pics=http://dengw.xyz/img/dw.jpg&url=http://dengw.xyz/2018/07/03/Handler的几种实例化方式/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=dengw‘s blog&title=在Android中获取存储空间方法总结&summary=&pics=http://dengw.xyz/img/dw.jpg&url=http://dengw.xyz/2018/11/07/在Android中获取存储空间方法总结/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -492,23 +491,14 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>之前在看 <strong>Handler#dispatchMessage</strong>方法时，发现有几个判断条件，针对不同的条件</p>
-<pre><code class="java">/**
- * Handle system messages here.
- */
-public void dispatchMessage(Message msg) {
-    if (msg.callback != null) {
-        handleCallback(msg);
-    } else {
-        if (mCallback != null) {
-            if (mCallback.handleMessage(msg)) {
-                return;
-            }
-        }
-        handleMessage(msg);
-    }
-}
-</code></pre>
+        <p>在最近的项目中需要获取android设备的存储空间大小，完成了就好好总结一下，以及遇到的一些坑。</p>
+<h2 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h2><p>首先需要弄懂几个很混淆的概念，内存、内部存储，外部存储。</p>
+<ul>
+<li>内存，英文中称作memory；</li>
+<li>内部存储，英文中称作InternalStorage；</li>
+<li>外部存储，英文中称作ExternalStorage；</li>
+</ul>
+<p>就贴一篇博客了，讲的非常清楚，还说明了在不同 android 版本中有什么差别;<br><a href="https://blog.csdn.net/u010937230/article/details/73303034/" target="_blank" rel="noopener">彻底搞懂Android文件存储—内部存储，外部存储以及各种存储路径</a></p>
 
         
     
@@ -525,7 +515,7 @@ public void dispatchMessage(Message msg) {
     <!-- 使用 changyan -->
 <div id="changyan-comment">
     <!--PC和WAP自适应版-->
-<div id="SOHUCS" sid="2018/07/03/Handler的几种实例化方式/"></div>
+<div id="SOHUCS" sid="2018/11/07/在Android中获取存储空间方法总结/"></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cytFgASPt';
@@ -549,21 +539,13 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/07/06/Awesome tools for programer/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2018/07/02/在Activity生命周期获取控件宽高的探究/" id="post_nav-older" class="next-content">
+        <a href="/2018/11/06/MAC环境下apk反编译方法/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

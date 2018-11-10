@@ -246,7 +246,7 @@
 
     
         <meta property="article:published_time" content="Thu Mar 22 2018 17:57:11 GMT+0800">
-        <meta property="article:modified_time" content="Wed Oct 03 2018 18:53:26 GMT+0800">
+        <meta property="article:modified_time" content="Wed Nov 07 2018 20:34:05 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -269,7 +269,7 @@
     "mainEntityOfPage": "http://dengw.xyz/2018/03/22/Retrofit2.0完全解读（二）/index.html",
     "headline": "Retrofit2.0完全解读（二）",
     "datePublished": "Thu Mar 22 2018 17:57:11 GMT+0800",
-    "dateModified": "Wed Oct 03 2018 18:53:26 GMT+0800",
+    "dateModified": "Wed Nov 07 2018 20:34:05 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "dengw",
@@ -502,7 +502,7 @@
     
         <p>在了解了Retrofit 2.0 和Retrofit 1.0的主要差别后，我们就要开始深入的学习Retrofit 2.0 了。个人觉得在Android学习中，刚接触到一个新的东西，还是要先了解具体是怎么使用的，而不是一开始就抱着源码啃。这种学习方法我觉得太抽象了，特别是对应用性比较强的技术。除非你之前接触过类型的东西，其原理在某些方面很相似，能够帮助理解，不然的话会很难理解原理的。当然这都是个人看法，只是这种方法对我来说效率更高，下面就结合实例讲一下Retrofit 2.0 的使用方法。</p>
 <h2 id="Retrofit-2-0-快速使用"><a href="#Retrofit-2-0-快速使用" class="headerlink" title="Retrofit 2.0 快速使用"></a>Retrofit 2.0 快速使用</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>在前面我们介绍到Retrofit2.0 是一个基于OKHttp的具有RESTful API风格的 HTTP 网络请求框架的封装，网络请求的本质是 OkHttp 完成的，Retrofit 2.0仅负责网络请求接口的封装。使用Retrofit2.0框架访问网络的具体过程如下：</p>
-<p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180323/mba6hhI8ki.png" alt=""></p>
+<p><img src="http://dengw.xyz/hexo-blog/180323/mba6hhI8ki.png" alt=""></p>
 <ul>
 <li>App应用程序通过 Retrofit 访问网络，实际上是使用 Retrofit 接口层封装请求参数、Header、Url 等信息，之后由 OkHttp 完成后续的请求操作。</li>
 <li>在服务端返回数据之后，OkHttp 将原始的结果交给 Retrofit，Retrofit根据用户的需求对结果进行解析</li>
@@ -641,7 +641,7 @@ call.enqueue(new Callback&lt;User&gt;() {
  }
 </code></pre>
 <p>结果显示如下：</p>
-<p><img src="http://p61038gmb.bkt.clouddn.com/hexo-blog/180323/d0HdE5Eh7k.png" alt=""></p>
+<p><img src="http://dengw.xyz/hexo-blog/180323/d0HdE5Eh7k.png" alt=""></p>
 <p>Retrofit 2.0的快速使用就介绍到这儿了，通过上面介绍的方法就可以使用Retrofit 2.0访问网络了。相信你也看到了，这个过程中的一些参数可能重来都没有见过，下一篇文章就将介绍Retrofit 2.0使用的一些细节，参数的设置，具体的含义。</p>
 
         
@@ -789,7 +789,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
             </li></ul>
         </li>
         
@@ -807,7 +807,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">24</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">25</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
             </li></ul>
         </li>
         

@@ -246,7 +246,7 @@
 
     
         <meta property="article:published_time" content="Mon Jul 23 2018 10:33:05 GMT+0800">
-        <meta property="article:modified_time" content="Wed Oct 03 2018 19:04:16 GMT+0800">
+        <meta property="article:modified_time" content="Wed Nov 07 2018 20:34:05 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -269,7 +269,7 @@
     "mainEntityOfPage": "http://dengw.xyz/2018/07/23/图解HTTP学习笔记—第三、四章/index.html",
     "headline": "图解HTTP学习笔记—第三、四章",
     "datePublished": "Mon Jul 23 2018 10:33:05 GMT+0800",
-    "dateModified": "Wed Oct 03 2018 19:04:16 GMT+0800",
+    "dateModified": "Wed Nov 07 2018 20:34:05 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "dengw",
@@ -500,9 +500,9 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h3 id="HTTP-报文"><a href="#HTTP-报文" class="headerlink" title="HTTP 报文"></a>HTTP 报文</h3><p>HTTP 报文大致可分为报文首部和报文主体两块。两者由最初出现的<br>空行（CR+LF）来划分。通常，并不一定要有报文主体。<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180723/00Kmk484a2.png?imageslim" alt="enter image description here"></p>
-<p>具体到请求报文和响应报文如下：<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180723/hege5iFAKF.png?imageslim" alt="enter image description here"></p>
-<h3 id="请求报文结构"><a href="#请求报文结构" class="headerlink" title="请求报文结构"></a>请求报文结构</h3><p><img src="http://p61038gmb.bkt.clouddn.com/blog/180722/5mDJkLj6fe.png?imageslim" alt="enter image description here"></p>
+        <h3 id="HTTP-报文"><a href="#HTTP-报文" class="headerlink" title="HTTP 报文"></a>HTTP 报文</h3><p>HTTP 报文大致可分为报文首部和报文主体两块。两者由最初出现的<br>空行（CR+LF）来划分。通常，并不一定要有报文主体。<br><img src="http://dengw.xyz/blog/180723/00Kmk484a2.png?imageslim" alt="enter image description here"></p>
+<p>具体到请求报文和响应报文如下：<br><img src="http://dengw.xyz/blog/180723/hege5iFAKF.png?imageslim" alt="enter image description here"></p>
+<h3 id="请求报文结构"><a href="#请求报文结构" class="headerlink" title="请求报文结构"></a>请求报文结构</h3><p><img src="http://dengw.xyz/blog/180722/5mDJkLj6fe.png?imageslim" alt="enter image description here"></p>
 <h4 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h4><p>请求行由请求方法，URL字段和HTTP协议的版本组成，格式如下：</p>
 <pre><code>Method Request-URI HTTP-Version CRLF
 </code></pre><p>其中 Method表示请求方法；Request-URI是一个统一资源标识符；HTTP-Version表示请求的HTTP协议版本；CRLF表示回车和换行（除了作为结尾的CRLF外，不允许出现单独的CR或LF字符）。</p>
@@ -584,7 +584,7 @@ User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like 
 Accept-Encoding: gzip, deflate, sdch
 Accept-Language: zh-CN,zh;q=0.8
 Cookie: bdshare_firstime=1443768140949
-</code></pre><h3 id="响应报文结构"><a href="#响应报文结构" class="headerlink" title="响应报文结构"></a>响应报文结构</h3><p><img src="http://p61038gmb.bkt.clouddn.com/blog/180722/4hG7C2cjJD.png?imageslim" alt="enter image description here"></p>
+</code></pre><h3 id="响应报文结构"><a href="#响应报文结构" class="headerlink" title="响应报文结构"></a>响应报文结构</h3><p><img src="http://dengw.xyz/blog/180722/4hG7C2cjJD.png?imageslim" alt="enter image description here"></p>
 <p>HTTP的响应报文由响应行、响应头、响应数据组成。</p>
 <h4 id="状态行（响应行）"><a href="#状态行（响应行）" class="headerlink" title="状态行（响应行）"></a>状态行（响应行）</h4><p>状态行格式如下：</p>
 <pre><code>HTTP-Version Status-Code Reason-Phrase CRLF
@@ -698,10 +698,10 @@ Cookie: bdshare_firstime=1443768140949
 <li>如果把 HTTP 报文想象成因特网货运系统中的箱子，那么 HTTP 实体就是报文中实际的货物。</li>
 <li>报文实体由实体首部和实体主体组成，实体首部描述了 HTTP 报文的内容，实体主体中就是货物：</li>
 </ul>
-<p>在整个报文中实体的位置：<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180723/j9IF2cjJcD.png?imageslim" alt="enter image description here"></p>
+<p>在整个报文中实体的位置：<br><img src="http://dengw.xyz/blog/180723/j9IF2cjJcD.png?imageslim" alt="enter image description here"></p>
 <h4 id="压缩传输的内容编码"><a href="#压缩传输的内容编码" class="headerlink" title="压缩传输的内容编码"></a>压缩传输的内容编码</h4><p>内容编码指明应用在实体内容上的编码格式，并保持实体信息原样压缩。内容编码后的实体由客户端接收并负责解码。</p>
 <ul>
-<li>内容编码的过程<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180723/6kD8LJj3j3.png?imageslim" alt="enter image description here"></li>
+<li>内容编码的过程<br><img src="http://dengw.xyz/blog/180723/6kD8LJj3j3.png?imageslim" alt="enter image description here"></li>
 </ul>
 <p>常用的内容编码有以下几种。</p>
 <ul>
@@ -711,11 +711,11 @@ Cookie: bdshare_firstime=1443768140949
 <li>identity（不进行编码）</li>
 </ul>
 <h4 id="分割发送的分块传输编码"><a href="#分割发送的分块传输编码" class="headerlink" title="分割发送的分块传输编码"></a>分割发送的分块传输编码</h4><p>在 HTTP 通信过程中，请求的编码实体资源尚未全部传输完成之前，浏览器无法显示请求页面。在传输大容量数据时，通过把数据分割成多块，能够让浏览器逐步显示页面。</p>
-<p>这种把实体主体分块的功能称为分块传输编码（Chunked Transfer Coding）。<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180723/5b5gG3Ecbk.png?imageslim" alt="enter image description here"></p>
+<p>这种把实体主体分块的功能称为分块传输编码（Chunked Transfer Coding）。<br><img src="http://dengw.xyz/blog/180723/5b5gG3Ecbk.png?imageslim" alt="enter image description here"></p>
 <p>分块传输编码会将实体主体分成多个部分（块）。每一块都会用十六进制来标记块的大小，而实体主体的最后一块会使用“0(CR+LF)”来标记。</p>
 <p>使用分块传输编码的实体主体会由接收的客户端负责解码，恢复到编码前的实体主体。</p>
 <h3 id="获取部分内容的范围获取"><a href="#获取部分内容的范围获取" class="headerlink" title="获取部分内容的范围获取"></a>获取部分内容的范围获取</h3><p>指定下载的实体范围，指定范围发送的请求叫做范围发送。</p>
-<p>对一份 10 000 字节大小的资源，如果使用范围请求，可以只请求5001~10000 字节内的资源。<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180723/2i8Cd276mL.png?imageslim" alt="enter image description here"></p>
+<p>对一份 10 000 字节大小的资源，如果使用范围请求，可以只请求5001~10000 字节内的资源。<br><img src="http://dengw.xyz/blog/180723/2i8Cd276mL.png?imageslim" alt="enter image description here"></p>
 <p>执行范围请求时，会用到首部字段 Range 来指定资源的 byte 范围。</p>
 <ul>
 <li>5001~10 000 字节<pre><code>Range: bytes=5001-10000
@@ -872,7 +872,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
             </li></ul>
         </li>
         
@@ -890,7 +890,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">24</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">25</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
             </li></ul>
         </li>
         

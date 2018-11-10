@@ -246,7 +246,7 @@
 
     
         <meta property="article:published_time" content="Fri Jul 20 2018 00:15:14 GMT+0800">
-        <meta property="article:modified_time" content="Wed Oct 03 2018 19:04:16 GMT+0800">
+        <meta property="article:modified_time" content="Wed Nov 07 2018 20:34:05 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -269,7 +269,7 @@
     "mainEntityOfPage": "http://dengw.xyz/2018/07/20/关于ANR欧老师有话要说/index.html",
     "headline": "关于ANR欧老师有话要说",
     "datePublished": "Fri Jul 20 2018 00:15:14 GMT+0800",
-    "dateModified": "Wed Oct 03 2018 19:04:16 GMT+0800",
+    "dateModified": "Wed Nov 07 2018 20:34:05 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "dengw",
@@ -517,14 +517,14 @@
 <h4 id="Watchdog与观察机制"><a href="#Watchdog与观察机制" class="headerlink" title="Watchdog与观察机制"></a>Watchdog与观察机制</h4><p>谁来监控应用ANR？</p>
 <p>ActivityManager 和 WindowManager 系统服务进行监控；它是一个轻量Watchdog机制，用于看护ANR发生的可能性；因此观察ANR是系统层面的事务，它为各应用做了统一的屏障与监控；</p>
 <p>发生ANR的时候，用户只能选择等待或者结束进程；</p>
-<h4 id="从时间角度看ANR"><a href="#从时间角度看ANR" class="headerlink" title="从时间角度看ANR"></a>从时间角度看ANR</h4><p><img src="http://p61038gmb.bkt.clouddn.com/blog/180720/LB8e8abi2l.png?imageslim" alt="enter image description here"></p>
-<h4 id="从引发角度看ANR"><a href="#从引发角度看ANR" class="headerlink" title="从引发角度看ANR"></a>从引发角度看ANR</h4><p><img src="http://p61038gmb.bkt.clouddn.com/blog/180720/0D9CEHga6E.png?imageslim" alt="enter image description here"></p>
+<h4 id="从时间角度看ANR"><a href="#从时间角度看ANR" class="headerlink" title="从时间角度看ANR"></a>从时间角度看ANR</h4><p><img src="http://dengw.xyz/blog/180720/LB8e8abi2l.png?imageslim" alt="enter image description here"></p>
+<h4 id="从引发角度看ANR"><a href="#从引发角度看ANR" class="headerlink" title="从引发角度看ANR"></a>从引发角度看ANR</h4><p><img src="http://dengw.xyz/blog/180720/0D9CEHga6E.png?imageslim" alt="enter image description here"></p>
 <h3 id="发现ANR"><a href="#发现ANR" class="headerlink" title="发现ANR"></a>发现ANR</h3><pre><code>04-06 15:58:46.215 23480-23483/com.example.testanr I/art: Thread[2,tid=23483,WaitingInMainSignalCatcherLoop,Thread*=0x7fa2307000,peer=0x12cb40a0,&quot;Signal Catcher&quot;]: reacting to signal 3
 04-06 15:58:46.364 23480-23483/com.example.testanr I/art: Wrote stack traces to &#39;/data/anr/traces.txt‘
 </code></pre><p>应用发生ANR的时候<br>1、Logcat中会抛出日志<br>2、系统会向指定路径写入日志，路径为/data/anr/traces.txt</p>
 <p>特别注意：<br>正常情况下，每一次新的ANR日志，会把之前的ANR信息覆盖掉；比如微信产生的ANR和QQ产生的ANR可能会在同一个ANR日志文件中生成，后生成的会把先生成的覆盖掉。</p>
 <p>因此ANR日志的处理和收集，要及时，即包括了Logcat日志，也包括了ANR的traces.txt文件；</p>
-<p><img src="http://p61038gmb.bkt.clouddn.com/blog/180720/I4l62EdiGl.png?imageslim" alt="enter image description here"></p>
+<p><img src="http://dengw.xyz/blog/180720/I4l62EdiGl.png?imageslim" alt="enter image description here"></p>
 <p>获取的方式有多种：</p>
 <ul>
 <li><p>adb pull /data/anr/traces.txt -&gt; xxx </p>
@@ -534,16 +534,16 @@
 </ul>
 <p>一个标准的ANR日志:</p>
 <ul>
-<li>确定发生ANR所在的进程和时间<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180720/Dm9LIhAkb1.png?imageslim" alt="enter image description here"></li>
+<li>确定发生ANR所在的进程和时间<br><img src="http://dengw.xyz/blog/180720/Dm9LIhAkb1.png?imageslim" alt="enter image description here"></li>
 </ul>
-<p><img src="http://p61038gmb.bkt.clouddn.com/blog/180720/33I4aC1cA1.png?imageslim" alt="enter image description here"></p>
+<p><img src="http://dengw.xyz/blog/180720/33I4aC1cA1.png?imageslim" alt="enter image description here"></p>
 <ul>
-<li>发生ANR的线程信息，可以快速确定责任方<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180720/26C3H57Ekd.png?imageslim" alt="enter image description here"></li>
+<li>发生ANR的线程信息，可以快速确定责任方<br><img src="http://dengw.xyz/blog/180720/26C3H57Ekd.png?imageslim" alt="enter image description here"></li>
 </ul>
 <h4 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h4><ul>
-<li><p>Java线程状态<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180720/el796HICe8.png?imageslim" alt="enter image description here"></p>
+<li><p>Java线程状态<br><img src="http://dengw.xyz/blog/180720/el796HICe8.png?imageslim" alt="enter image description here"></p>
 </li>
-<li><p>c线程状态<br><img src="http://p61038gmb.bkt.clouddn.com/blog/180720/L5gFc9dLmi.png?imageslim" alt="enter image description here"></p>
+<li><p>c线程状态<br><img src="http://dengw.xyz/blog/180720/L5gFc9dLmi.png?imageslim" alt="enter image description here"></p>
 </li>
 </ul>
 <p>两者可以看出在C代码中定义更为详细,<strong>Traces中显示的线程状态都是C代码定义的</strong>。我们可以通过查看线程状态对应的信息分析ANR问题。</p>
@@ -709,7 +709,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
             </li></ul>
         </li>
         
@@ -727,7 +727,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">24</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">25</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
             </li></ul>
         </li>
         

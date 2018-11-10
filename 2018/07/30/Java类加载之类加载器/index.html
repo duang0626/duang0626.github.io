@@ -246,7 +246,7 @@
 
     
         <meta property="article:published_time" content="Mon Jul 30 2018 14:51:57 GMT+0800">
-        <meta property="article:modified_time" content="Wed Oct 03 2018 18:40:30 GMT+0800">
+        <meta property="article:modified_time" content="Wed Nov 07 2018 20:34:05 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -269,7 +269,7 @@
     "mainEntityOfPage": "http://dengw.xyz/2018/07/30/Java类加载之类加载器/index.html",
     "headline": "Java类加载之类加载器",
     "datePublished": "Mon Jul 30 2018 14:51:57 GMT+0800",
-    "dateModified": "Wed Oct 03 2018 18:40:30 GMT+0800",
+    "dateModified": "Wed Nov 07 2018 20:34:05 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "dengw",
@@ -507,12 +507,12 @@
 <h4 id="扩展（Extension）类加载器"><a href="#扩展（Extension）类加载器" class="headerlink" title="扩展（Extension）类加载器"></a>扩展（Extension）类加载器</h4><p>扩展类加载器是指 Sun 公司实现的 sun.misc.Launcher$ExtClassLoader 类，由 Java 语言实现的，是 Launcher 的静态内部类，它负责加载<code>&lt;JAVA_HOME&gt;/lib/ext</code>目录下或者由系统变量 -Djava.ext.dir 指定位路径中的类库。开发者可以直接使用扩展类加载器。</p>
 <h4 id="系统（System）类加载器"><a href="#系统（System）类加载器" class="headerlink" title="系统（System）类加载器"></a>系统（System）类加载器</h4><p>也称应用程序加载器，是由 Sun 公司实现的 sun.misc.Launcher$AppClassLoader 。它负责加载系统类路径 java -classpath 或 -D java.class.path 指定路径下的类库，也就是我们经常用到的classpath路径，开发者可以直接使用系统类加载器，一般情况下该类加载是程序中默认的类加载器，通过 ClassLoader#getSystemClassLoader() 方法可以获取到该类加载器。 </p>
 <h4 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h4><p>Java 应用程序的加载几乎是由上述 3 种类加载器相互配合执行的，如果有必要，我们还可以自定义类加载器，需要注意的是，Java 虚拟机对 class 文件采用的是按需加载的方式，也就是说当需要使用该类时才会将它的class文件加载到内存生成 class 对象。加载某个具体类的 class 文件时，Java 虚拟机采用的是双亲委派模型，下面我们进一步了解它。</p>
-<p><img src="http://p61038gmb.bkt.clouddn.com/blog/180731/5gE6ld6BCe.png?imageslim" alt="enter image description here"></p>
+<p><img src="http://dengw.xyz/blog/180731/5gE6ld6BCe.png?imageslim" alt="enter image description here"></p>
 <p>这种层次关系称为类加载器的双亲委派模型。我们把每一层上面的类加载器叫做当前层类加载器的父加载器，当然，它们之间的父子关系并不是通过继承关系来实现的，而是使用组合关系来复用父加载器中的代码。除了顶层的类加载器之外，其余的类加载器都有自己的父类加载器。</p>
 <p>双亲委派模型的工作流程是：如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把请求委托给父加载器去完成，依次向上，因此，所有的类加载请求最终都应该被传递到顶层的启动类加载器中，只有当父加载器在它的搜索范围中没有找到所需的类时，即无法完成该加载，子加载器才会尝试自己去加载该类。</p>
 <p>使用双亲委派模型来组织类加载器之间的关系，有一个很明显的好处，就是 Java 类随着它的类加载器（说白了，就是它所在的目录）一起具备了一种带有优先级的层次关系，这对于保证 Java 程序的稳定运作很重要。例如，类java.lang.Object 类存放在 JDK\jre\lib 下的 rt.jar 之中，因此无论是哪个类加载器要加载此类，最终都会委派给启动类加载器进行加载，这边保证了 Object 类在程序中的各种类加载器中都是同一个类。</p>
 <h4 id="双亲委派模型的优点"><a href="#双亲委派模型的优点" class="headerlink" title="双亲委派模型的优点"></a>双亲委派模型的优点</h4><p>双亲委派模型使 Java 类随着它的类加载器一起具备了一种带有优先级的层次关系，通过这种层级关可以避免类的重复加载，当父类加载器已经加载了该类时，就没有必要让子类加载器再加载一次。其次是考虑到安全因素，java核心 api 中定义类型不会被随意替换，假设通过网络传递一个名为 java.lang.Integer 的类，通过双亲委托模式传递到启动类加载器，而启动类加载器在核心Java API发现这个名字的类，发现该类已被加载，并不会重新加载网络传递的过来的 java.lang.Integer，而直接返回已加载过的 Integer.class，这样便可以防止核心API库被随意篡改。</p>
-<h4 id="双亲委派模型的代码实现"><a href="#双亲委派模型的代码实现" class="headerlink" title="双亲委派模型的代码实现"></a>双亲委派模型的代码实现</h4><p><img src="http://p61038gmb.bkt.clouddn.com/blog/180731/LLj42C2HIi.png?imageslim" alt="enter image description here"></p>
+<h4 id="双亲委派模型的代码实现"><a href="#双亲委派模型的代码实现" class="headerlink" title="双亲委派模型的代码实现"></a>双亲委派模型的代码实现</h4><p><img src="http://dengw.xyz/blog/180731/LLj42C2HIi.png?imageslim" alt="enter image description here"></p>
 <p>从图可以看出顶层的类加载器是一个抽象类，其后所有的类加载器都继承自该类加载器（不包括启动类加载器），我们介绍一下几个比较重要的方法。</p>
 <ul>
 <li>loadClass(String)<br>该方法加载指定名称（包括包名）的二进制类型，该方法在JDK1.2之后不再建议用户重写但用户可以直接调用该方法，loadClass()方法是ClassLoader类自己实现的，该方法中的逻辑就是双亲委派模式的实现，其源码如下，loadClass(String name, boolean resolve)是一个重载方法，resolve参数代表是否生成class对象的同时进行解析相关操作。</li>
@@ -584,7 +584,7 @@ protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException {
 </ul>
 <h3 id="自定义类加载器"><a href="#自定义类加载器" class="headerlink" title="自定义类加载器"></a>自定义类加载器</h3><p>一个比较好的自定义类加载器的实践就是直接继承 URLClassLoader 类，URLClassLoader 这个实现类为这些方法提供了具体的实现，并新增了 URLClassPath 类协助取得 Class 字节码流等功能，在编写自定义类加载器时，如果没有太过于复杂的需求，可以直接继承URLClassLoader类，这样就可以避免自己去编写 findClass() 方法及其获取字节码流的方式，使自定义类加载器编写更加简洁。</p>
 <p>需要注意的是如果我们在定义类加载器时选择继承 ClassLoader 类而非 URLClassLoader，必须手动编写 findclass() 方法的加载逻辑以及获取字节码流的逻辑。</p>
-<h3 id="URLClassLoader"><a href="#URLClassLoader" class="headerlink" title="URLClassLoader"></a>URLClassLoader</h3><p><img src="http://p61038gmb.bkt.clouddn.com/blog/180731/54f3593fm9.png?imageslim" alt="enter image description here"></p>
+<h3 id="URLClassLoader"><a href="#URLClassLoader" class="headerlink" title="URLClassLoader"></a>URLClassLoader</h3><p><img src="http://dengw.xyz/blog/180731/54f3593fm9.png?imageslim" alt="enter image description here"></p>
 <p>从类图结构看出 URLClassLoader 内部存在一个 URLClassPath 类，通过这个类就可以找到要加载的字节码流，也就是说 URLClassPath 类负责找到要加载的字节码，再读取成字节流，最后通过 defineClass() 方法创建类的Class对象。从 URLClassLoader 类的结构图可以看出其构造方法都有一个必须传递的参数 URL[]，该参数的元素是代表字节码文件的路径，换句话说在创建 URLClassLoader 对象时必须要指定这个类加载器到哪个目录下找 class 文件。同时也应该注意 URL[] 也是 URLClassPath 类的必传参数，在创建 URLClassPath 对象时，会根据传递过来的 URL 数组中的路径判断是文件还是 jar 包，然后根据不同的路径创建 FileLoader 或者 JarLoader 或默认 Loader 类去加载相应路径下的 class 文件，而当 JVM 调用 findClass() 方法时，就由这3个加载器中的一个将 class 文件的字节码流加载到内存中，最后利用字节码流创建类的 class 对象。</p>
 <p>下面是一些需要自定义类加载器场景：</p>
 <ul>
@@ -742,7 +742,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2012/09/">九月 2012<span class="sidebar_archives-count">1</span></a>
             </li></ul>
         </li>
         
@@ -760,7 +760,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">24</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android开发/">Android开发<span class="sidebar_archives-count">25</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java学习/">Java学习<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据结构与算法/">数据结构与算法<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活随笔/">生活随笔<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/计算机网络/">计算机网络<span class="sidebar_archives-count">4</span></a>
             </li></ul>
         </li>
         
