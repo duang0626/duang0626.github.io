@@ -3,6 +3,54 @@
   
     
     <entry>
+      <title>Kotlins初学记录</title>
+      <link href="/2018/11/19/Kotlins%E5%88%9D%E5%AD%A6%E8%AE%B0%E5%BD%95/"/>
+      <url>/2018/11/19/Kotlins%E5%88%9D%E5%AD%A6%E8%AE%B0%E5%BD%95/</url>
+      
+        <content type="html"><![CDATA[<h4 id="var和val的区别"><a href="#var和val的区别" class="headerlink" title="var和val的区别"></a>var和val的区别</h4><p>var是一个可变变量，可以通过重新分配来更改为另一个值的变量，这种声明变量的方式和java中声明变量的方式一样。</p><p>val是一个只读变量，这种声明变量的方式相当于java中的final变量。一个val创建的时候必须初始化，因为以后不能被改变。</p><h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3><h4 id="区间范围"><a href="#区间范围" class="headerlink" title="区间范围"></a>区间范围</h4><ul><li><p>in a..b<br>表示[a, b]</p></li><li><p>in a until b<br>表示[a, b)</p></li></ul><h4 id="只读list"><a href="#只读list" class="headerlink" title="只读list"></a>只读list</h4><pre><code class="kotlin">val list = listOf(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)</code></pre><h4 id="Long类型显示加L"><a href="#Long类型显示加L" class="headerlink" title="Long类型显示加L"></a>Long类型显示加L</h4><p>如：</p><pre><code class="kotlin">Long a = 123L</code></pre><h4 id="浮点数默认为Double类型"><a href="#浮点数默认为Double类型" class="headerlink" title="浮点数默认为Double类型"></a>浮点数默认为Double类型</h4><p>Float 必须要用 f 或者 F 标记，如 123.5f</p><h4 id="kotlin数据类型"><a href="#kotlin数据类型" class="headerlink" title="kotlin数据类型"></a>kotlin数据类型</h4><p>kotlin中不存在基本数据类型，所有的东西都是对象；</p><p>几种表示数字的内置类型：Double、Float、Long、Int、Short、Char、Byte</p><h4 id="相等性和同一性"><a href="#相等性和同一性" class="headerlink" title="相等性和同一性"></a>相等性和同一性</h4><ul><li><p>相等性<br>即数值相等，对应于函数equals 或者 “==”</p></li><li><p>同一性<br>是否是用一个对象，对应于“===”</p></li></ul><h4 id="较小的类型不能够隐式转化为较大的类型"><a href="#较小的类型不能够隐式转化为较大的类型" class="headerlink" title="较小的类型不能够隐式转化为较大的类型"></a>较小的类型不能够隐式转化为较大的类型</h4><p>⚠️注意这一点是和 java 的区别<br>例如下面的代码就会报错：</p><pre><code class="kotlin">val b: Byte = 1 // OK, 字面值是静态检测的val i: Int = b // 错误</code></pre><p>我们可以显式转换来拓宽数字</p><pre><code class="kotlin">val i: Int = b.toInt() // OK：显式拓宽</code></pre><h4 id="Char类型不能直接当作数字"><a href="#Char类型不能直接当作数字" class="headerlink" title="Char类型不能直接当作数字"></a>Char类型不能直接当作数字</h4><h3 id="包与导入"><a href="#包与导入" class="headerlink" title="包与导入"></a>包与导入</h3><h4 id="可见性修饰符介绍"><a href="#可见性修饰符介绍" class="headerlink" title="可见性修饰符介绍"></a>可见性修饰符介绍</h4><p><a href="https://www.kotlincn.net/docs/reference/visibility-modifiers.html#%E6%A8%A1%E5%9D%97" target="_blank" rel="noopener">Kotlin文档介绍</a></p><p>注意⚠️：Kotlin 中外部类不能访问内部类的 private 成员，这一点在java中可以</p><h3 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h3><h4 id="If表达式"><a href="#If表达式" class="headerlink" title="If表达式"></a>If表达式</h4><p>if是一个表达式，即它会返回一个值</p><pre><code class="kotlin">// java用法if (a &gt; b) {    max = a} else {    max = b}// kotlin 中作为表达式val max = if (a &gt; b) a else b</code></pre><p>当然也可以想java那样当作代码块中的语句使用</p><p>但是，如果你使用 if 作为表达式而不是语句，该表达式需要有 else 分支，例如下面是语句就会报错：</p><pre><code class="kotlin">val max = if (a &gt; b) a</code></pre><h4 id="when表达式取代switch"><a href="#when表达式取代switch" class="headerlink" title="when表达式取代switch"></a>when表达式取代switch</h4><p>when 既可以被当做表达式使用也可以被当做语句使用。如果它被当做表达式， 符合条件的分支的值就是整个表达式的值，如果当做语句使用， 则忽略个别分支的值。</p><p>常见形式</p><p>作为控制快：</p><pre><code class="kotlin">when (x) {    1 -&gt; print(&quot;x == 1&quot;)    2 -&gt; print(&quot;x == 2&quot;)    else -&gt; { // 注意这个块        print(&quot;x is neither 1 nor 2&quot;)    }}</code></pre><p>作为表达式：</p><pre><code class="kotlin">val a = when (sign) {    1 -&gt; 1    2 -&gt; 2    else -&gt; 3}</code></pre><p>注意⚠️： 如果 when 作为一个表达式使用，则必须有 else 分支；</p><h4 id="标签（label）"><a href="#标签（label）" class="headerlink" title="标签（label）"></a>标签（label）</h4><p>在 Kotlin 中任何表达式都可以用标签（label）来标记。 标签的格式为标识符后跟 @ 符号，例如：abc@、fooBar@都是有效的标签</p><p>标签结合break和continue使用：</p><pre><code class="kotlin">loop@ for (i in 1..100) {    for (j in 1..100) {        if (……) break@loop    }}</code></pre><p>标签在内联函数的使用：</p><pre><code class="kotlin">fun foo() {    listOf(1, 2, 3, 4, 5).forEach {        if (it == 3) return // 非局部直接返回到 foo() 的调用者        print(it)    }    println(&quot;this point is unreachable&quot;)}</code></pre><p>为了只退出lambda表达式，像下面：</p><pre><code class="kotlin">fun foo() {    listOf(1, 2, 3, 4, 5).forEach lit@{        if (it == 3) return@lit // 局部返回到该 lambda 表达式的调用者，即 forEach 循环        print(it)    }    print(&quot; done with explicit label&quot;)}</code></pre><p>简介版：标签与接受该 lambda 的函数同名。</p><pre><code class="kotlin">fun foo() {    listOf(1, 2, 3, 4, 5).forEach {        if (it == 3) return@forEach // 局部返回到该 lambda 表达式的调用者，即 forEach 循环        print(it)    }    print(&quot; done with implicit label&quot;)}</code></pre><h3 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h3><h4 id="主构造函数和次构造函数的区别"><a href="#主构造函数和次构造函数的区别" class="headerlink" title="主构造函数和次构造函数的区别"></a>主构造函数和次构造函数的区别</h4><p><a href="https://blog.csdn.net/xlh1191860939/article/details/79412319" target="_blank" rel="noopener">Kotlin的构造函数介绍</a></p><h4 id="不需要使用new关键字"><a href="#不需要使用new关键字" class="headerlink" title="不需要使用new关键字"></a>不需要使用new关键字</h4><pre><code class="kotlin">val rectangle = Rectangle(5.0, 2.0) // 不需要“new”关键字</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Kotlin学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Kotlin </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>faceu实习开发随记</title>
+      <link href="/2018/11/19/faceu%E5%AE%9E%E4%B9%A0%E5%BC%80%E5%8F%91%E9%9A%8F%E8%AE%B0/"/>
+      <url>/2018/11/19/faceu%E5%AE%9E%E4%B9%A0%E5%BC%80%E5%8F%91%E9%9A%8F%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h3 id="2018-11-18"><a href="#2018-11-18" class="headerlink" title="2018/11/18"></a>2018/11/18</h3><h4 id="Android中visibility属性VISIBLE、INVISIBLE、GONE的区别"><a href="#Android中visibility属性VISIBLE、INVISIBLE、GONE的区别" class="headerlink" title="Android中visibility属性VISIBLE、INVISIBLE、GONE的区别"></a>Android中visibility属性VISIBLE、INVISIBLE、GONE的区别</h4><ul><li>可见（visible)</li></ul><p>XML文件：android:visibility=”visible”<br>Java代码：view.setVisibility(View.VISIBLE);</p><ul><li>不可见（invisible）</li></ul><p>XML文件：android:visibility=”invisible”<br>Java代码：view.setVisibility(View.INVISIBLE);</p><ul><li>隐藏（GONE）</li></ul><p>XML文件：android:visibility=”gone”<br>Java代码：view.setVisibility(View.GONE);</p><p>INVISIBLE 和 GONE 的主要区别是：<br>当控件 visibility 属性为 INVISIBLE 时，界面保留了 view 控件所占有的空间；<br>而控件属性为 GONE 时，界面则不保留 view 控件所占有的空间。</p><h4 id="Java基本数据类型的装箱与拆箱"><a href="#Java基本数据类型的装箱与拆箱" class="headerlink" title="Java基本数据类型的装箱与拆箱"></a>Java基本数据类型的装箱与拆箱</h4><p>这里拿int 和 Integer 作说明：<br>装箱过程是通过调用Integer的valueOf方法实现的，而拆箱过程是通过调用Integer的 intValue方法实现的；</p><p>Integer i = new Integer(xxx) 和 Integer i = xxx;这两种方式的区别：<br>最主要的区别是第一种方式不会处罚自动装箱的过程；</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Android </tag>
+            
+            <tag> 实习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>在Android中获取存储空间方法总结</title>
       <link href="/2018/11/07/%E5%9C%A8Android%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/"/>
       <url>/2018/11/07/%E5%9C%A8Android%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/</url>
@@ -810,8 +858,6 @@
       
       
         <tags>
-            
-            <tag> 项目总结 </tag>
             
             <tag> RecylerView </tag>
             
