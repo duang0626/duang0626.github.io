@@ -7,9 +7,21 @@
       <link href="/2019/05/30/%E5%B8%B8%E7%94%A8Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/"/>
       <url>/2019/05/30/%E5%B8%B8%E7%94%A8Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h3 id="查看进程状态-—-ps"><a href="#查看进程状态-—-ps" class="headerlink" title="查看进程状态 — ps"></a>查看进程状态 — ps</h3><p>Linux中的进程查看命令，使用该命令可以确定有哪些进程正在运行和运行的状态、进程是否结束、进程有没有僵尸、哪些进程占用了过多的资源等等;需要注意的是进程是正在运行的程序，一直处于动态变化中，而ps命令所显示的进程工作状态是瞬间的。</p><p>使用方式:<code>ps[options][-help]</code>，参数的具体含义以及使用方法可以使用<code>man ps</code>命令查看，下面列出一下常用的参数以及常用的命令:</p><h4 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数:"></a>常用参数:</h4><ul><li>-A : 所有的进程均显示出来，与 -e 具有同样的效用;</li><li>-a : 显示现行终端机下的所有进程，包括其他用户的进程;</li><li>-u : 以用户为主的进程状态 ;</li><li>x : 通常与 a 这个参数一起使用，可列出较完整信息。</li></ul><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令:"></a>常用命令:</h4><ul><li>ps -u username 查看特定用户下的进程;</li><li>ps -ef 显示所有进程信息，连同命令行;</li><li>ps -ef | grep name 查询进程然后匹配;</li><li><h4 id="进程的描述的字段解释"><a href="#进程的描述的字段解释" class="headerlink" title="进程的描述的字段解释:"></a>进程的描述的字段解释:</h4></li><li>USER 进程的属主;</li><li>PID 进程的ID;</li><li>PPID 父进程;</li><li>NI 进程的NICE值，数值大，表示较少占用CPU时间;</li><li>VSZ 进程虚拟大小;</li><li>RSS 驻留中页的数量;</li><li>%CPU 进程占用的CPU百分比;</li><li>%MEM 占用内存的百分比;</li><li>TTY 终端ID</li><li>STAT 进程状态（有以下几种）<ul><li>D 无法中断的休眠状态（通常 IO 的进程）;</li><li>R 正在运行可中在队列中可过行的;</li><li>S 处于休眠状态;</li><li>T 停止或被追踪;</li><li>W 进入内存交换（从内核2.6开始无效）;</li><li>X 死掉的进程（从来没见过）;</li><li>Z 僵尸进程;</li><li>&lt; 优先级高的进程</li><li>N 优先级较低的进程</li><li>L 有些页被锁进内存;</li><li>s 进程的领导者（在它之下有子进程）;</li><li>l 多进程的（使用 CLONE_THREAD, 类似 NPTL pthreads）;</li><li>+ 位于后台的进程组;</li></ul></li><li>WCHAN 正在等待的进程资源;</li><li>START 启动进程的时间;</li><li>TIME 进程消耗CPU的时间;</li><li>COMMAND 命令的名称和参数;</li></ul><h3 id="文本搜索-—-grep"><a href="#文本搜索-—-grep" class="headerlink" title="文本搜索 — grep"></a>文本搜索 — grep</h3><p>grep (global search regular expression(RE) and print out the line,全面搜索正则表达式并把行打印出来)是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。</p><h4 id="匹配控制项"><a href="#匹配控制项" class="headerlink" title="匹配控制项"></a>匹配控制项</h4><ul><li>-i : 搜索时候忽略大小写</li><li>-v : 反转匹配，选择没有被匹配到的内容</li><li>-n : 显示匹配内容的行号</li><li>-c : 计算找到‘搜索字符串’的行数</li><li>-r : 当指定要查找的是目录而非文件时，必须使用这项参数，否则grep命令将回报信息并停止动作</li><li>-l : 列出文件内容符合指定的范本样式的文件名称</li></ul><h4 id="常用命令-1"><a href="#常用命令-1" class="headerlink" title="常用命令"></a>常用命令</h4><ul><li>ps -ef | grep java : 查找指定进程</li><li>ps -ef | grep -c java : 查找指定进程个数</li></ul><p>更多详细用法请参考 : <a href="https://www.cnblogs.com/kongzhongqijing/articles/4462793.html" target="_blank" rel="noopener">linux命令—grep命令</a></p><h3 id="显示当前文件夹列表-—-ls"><a href="#显示当前文件夹列表-—-ls" class="headerlink" title="显示当前文件夹列表 — ls"></a>显示当前文件夹列表 — ls</h3><p>用法 : <code>ls [选项] [目录或文件名]</code></p><h4 id="常用参数-1"><a href="#常用参数-1" class="headerlink" title="常用参数"></a>常用参数</h4><ul><li>-a : –all的缩写，显示所有的文件，包括隐藏文件</li><li>-A : –almost-all的缩写，显示所有的文件，包括隐藏文件，但不包括表示当前目录.和上级目录..这两个文件</li><li>-l : 列出长数据串，显示出文件的属性与权限等数据信息;</li><li>–color[=WHEN] : 是否根据文件类型显示颜色，WHEN可以为never、always或者auto</li><li>-t : 以修改时间排序</li><li>-S : 以文件大小排序</li><li>-r : –reverse，将排序结果以倒序方式显示</li></ul>]]></content>
       
       
+      <categories>
+          
+          <category> Linux学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux命令 </tag>
+            
+        </tags>
       
     </entry>
     
